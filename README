@@ -1,3 +1,6 @@
-Conda base packages
+Free conda base packages to prevent vendor lock-in.
 
+These receipes do not work properly at the time of writing.
+
+Build instructios found at
 https://github.com/ContinuumIO/conda/blob/master/docs/source/build.rst

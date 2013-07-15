@@ -1,0 +1,37 @@
+package:
+  name: python
+  version: 2.7.5
+
+
+source:
+  fn: Python-2.7.5.tar.bz2
+  url: http://python.org/ftp/python/2.7.5/Python-2.7.5.tar.bz2
+
+
+requirments:
+  build:
+     - openssl
+     - readline
+     - sqlite
+     - system
+     - zlib
+     - bzip2
+  run:
+     - openssl
+     - readline
+     - sqlite
+     - system
+     - zlib
+     - bzip2
+
+
+app:
+  entry: python
+  icon: python.png
+  summary: Python console
+  type: desk
+
+
+about:
+  home: http://www.python.org
+  license: PSF

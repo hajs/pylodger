@@ -1,0 +1,19 @@
+package:
+  name: scipy
+  version: 0.12.0
+
+source:
+  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.12.0.tar.gz
+  fn: scipy-0.12.0.tar.gz
+
+requirements:
+  build:
+    - python
+    - numpy
+
+  run:
+    - numpy
+
+about:
+  home: https://www.scipy.org
+  license: PSF

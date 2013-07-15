@@ -1,0 +1,12 @@
+package:
+  name: blas
+  version: 1.2
+
+source:
+  fn: blas.tgz
+  url: http://www.netlib.org/blas/blas.tgz
+
+
+about:
+  home: http://www.netlib.org/bla/
+  license: BSD

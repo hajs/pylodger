@@ -1,0 +1,19 @@
+package:
+  name: setuptools
+  version: 0.9
+
+source:
+  url: https://pypi.python.org/packages/source/s/setuptools/setuptools-0.9.1.tar.gz
+  fn: setuptools-0.9.1.tar.gz
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+
+about:
+  home: https://pypi.python.org/pypi/setuptools
+  license: PSF

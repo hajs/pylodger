@@ -1,0 +1,13 @@
+package:
+  name: openssl
+  version: 1.0.1e
+
+
+source:
+  fn: openssl-1.0.1e.tar.gz
+  url: http://www.openssl.org/source/openssl-1.0.1e.tar.gz
+
+
+about:
+  home: http://www.openssl.org
+  license: Apache style

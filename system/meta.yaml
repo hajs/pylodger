@@ -1,0 +1,11 @@
+package:
+  name: system
+  version: 2.17
+
+#source:
+#  fn: glibc-2.17.tar.bz2
+#  url: http://ftp.gnu.org/gnu/glibc/glibc-2.17.tar.bz2
+
+
+about:
+  license: GPL

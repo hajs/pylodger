@@ -1,0 +1,19 @@
+package:
+  name: pycosat
+  version: 0.6.0.dev
+
+source:
+  git_url: https://github.com/ContinuumIO/pycosat.git
+
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+
+about:
+  home: https://github.com/ContinuumIO/conda
+  license: 

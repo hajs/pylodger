@@ -1,0 +1,20 @@
+package:
+  name: pyyaml
+  version: 13.10
+
+source:
+  url: http://pyyaml.org/download/pyyaml/PyYAML-3.10.tar.gz
+  fn: PyYAML-3.10.tar.gz
+
+requirements:
+  build:
+    - python
+    - yaml
+
+  run:
+    - python
+    - yaml
+
+about:
+  home: https://pyyaml.org
+  license: PSF

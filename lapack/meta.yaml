@@ -1,0 +1,12 @@
+package:
+  name: lapack
+  version: 3.4.2
+
+source:
+  fn: lapack.tgz
+  url: http://www.netlib.org/lapack/lapack.tgz
+
+
+about:
+  home: http://www.netlib.org/lapack/
+  license: BSD

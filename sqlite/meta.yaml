@@ -2,10 +2,16 @@ package:
   name: sqlite
   version: 3.7.17
 
-
 source:
   fn: sqlite-autoconf-3071700.tar.gz
   url: http://www.sqlite.org/2013/sqlite-autoconf-3071700.tar.gz
+
+
+requirments:
+  build:
+     - readline
+  run:
+     - readline
 
 
 about:

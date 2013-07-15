@@ -34,6 +34,7 @@ else
   fi
 fi
 
+# XXX: assume that pkgdir is empty
 PKGDIR=$DIST/conda-bld/linux-64/
 PYTHON=$DIST/bin/python
 CONDA="$PYTHON $DIST/bin/conda"
@@ -46,7 +47,7 @@ done
 mkdir -p $TARGET/{pkgs,envs,conda-meta,conda-bld}
 for pkgfile in $PKGDIR/*.tar.bz2
 do
-  tar -xjv -C /tmp/freeconda -f $pkgfile
+  tar -xjv -C $TARGET -f $pkgfile
 done
 
 

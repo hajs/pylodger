@@ -1,0 +1,18 @@
+package:
+  name: sip
+  version: 4.14.6
+
+source:
+  fn: sip-4.14.6.tar.gz
+  url: http://sourceforge.net/projects/pyqt/files/sip/sip-4.14.6/sip-4.14.6.tar.gz
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+
+about:
+  home: http://www.riverbankcomputing.co.uk/software/pyqt/intro
+  license: GPL

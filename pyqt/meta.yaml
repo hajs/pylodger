@@ -1,0 +1,19 @@
+package:
+  name: pyqt
+  version: 4.10.1
+ 
+requirements:
+  build:
+    - qt
+    - python
+  run:
+    - qt
+    - python
+
+source:
+  fn: PyQt-x11-gpl-4.10.1.tar.gz
+  url: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.1/PyQt-x11-gpl-4.10.1.tar.gz
+
+about:
+  home: http://www.riverbankcomputing.co.uk/software/pyqt/intro
+  license: GPL

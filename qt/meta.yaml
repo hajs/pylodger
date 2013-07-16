@@ -1,0 +1,22 @@
+package:
+  name: qt
+  version: 4.8.4
+
+source:
+  fn: qt-everywhere-opensource-src-4.8.4.tar.gz
+  url: http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-4.8.4.tar.gz
+  md5: 89c5ecba180cae74c66260ac732dc5cb
+  patches:
+    - acceptance.patch
+    - 10.5.patch [osx]
+
+requirements:
+  build:
+    - freetype
+
+build:
+  number: 5
+
+about:
+    home: http://qt-project.org
+    license: LGPL

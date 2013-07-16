@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e 
+set -e  -x 
 
 DIST=$1
 TARGET=$2
@@ -39,20 +39,16 @@ PKGDIR=$DIST/conda-bld/linux-64/
 PYTHON=$DIST/bin/python
 CONDA="$PYTHON $DIST/bin/conda"
 
-for package in system zlib bzip2 openssl readline sqlite python pycosat pyyaml conda setuptools
+mkdir -p $TARGET/{pkgs,envs,conda-meta,conda-bld}
+for package in system zlib bzip2 openssl readline sqlite python pycosat yaml pyyaml conda setuptools
 do
   test -f $PKGDIR/$package*.tar.bz2 || $CONDA build $package
-done
-
-mkdir -p $TARGET/{pkgs,envs,conda-meta,conda-bld}
-for pkgfile in $PKGDIR/*.tar.bz2
-do
-  tar -xjv -C $TARGET -f $pkgfile
+  pkgfile=$PKGDIR/$package*.tar.bz2
+  tar -xj -C $TARGET -f $pkgfile
 done
 
 
-cp $PKGDIR/*.tar.bz2 $TARGET/pkgs/
-
+# Fix wrong paths
 PLACEHOLDER="/opt/anaconda1anaconda2anaconda3"
 echo "import sys
 filename, old, new = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -66,6 +62,10 @@ do
 done
 rm fix.py
 
+# copy crate packages
+cp $PKGDIR/*.tar.bz2 $TARGET/pkgs/
+
+# reinstall via coda 
 for pkgfile in $TARGET/pkgs/*.tar.bz2
 do
   $TARGET/bin/conda install $pkgfile

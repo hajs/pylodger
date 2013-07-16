@@ -1,3 +1,3 @@
-./config --prefix=$PREFIX
+./config --prefix=$PREFIX shared
 make
 make install

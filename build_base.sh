@@ -50,17 +50,11 @@ done
 
 # Fix wrong paths
 PLACEHOLDER="/opt/anaconda1anaconda2anaconda3"
-echo "import sys
-filename, old, new = sys.argv[1], sys.argv[2], sys.argv[3]
-data = open(filename).read()
-data = data.replace(old, new)
-open(filename, 'w').write(data)
-" > fix.py
 for fixfile in $(grep -rl "$PLACEHOLDER" $TARGET/bin)
 do
-  $TARGET/bin/python fix.py $fixfile $PLACEHOLDER $TARGET
+  $TARGET/bin/python replace.py $PLACEHOLDER $TARGET $fixfile
 done
-rm fix.py
+
 
 # copy crate packages
 cp $PKGDIR/*.tar.bz2 $TARGET/pkgs/

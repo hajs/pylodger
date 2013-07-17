@@ -2,6 +2,7 @@
 ./configure --prefix=$PREFIX \
  --with-shared      \
  --without-debug  \
- --enable-pc-files  #--enable-widec
+ #--enable-pc-files  #--enable-widec
+ 
 make
 make install

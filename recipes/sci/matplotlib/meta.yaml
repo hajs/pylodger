@@ -1,0 +1,19 @@
+package:
+  name: matplotlib
+  version: 1.2.1
+
+source:
+  url: https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.2.1/matplotlib-1.2.1.tar.gz
+  fn: matplotlib-1.2.1.tar.gz
+
+requirements:
+  build:
+    - python
+    - numpy
+
+  run:
+    - numpy
+
+about:
+  home: https://www.scipy.org
+  license: PSF

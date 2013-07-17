@@ -1,8 +1,6 @@
 Free conda base packages to prevent vendor lock-in.
 
-These recipes do not work properly at the time of writing.
+These recipes might not work properly at the time of writing.
 
-Build instructions found at
-https://github.com/ContinuumIO/conda/blob/master/docs/source/build.rst
-
-Only platform support right now: Linux-64
+The only platform supported right now is Linux-64.
+The packages were built using Centos inside a docker container.

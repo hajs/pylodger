@@ -1,0 +1,12 @@
+--- conda/config.py.orig	2013-07-17 09:56:53.434559415 +0200
++++ conda/config.py	2013-07-17 09:57:02.994226466 +0200
+@@ -76,8 +76,7 @@
+ # Note, get_default_urls() and get_rc_urls() return unnormalized urls.
+ 
+ def get_default_urls():
+-    return ['http://repo.continuum.io/pkgs/free',
+-            'http://repo.continuum.io/pkgs/pro']
++    return []
+ 
+ def get_rc_urls():
+     if 'system' in rc['channels']:

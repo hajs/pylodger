@@ -4,9 +4,8 @@ package:
 
 source:
   git_url: https://github.com/ContinuumIO/conda.git
-
-patches:
-  - repositories.patch
+  patches:
+    - repositories.patch
 
 requirements:
   build:

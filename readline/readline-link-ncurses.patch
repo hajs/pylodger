@@ -1,5 +1,5 @@
---- a/support/shobj-conf
-+++ b/support/shobj-conf
+--- support/shobj-conf
++++ support/shobj-conf
 @@ -42,7 +42,7 @@
  SHOBJ_LIBS=
 

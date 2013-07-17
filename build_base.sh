@@ -40,7 +40,7 @@ PYTHON=$DIST/bin/python
 CONDA="$PYTHON $DIST/bin/conda"
 
 mkdir -p $TARGET/{pkgs,envs,conda-meta,conda-bld}
-for package in system zlib bzip2 openssl readline sqlite python pycosat yaml pyyaml conda setuptools
+for package in system zlib bzip2 openssl readline sqlite python pycosat yaml pyyaml conda setuptools distribute
 do
   test -f $PKGDIR/$package*.tar.bz2 || $CONDA build $package
   pkgfile=$PKGDIR/$package*.tar.bz2
@@ -56,10 +56,16 @@ do
 done
 
 
-# copy crate packages
+# copy created packages
 cp $PKGDIR/*.tar.bz2 $TARGET/pkgs/
 
-# reinstall via coda 
+
+# reinstall via conda 
+echo "
+channels:
+   - file://$(readlink -f $PKGDIR/..)
+" > ~/.condarc
+
 for pkgfile in $TARGET/pkgs/*.tar.bz2
 do
   $TARGET/bin/conda install $pkgfile

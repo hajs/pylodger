@@ -1,0 +1,12 @@
+--- a/support/shobj-conf
++++ b/support/shobj-conf
+@@ -42,7 +42,7 @@
+ SHOBJ_LIBS=
+
+ SHLIB_XLDFLAGS=
+-SHLIB_LIBS=
++SHLIB_LIBS=-lncurses
+
+ SHLIB_DOT='.'
+ SHLIB_LIBPREF='lib' 
+

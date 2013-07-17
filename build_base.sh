@@ -68,5 +68,5 @@ channels:
 
 for pkgfile in $TARGET/pkgs/*.tar.bz2
 do
-  $TARGET/bin/conda install $pkgfile
+  $TARGET/bin/conda install -c system $pkgfile
 done

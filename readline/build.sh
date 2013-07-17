@@ -1,5 +1,4 @@
-#patch -p1 < $RECIPE_DIR/readline-link-ncurses.patch 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --enable-shared
 make
 make install
 

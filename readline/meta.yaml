@@ -8,6 +8,13 @@ source:
   patches:
     - readline-link-ncurses.patch
 
+requirments:
+  build:
+     - numpy
+  run:
+     - numpy
+
+
 about:
   home: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
   license: GPL

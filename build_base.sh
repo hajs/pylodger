@@ -40,7 +40,7 @@ PYTHON=$DIST/bin/python
 CONDA="$PYTHON $DIST/bin/conda"
 
 mkdir -p $TARGET/{pkgs,envs,conda-meta,conda-bld}
-for package in system zlib bzip2 openssl readline sqlite python pycosat yaml pyyaml conda setuptools distribute
+for package in system zlib bzip2 openssl ncurses readline sqlite python pycosat yaml pyyaml conda setuptools distribute
 do
   test -f $PKGDIR/$package*.tar.bz2 || $CONDA build $package
   pkgfile=$PKGDIR/$package*.tar.bz2

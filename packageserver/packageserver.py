@@ -6,6 +6,7 @@ import sys
 import os
 import socket
 import argparse
+import shutil
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 from BaseHTTPServer import HTTPServer
 
@@ -26,6 +27,11 @@ def condarc(port):
 	print template % vars()
 
 
+def copy_index_html(target):
+	this_path = os.path.dirname(os.path.abspath(__file__))
+	shutil.copy(os.path.join(this_path, "index.html"), target)
+
+	
 def serve(port):
 	server_address = ('', port)
 	httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
@@ -42,7 +48,11 @@ def main():
 	                    help="default port for listening is %(default)s")
 	parser.add_argument("--root", "-r", default=default_doc_root,
 	                    help="default document root is %(default)r")
+	parser.add_argument("--noindex", default=False, action="store_true", 
+	                    help="Do not copy index.html to document root")
 	args = parser.parse_args()
+	if not args.noindex:
+		copy_index_html(args.root)
 	os.chdir(args.root)
 	serve(args.port)
 

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Conda Packages</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+html, body {
+margin: 20px;
+font-size: 110%;
+font-family: Helvetica,Arial,Sans-Serif;
+}
+h1 { color: darkorange }
+a:link { color: blue }
+a:link {text-decoration: none}
+a:visited {text-decoration: none; color: darkblue }
+a:active {text-decoration: none}
+a:hover {text-decoration: underline; color: darkred;}
+.package { 
+   border: 1px solid black;
+   border-radius: 8px;
+   padding: 12px;
+   margin: 20px;
+ }
+.package_name { font-size: 120%; font-weight: bold }
+.package_version { font-size: 115% }
+.package_deps { font-size: 90% }
+.package_download { float:right }
+.package_size {  font-size: 80%; }
+</style>
+
+<script type="text/javascript">
+
+// Simple JavaScript Templating
+// John Resig - http://ejohn.org/ - MIT Licensed
+(function(){
+  var cache = {};
+ 
+  this.tmpl = function tmpl(str, data){
+    // Figure out if we're getting a template, or if we need to
+    // load the template - and be sure to cache the result.
+    var fn = !/\W/.test(str) ?
+      cache[str] = cache[str] ||
+        tmpl(document.getElementById(str).innerHTML) :
+     
+      // Generate a reusable function that will serve as a template
+      // generator (and which will be cached).
+      new Function("obj",
+        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+       
+        // Introduce the data as local variables using with(){}
+        "with(obj){p.push('" +
+       
+        // Convert the template into pure JavaScript
+        str
+          .replace(/[\r\t\n]/g, " ")
+          .split("<%").join("\t")
+          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+          .replace(/\t=(.*?)%>/g, "',$1,'")
+          .split("\t").join("');")
+          .split("%>").join("p.push('")
+          .split("\r").join("\\'")
+      + "');}return p.join('');");
+      
+    // Provide some basic currying to the user
+    return data ? fn( data ) : fn;
+  };
+})();
+
+
+function load(url, callback) {
+   // TODO: support MS-ActiveX http request
+   var req = new XMLHttpRequest();
+   req.open( "GET", url, true );
+   req.onreadystatechange = function () {
+      if ( req.readyState == 4 && req.status == 200 ) {
+         callback(req.responseText)
+      }
+   };
+   req.send(null);       
+}
+
+function load_json(url, callback) {
+  load(url, function(data) {
+    var json = JSON.parse(data)
+    callback(json);
+  });
+}
+
+function format_size(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return 'n/a';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];    
+}
+
+function render(json) {    
+    var packages = document.getElementById("packages");
+    packages.innerHTML = tmpl("packages_tmpl", json);
+}
+</script>
+
+
+<!-- Template for package entry -->
+<script type="text/html" id="packages_tmpl">
+  <% for ( var filename in packages ) { %>
+   <div class="package">
+      <span class="package_name"><%=packages[filename].name%></span> 
+      <span class="package_version"><%=packages[filename].version || ''%></span>
+      <div class="package_description">
+      <%=packages[filename].description%>
+      </div>
+      <span class="package_depends">Depends on <%=packages[filename].depends.join(", ") %></span>
+
+      <div class="package_download">
+        <a href="linux-64/<%=filename%>">Download</a> 
+        <span class="package_size" title="<%=packages[filename].size %> bytes">
+        (<%= format_size(packages[filename].size) %>)</span>
+     </div>
+   </div>
+  <% } %>
+</script>
+
+
+
+</head>
+<body onLoad="load_json('linux-64/repodata.json', render)">
+
+
+<h1>Conda Packages</h1>
+<p>
+<small>
+The URL you have requested is a repository for conda packages. Add <a
+href="./">this URL</a> to the
+list of repository sources of your condarc. After that you will able
+to install the packages with <pre>conda install <em>packagename</em></pre>.
+</small>
+</p>
+
+<div id="packages">
+</div>
+
+</body>
+</html>

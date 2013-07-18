@@ -10,9 +10,9 @@ source:
 
 requirments:
   build:
-     - numpy
+     - ncurses
   run:
-     - numpy
+     - ncurses
 
 
 about:

@@ -30,14 +30,21 @@ requirements:
     # requirements.
     #
     # - distribute
+    - docutils
+    - pygments
+    - jinja2
 
   run:
     - python
+    - docutils
+    - pygments
+    - jinja2
+
 
 test:
   # Python imports
-  imports:
-    - Sphinx
+  #imports:
+  #  - Sphinx
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the

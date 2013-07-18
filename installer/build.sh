@@ -1,23 +1,20 @@
 #!/bin/bash
 # Taken from http://www.linuxjournal.com/node/1005818
-cd $(readlink -f $(dirname $0))
+set -e
+ROOT=$(readlink -f $(dirname $0))
+cd $ROOT
 
-cd payload
-tar cf ../payload.tar /opt/freeconda
+echo "Collecting files..."
+cd /opt/freeconda
+tar cvf $ROOT/payload/files.tar *
+cd $ROOT/payload
+tar cf ../payload.tar *
 cd ..
-
-if [ -e "payload.tar" ]; then
-    gzip payload.tar
-    
-    if [ -e "payload.tar.gz" ]; then
-       cat decompress.template payload.tar.gz > freeconda-installer.sh
-       chmod +x freeconda-installer.sh
-       exit 0
-    else
-       echo "payload.tar.gz does not exist"
-       exit 1
-    fi
-else
-    echo "payload.tar does not exist"
-    exit 1
-fi
+echo "Compressing..."
+bzip2 payload.tar 
+echo "Creating installer..."
+cat decompress.template payload.tar.bz2 > freeconda-installer.sh
+chmod +x freeconda-installer.sh
+rm payload.tar.bz2
+echo "Installed successfully created"
+ 

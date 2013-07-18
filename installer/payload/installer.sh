@@ -4,7 +4,6 @@ echo "Running installer..."
 
 TARGET=/opt/freeconda
 
-
 echo -n "Installing to $TARGET? Confirm with 'yes': "
 read OK
 
@@ -15,6 +14,7 @@ then
 fi
 
 echo "Extracing..."
+mkdir -p $TARGET
 tar x -f files.tar -C $TARGET
 
 echo "Done"

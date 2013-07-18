@@ -1,11 +1,11 @@
 package:
-  name: fabric
-  version: 0.9.0
+  name: pycrypto
+  version: 2.6
 
 source:
-  fn: Fabric-0.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-0.9.0.tar.gz
-  md5: 696e42e6e771fa2a365cd03536d4cdcf
+  fn: pycrypto-2.6.tar.gz
+  url: https://pypi.python.org/packages/source/p/pycrypto/pycrypto-2.6.tar.gz
+  md5: 88dad0a270d1fe83a39e0467a66a22bb
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - Fabric:main
+    # - pycrypto:main
     #
-    # Would call Fabric.main()
+    # Would call pycrypto.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,17 +29,15 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    - setuptools
-    - paramiko
+    # - distribute
 
   run:
     - python
-    - paramiko
 
 test:
   # Python imports
   imports:
-    - Fabric
+    - pycrypto
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: http://www.pycrypto.org/
+  license: public domain
 
 # See
 # https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for

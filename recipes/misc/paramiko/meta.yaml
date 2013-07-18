@@ -1,11 +1,11 @@
 package:
-  name: fabric
-  version: 0.9.0
+  name: paramiko
+  version: 1.7.4
 
 source:
-  fn: Fabric-0.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-0.9.0.tar.gz
-  md5: 696e42e6e771fa2a365cd03536d4cdcf
+  fn: paramiko-1.7.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/paramiko/paramiko-1.7.4.tar.gz
+  md5: 23061d68bbcb68dbcc8afbe4cb034f62
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - Fabric:main
+    # - paramiko:main
     #
-    # Would call Fabric.main()
+    # Would call paramiko.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,17 +29,17 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    - setuptools
-    - paramiko
+    - distribute
+    - pycrypto
 
   run:
     - python
-    - paramiko
-
+    - pycrypto
+    
 test:
   # Python imports
   imports:
-    - Fabric
+    - paramiko
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,8 +53,8 @@ test:
     # - nose
 
 about:
-  home: http://fabfile.org
-  license: BSD License
+  home: https://github.com/paramiko/paramiko/
+  license: GNU Library or Lesser General Public License (LGPL)
 
 # See
 # https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for

@@ -1,11 +1,10 @@
 #!/bin/sh
-#export LAPACK=$PREFIX/lib/liblapack.a
-#export BLAS=$PREFIX/lib/libfblas.a
-export BLAS=$PREFIX/lib/libblas.so
+export LAPACK=$PREFIX/lib/liblapack.so
+export BLAS=$PREFIX/lib/libfblas.so
+export ATLAS=$PREFIX/lib/libsatlas.so
 test -f $BLAS
-export ATLAS=None
-#export BLAS=None
-export LAPACK=None
+test -f $LAPACK
+test -f $ATLAS
 
 $PYTHON setup.py install
 

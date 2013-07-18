@@ -10,9 +10,12 @@ requirements:
   build:
     - python
     - numpy
+    - freetype
 
   run:
+    - python
     - numpy
+    - freetype
 
 about:
   home: http://www.matplotlib.org

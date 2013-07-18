@@ -1,5 +1,5 @@
 package:
-  name: GeoAlchemy
+  name: geoalchemy
   version: 0.7.2
 
 source:
@@ -26,6 +26,7 @@ source:
 requirements:
   build:
     - python
+    - sqlalchemy
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
@@ -33,11 +34,12 @@ requirements:
 
   run:
     - python
+    - sqlalchemy
 
 test:
   # Python imports
-  imports:
-    - GeoAlchemy
+  #imports:
+  #  - GeoAlchemy
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the

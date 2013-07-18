@@ -37,7 +37,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - SQLAlchemy
+    - sqlalchemy
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the

@@ -15,5 +15,5 @@ requirements:
     - numpy
 
 about:
-  home: https://www.scipy.org
-  license: PSF
+  home: http://www.matplotlib.org
+  license: BSD

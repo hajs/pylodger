@@ -1,0 +1,21 @@
+package:
+  name: basemake
+  version: 1.2.1
+
+source:
+  url: http://kent.dl.sourceforge.net/project/matplotlib/matplotlib-toolkits/basemap-1.0.6/basemap-1.0.6.tar.gz
+  fn: basemap-1.0.6.tar.gz
+
+requirements:
+  build:
+    - python
+    - matplotlib
+    - numpy
+
+  run:
+    - numpy
+    - matplotlib
+
+about:
+  home: http://www.matplotlib.org
+  license: BSD

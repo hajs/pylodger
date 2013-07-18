@@ -9,8 +9,9 @@ source:
 requirements:
   build:
     - python
-    - blas
-    - lapack
+    #- blas
+    #- lapack
+    - atlas
 
   run:
     - python

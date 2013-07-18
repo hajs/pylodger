@@ -20,24 +20,23 @@ relink() {
 }
 
 
-cd lib
-
 
 mkdir build
 cd build
-../configure --with-netlib-lapack-tarfile=$SYS_PREFIX/conda-bld/src_cache/lapack.tgz --shared y -Fa alg '-fPIC'
+../configure --with-netlib-lapack-tarfile=$SYS_PREFIX/conda-bld/src_cache/lapack.tgz --shared  -Fa alg '-fPIC'
 make 
 cd lib
 
 make shared cshared ptshared cptshared
-gcc -shared -o liblapack.so -Wl,-soname,liblapack.so -Wl,--whole-archive liblapack.a -Wl,--no-whole-archive -lgfortran -lm
+#gcc -shared -o liblapack.so -Wl,-soname,liblapack.so -Wl,--whole-archive liblapack.a -Wl,--no-whole-archive -lgfortran -lm
 relink atlas
 relink cblas
 relink f77blas "-lgfortran"
+relink ptcblas
+relink ptf77blas "-lgfortran"
 relink lapack  "-lgfortran"
 
 
 mkdir -p $PREFIX/lib
 cp -v lib* $PREFIX/lib
 
-bash -i

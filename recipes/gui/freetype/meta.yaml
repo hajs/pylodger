@@ -1,0 +1,12 @@
+package:
+  name: freetype
+  version: 2.5.0
+
+source:
+  fn: freetype-2.5.0.tar.bz2
+  url: http://download.savannah.gnu.org/releases/freetype/freetype-2.5.0.tar.bz2
+
+
+about:
+  home: http://www.freetype.org
+  license: LGPL

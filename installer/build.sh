@@ -6,6 +6,10 @@ cd $ROOT
 
 echo "Collecting files..."
 cd /opt/freeconda
+rm -rf man ssl/man info share/man share/info share/readline conda-bld
+cd pkgs
+rm -rf *
+cd ..
 tar cvf $ROOT/payload/files.tar *
 cd $ROOT/payload
 tar cf ../payload.tar *

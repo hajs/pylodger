@@ -5,7 +5,8 @@ package:
 source:
   fn: blas.tgz
   url: http://www.netlib.org/blas/blas.tgz
-
+  patches:
+    - shared.patch
 
 about:
   home: http://www.netlib.org/bla/

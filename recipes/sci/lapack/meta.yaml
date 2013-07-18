@@ -5,7 +5,15 @@ package:
 source:
   fn: lapack.tgz
   url: http://www.netlib.org/lapack/lapack.tgz
+  patches:
+    - shared.patch
 
+
+requirements:
+  build:
+    - blas    
+  run:
+    - blas
 
 about:
   home: http://www.netlib.org/lapack/

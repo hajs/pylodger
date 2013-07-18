@@ -1,0 +1,43 @@
+diff -u BLAS/Makefile blas-shared/Makefile
+--- Makefile	2007-04-05 22:59:57.000000000 +0200
++++ Makefile	2013-07-18 12:29:20.249702644 +0200
+@@ -55,7 +55,7 @@
+ #
+ #######################################################################
+ 
+-all: $(BLASLIB)
++all: $(BLASLIB) libblas.so
+  
+ #---------------------------------------------------------
+ #  Comment out the next 6 definitions if you already have
+@@ -141,6 +141,10 @@
+ 	$(ARCH) $(ARCHFLAGS) $@ $(ALLOBJ)
+ 	$(RANLIB) $@
+ 
++libblas.so: $(ALLOBJ)
++	cc -shared -Wl,-soname,$@ -lf2c -o $@ *.o
++	cp $@ $(MYLIBDIR)/$@
++
+ single: $(SBLAS1) $(ALLBLAS) $(SBLAS2) $(SBLAS3)
+ 	$(ARCH) $(ARCHFLAGS) $(BLASLIB) $(SBLAS1) $(ALLBLAS) \
+ 	$(SBLAS2) $(SBLAS3)
+Nur in blas-shared/: Makefile~.
+diff -u BLAS/make.inc blas-shared/make.inc
+--- make.inc	2011-04-19 21:08:00.000000000 +0200
++++ make.inc	2013-07-18 12:28:17.009704341 +0200
+@@ -16,11 +16,12 @@
+ #  desired load options for your machine.
+ #
+ FORTRAN  = gfortran
+-OPTS     = -O3
++OPTS     = -O3  -fPIC
+ DRVOPTS  = $(OPTS)
+-NOOPT    =
++NOOPT    = -fPIC
+ LOADER   = gfortran
+ LOADOPTS =
++MYLIBDIR = $(PREFIX)/lib
+ #
+ #  The archiver and the flag(s) to use when building archive (library)
+ #  If you system has no ranlib, set RANLIB = echo.
+Nur in blas-shared/: make.inc~.

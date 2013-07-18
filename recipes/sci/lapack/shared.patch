@@ -1,0 +1,24 @@
+diff -ur SRC/Makefile lapack-3.4.2/SRC/Makefile
+--- SRC/Makefile	2012-04-02 21:06:36.000000000 +0200
++++ lapack-3.4.2/SRC/Makefile	2013-07-18 12:38:00.093688693 +0200
+@@ -405,12 +405,18 @@
+ ALLXOBJ = $(SXLASRC) $(DXLASRC) $(CXLASRC) $(ZXLASRC)
+ endif
+ 
+-all: ../$(LAPACKLIB)
++all: ../$(LAPACKLIB) liblapack.so
+ 
+ ../$(LAPACKLIB): $(ALLOBJ) $(ALLXOBJ)
+ 	$(ARCH) $(ARCHFLAGS) $@ $(ALLOBJ) $(ALLXOBJ)
+ 	$(RANLIB) $@
+ 
++SO_FILES := dlamch slamch
++SO_FILES := $(patsubst %,../INSTALL/%.o,$(SO_FILES))
++liblapack.so: $(ALLOBJ) 
++	cc -shared -Wl,-soname,$@ -lblas -o $@ *.o $(SO_FILES)
++	cp $@ $(PREFIX)/lib/$@
++
+ single: $(SLASRC) $(DSLASRC) $(SXLASRC) $(SCLAUX) $(ALLAUX)
+ 	$(ARCH) $(ARCHFLAGS) ../$(LAPACKLIB) $(SLASRC) $(DSLASRC) \
+ 	$(SXLASRC) $(SCLAUX) $(ALLAUX) $(ALLXAUX)
+

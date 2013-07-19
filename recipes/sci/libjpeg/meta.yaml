@@ -1,0 +1,12 @@
+package:
+  name: libjpeg
+  version: 1.6.2
+
+source:
+  fn: jpegsrc.v6b.tar.gz
+  url: http://netcologne.dl.sourceforge.net/project/libjpeg/libjpeg/6b/jpegsrc.v6b.tar.gz
+
+
+about:
+  home: http://libjpeg.sourceforge.net/
+  license: Apache

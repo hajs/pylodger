@@ -36,8 +36,8 @@ requirements:
 
 test:
   # Python imports
-  imports:
-    - ipython
+  #imports:
+  #  - ipython
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the

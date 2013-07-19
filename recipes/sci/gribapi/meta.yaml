@@ -1,0 +1,21 @@
+package:
+  name: gribapi
+  version: 1.10.4
+
+source:
+  fn: grib_api-1.10.4.tar.gz
+  url: https://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.10.4.tar.gz?api=v2
+
+requirements:
+  build:
+    - python
+    - numpy    
+    - libpng
+    - libjpeg
+    - libjasper
+    - libopenjpeg
+    # - swig
+
+about:
+  home: https://software.ecmwf.int/wiki/display/GRIB/Home
+  license: Apache

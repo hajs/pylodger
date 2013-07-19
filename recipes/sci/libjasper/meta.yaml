@@ -1,0 +1,12 @@
+package:
+  name: libjasper
+  version: 1.900.1
+
+source:
+  fn: jasper-1.900.1.zip
+  url: http://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.1.zip
+
+
+about:
+  home: http://www.ece.uvic.ca/~frodo/jasper/
+  license: BSD

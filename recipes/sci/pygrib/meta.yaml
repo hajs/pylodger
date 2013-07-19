@@ -1,0 +1,26 @@
+package:
+  name: pygrib
+  version: 1.9.6
+
+source:
+  fn: pygrib-1.9.6.tar.gz 
+  url: http://pygrib.googlecode.com/files/pygrib-1.9.6.tar.gz 
+
+requirements:
+  build:
+    - python
+    - numpy    
+    - libpng
+    - libjpeg
+    - libjasper
+    - libopenjpeg
+    - pyproj
+  run:
+    - gribapi
+    - python
+    - numpy    
+    - pyproj
+
+about:
+  home: https://software.ecmwf.int/wiki/display/GRIB/Home
+  license: Apache

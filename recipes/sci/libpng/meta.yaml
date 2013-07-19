@@ -1,0 +1,12 @@
+package:
+  name: libpng
+  version: 1.6.2
+
+source:
+  fn: libpng-1.6.2.tar.gz
+  url: http://heanet.dl.sourceforge.net/project/libpng/libpng16/older-releases/1.6.2/libpng-1.6.2.tar.gz
+
+
+about:
+  home: http://www.libpng.org
+  license: Apache

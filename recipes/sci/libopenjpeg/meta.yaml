@@ -1,0 +1,14 @@
+package:
+  name: libopenjpeg
+  #version: 2.0.0
+  version: 1.5.1
+  
+source:
+  #fn: openjpeg-2.0.0.tar.gz
+  #url: http://openjpeg.googlecode.com/files/openjpeg-2.0.0.tar.gz
+  fn: openjpeg-1.5.1.tar.gz
+  url: http://openjpeg.googlecode.com/files/openjpeg-1.5.1.tar.gz
+
+about:
+  home: http://openjpeg.googlecode.com
+  license: BSD

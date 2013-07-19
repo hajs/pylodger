@@ -1,11 +1,11 @@
 package:
-  name: pandas
-  version: 0.11.0
+  name: dateutil
+  version: 2.1
 
 source:
-  fn: pandas-0.11.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/pandas/pandas-0.11.0.tar.gz
-  md5: 5d95cb31c113bc27b9de96e8fbd480cb
+  fn: python-dateutil-2.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.1.tar.gz
+  md5: 1534bb15cf311f07afaa3aacba1c028b
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pandas:main
+    # - python-dateutil:main
     #
-    # Would call pandas.main()
+    # Would call python-dateutil.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,10 +26,6 @@ source:
 requirements:
   build:
     - python
-    - cython
-    - scipy
-    - dateutil
-    - pytz
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
@@ -37,19 +33,11 @@ requirements:
 
   run:
     - python
-    - numpy
-    - scipy
-    - pytz
-    - dateutil
-    # - matplotlib
-    # - statsmodels
-    # - pytables
-    # - openpyxl
 
 test:
   # Python imports
   imports:
-    - pandas
+    - python-dateutil
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -63,7 +51,7 @@ test:
     # - nose
 
 about:
-  home: http://pandas.pydata.org
+  home: http://labix.org/python-dateutil
   license: BSD
 
 # See

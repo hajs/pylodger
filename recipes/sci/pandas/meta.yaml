@@ -26,6 +26,9 @@ source:
 requirements:
   build:
     - python
+    - cython
+    - scipy
+    - pytz
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
@@ -34,6 +37,12 @@ requirements:
   run:
     - python
     - numpy
+    - scipy
+    - pytz
+    # - matplotlib
+    # - statsmodels
+    # - pytables
+    # - openpyxl
 
 test:
   # Python imports

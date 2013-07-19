@@ -10,11 +10,13 @@ requirements:
   build:
     - python
     - numpy
-    - blas
+    #- blas
     #- lapack
+    - atlas
 
   run:
     - numpy
+    - atlas
 
 about:
   home: https://www.scipy.org

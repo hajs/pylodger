@@ -1,11 +1,11 @@
 package:
-  name: pandas
-  version: 0.11.0
+  name: statsmodels
+  version: 0.4.3
 
 source:
-  fn: pandas-0.11.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/pandas/pandas-0.11.0.tar.gz
-  md5: 5d95cb31c113bc27b9de96e8fbd480cb
+  fn: statsmodels-0.4.3.tar.gz
+  url: https://pypi.python.org/packages/source/s/statsmodels/statsmodels-0.4.3.tar.gz
+  md5: eee727c2fa4e3d884f1baaae7ae3d58c
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - pandas:main
+    # - statsmodels:main
     #
-    # Would call pandas.main()
+    # Would call statsmodels.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,10 +26,6 @@ source:
 requirements:
   build:
     - python
-    - cython
-    - scipy
-    - dateutil
-    - pytz
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
@@ -37,19 +33,11 @@ requirements:
 
   run:
     - python
-    - numpy
-    - scipy
-    - pytz
-    - dateutil
-    # - matplotlib
-    # - statsmodels
-    # - pytables
-    # - openpyxl
 
 test:
   # Python imports
   imports:
-    - pandas
+    - statsmodels
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -63,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://pandas.pydata.org
-  license: BSD
+  home: http://statsmodels.sourceforge.net/
+  license: BSD License
 
 # See
 # https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for

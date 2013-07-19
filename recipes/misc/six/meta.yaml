@@ -1,11 +1,11 @@
 package:
-  name: dateutil
-  version: 2.1
+  name: six
+  version: 1.3.0
 
 source:
-  fn: python-dateutil-2.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.1.tar.gz
-  md5: 1534bb15cf311f07afaa3aacba1c028b
+  fn: six-1.3.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/six/six-1.3.0.tar.gz
+  md5: ec47fe6070a8a64c802363d2c2b1e2ee
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - python-dateutil:main
+    # - six:main
     #
-    # Would call python-dateutil.main()
+    # Would call six.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,8 +29,7 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    - distribute
-    - six
+    # - distribute
 
   run:
     - python
@@ -38,7 +37,7 @@ requirements:
 test:
   # Python imports
   imports:
-    - python-dateutil
+    - six
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -52,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://labix.org/python-dateutil
-  license: BSD
+  home: http://pypi.python.org/pypi/six/
+  license: MIT License
 
 # See
 # https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for

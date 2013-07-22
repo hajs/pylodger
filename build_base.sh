@@ -52,7 +52,7 @@ done
 PLACEHOLDER="/opt/anaconda1anaconda2anaconda3"
 for fixfile in $(grep -rl "$PLACEHOLDER" $TARGET/bin)
 do
-  $TARGET/bin/python replace.py $PLACEHOLDER $TARGET $fixfile
+  $TARGET/bin/python relocate.py $PLACEHOLDER $TARGET $fixfile
 done
 
 

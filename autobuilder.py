@@ -9,6 +9,8 @@ import argparse
 from collections import namedtuple
 import yaml
 
+DRY_RUN = False
+
 
 def detect_system():
     env_vars = "linux linxu32 linux64 armv6 osx unix win win32 win64 py2k py26 py27 py3k py33".split()
@@ -273,6 +275,7 @@ def do_list(args):
         
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("-dry", "-d", action="store_true", default=False, help="dry run")
     parser.add_argument("--root", "-r", default=os.getcwd(), 
                         help="default recipe root folder %(default)r")
     parser.add_argument("--prefix", "-p", default=sys.prefix, 
@@ -286,6 +289,7 @@ def main():
     list_parser.set_defaults(func=do_list)
     
     args = parser.parse_args()
+    DRY_RUN = args.dry        
     args.func(args)
 
     

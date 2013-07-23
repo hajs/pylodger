@@ -15,6 +15,7 @@ requirements:
 
   run:
     - python
+    - atlas
 
 about:
   home: https://www.numpy.org

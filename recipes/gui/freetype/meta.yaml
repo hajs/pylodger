@@ -7,6 +7,13 @@ source:
   url: http://download.savannah.gnu.org/releases/freetype/freetype-2.5.0.tar.bz2
 
 
+requirements:
+  build:
+    - libpng
+  run:
+    - libpng
+
+
 about:
   home: http://www.freetype.org
   license: LGPL

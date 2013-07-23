@@ -11,7 +11,7 @@ done
 
 # Plotting
 
-for recipe in recipes/gui/freetype recipes/sci/{matplotlib,pyproj,basemap}
+for recipe in recipes/misc/cmake recipes/lib/libpng recipes/gui/freetype recipes/sci/{matplotlib,pyproj,basemap}
 do
   pkg=$(basename recipe)
   conda build recipe
@@ -22,7 +22,7 @@ done
 
 # Meteorolgy
 
-for recipe in recipes/lib/{libjasper,libjpeg,libopenjpeg,libpng} recipes/sci/{gribapi,pygrib}
+for recipe in recipes/lib/{libjasper,libjpeg,libopenjpeg} recipes/sci/{gribapi,pygrib}
 do
   pkg=$(basename recipe)
   conda build recipe

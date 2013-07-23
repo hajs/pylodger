@@ -9,6 +9,12 @@ source:
   fn: openjpeg-1.5.1.tar.gz
   url: http://openjpeg.googlecode.com/files/openjpeg-1.5.1.tar.gz
 
+requirements:
+  build:
+#    - cmake
+    - zlib
+    
+
 about:
   home: http://openjpeg.googlecode.com
   license: BSD

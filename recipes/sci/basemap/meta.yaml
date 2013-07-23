@@ -10,10 +10,12 @@ requirements:
   build:
     - python
     - matplotlib
+    - pyproj
     - numpy
 
   run:
     - numpy
+    - pyproj
     - matplotlib
 
 about:

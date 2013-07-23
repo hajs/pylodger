@@ -1,0 +1,12 @@
+The original tar archive atlas3.10.1.tar.bz2 from
+http://sourceforge.net/projects/math-atlas/files/Stable/3.10.1/
+cannot be extracted by Python's tarfile module.
+
+You need to rebuild the file:
+
+  cd $PREFIX/conda-bld/src_cache
+  wget http://netcologne.dl.sourceforge.net/project/math-atlas/Stable/3.10.1/atlas3.10.1.tar.bz2
+  tar xjf atlas3.10.1.tar.bz2 
+  tar cjf atlas3.10.1.tar.bz2 ATLAS/*
+  rm -rf ATLAS
+

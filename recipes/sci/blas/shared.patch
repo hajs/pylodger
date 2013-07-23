@@ -15,7 +15,7 @@ diff -u BLAS/Makefile blas-shared/Makefile
  	$(RANLIB) $@
  
 +libblas.so: $(ALLOBJ)
-+	cc -shared -Wl,-soname,$@ -lf2c -o $@ *.o
++	cc -shared -Wl,-soname,$@  -o $@ *.o
 +	cp $@ $(MYLIBDIR)/$@
 +
  single: $(SBLAS1) $(ALLBLAS) $(SBLAS2) $(SBLAS3)

@@ -15,7 +15,7 @@ diff -ur SRC/Makefile lapack-3.4.2/SRC/Makefile
 +SO_FILES := dlamch slamch
 +SO_FILES := $(patsubst %,../INSTALL/%.o,$(SO_FILES))
 +liblapack.so: $(ALLOBJ) 
-+	cc -shared -Wl,-soname,$@ -lblas -o $@ *.o $(SO_FILES)
++	cc -shared -Wl,-soname,$@ -L$(PREFIX)/lib -lblas -o $@ *.o $(SO_FILES)
 +	cp $@ $(PREFIX)/lib/$@
 +
  single: $(SLASRC) $(DSLASRC) $(SXLASRC) $(SCLAUX) $(ALLAUX)

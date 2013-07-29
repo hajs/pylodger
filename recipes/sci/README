@@ -10,3 +10,9 @@ http://verahill.blogspot.de/2013/02/336-compiling-atlas-netblas-lapack-and.html
 static to shared:
 ar -x mylib.a
 gcc -shared *.o -o mylib.so
+
+
+http://www.postgresql.org/message-id/4245D910.4050707@comcast.net
+http://www.velocityreviews.com/forums/t323133-rpath-in-setup-py.html
+http://enchildfone.wordpress.com/2010/03/23/a-description-of-rpath-origin-ld_library_path-and-portable-linux-binaries/
+

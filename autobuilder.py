@@ -200,7 +200,7 @@ class Conda(object):
         if self.verbose:
             print >>sys.stderr, "[CALLING]", cmd
         pipe =  os.popen(cmd)
-        if self.verbose:
+        if 0: #self.verbose:
             output = ""
             line = pipe.readline()
             while line:
@@ -267,7 +267,7 @@ def do_build(args):
 
 
 def do_list(args):
-    rm = RecipeManager(args.path)
+    rm = RecipeManager(args.root)
     for recipe in rm.recipes:
         print recipe.name.ljust(30), recipe.version.ljust(10),
         print recipe.last_changed.strftime("%Y-%m-%d %H:%M")

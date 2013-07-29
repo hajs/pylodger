@@ -5,9 +5,11 @@ package:
 requirements:
   build:
     - qt
+    - sip
     - python
   run:
     - qt
+    - sip
     - python
 
 source:

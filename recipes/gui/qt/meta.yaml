@@ -13,6 +13,7 @@ source:
 requirements:
   build:
     - freetype
+    - fontconfig
 
 build:
   number: 5

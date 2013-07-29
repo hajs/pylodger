@@ -1,0 +1,62 @@
+package:
+  name: pycassa
+  version: 1.9.0
+
+source:
+  fn: pycassa-1.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pycassa/pycassa-1.9.0.tar.gz
+  md5: afac6bd7e199e83647ebdb921a5f7c0f
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pycassa:main
+    #
+    # Would call pycassa.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - thrift
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    #- distribute
+    - setuptools
+
+  run:
+    - python
+    - thrift
+
+test:
+  # Python imports
+  #imports:
+  #  - pycassa
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/pycassa/pycassa
+  license: MIT License
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

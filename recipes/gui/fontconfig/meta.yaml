@@ -11,6 +11,10 @@ requirements:
   build:
     - freetype
     - libxml2
+  run:
+    - freetype
+    - libxml2
+
 
 about:
     home: http://www.freedesktop.org/wiki/Software/fontconfig/

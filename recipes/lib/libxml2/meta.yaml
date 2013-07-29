@@ -1,0 +1,12 @@
+package:
+  name: libxml2
+  version: 2.9.0
+
+source:
+  fn: libxml2-sources-2.9.0.tar.gz
+  url: ftp://xmlsoft.org/libxml2/libxml2-sources-2.9.0.tar.gz
+
+
+about:
+  home: http://www.xmlsoft.org
+  license: MIT

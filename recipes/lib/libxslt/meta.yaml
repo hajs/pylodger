@@ -1,0 +1,18 @@
+package:
+  name: libxslt
+  version: 1.1.28
+
+source:
+  fn: libxslt-1.1.28.tar.gz
+  url: ftp://xmlsoft.org/libxml2/libxslt-1.1.28.tar.gz
+
+requirements:
+  build:
+    - libxml2
+  run:
+    - libxml2
+
+
+about:
+  home: http://www.xmlsoft.org
+  license: MIT

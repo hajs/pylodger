@@ -31,9 +31,11 @@ requirements:
     #
     # - distribute
     - libxml2
+    - libxslt
 
   run:
     - python
+    - libxslt
 
 test:
   # Python imports

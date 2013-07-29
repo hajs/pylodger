@@ -7,6 +7,5 @@ export CFLAGS=-I$PREFIX/include
 export LIBXML2_CFLAGS=-I$PREFIX/include/libxml2
 export LIBXML2_LIBS="-L$PREFIX/lib/ -lxml2"
 ./configure --prefix $PREFIX --enable-libxml2
-bash -i
 make
 make install

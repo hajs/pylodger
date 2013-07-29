@@ -31,7 +31,8 @@ build:
 requirements:
   build:
     - python
-    - distribute
+    #- distribute
+    - setuptools
     - meld3
 
   run:

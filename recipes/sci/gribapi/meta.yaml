@@ -15,7 +15,14 @@ requirements:
     - libjasper
     - libopenjpeg
     # - swig
-
+  run:
+    - python
+    - numpy    
+    - libpng
+    - libjpeg
+    - libjasper
+    - libopenjpeg
+  
 about:
   home: https://software.ecmwf.int/wiki/display/GRIB/Home
   license: Apache

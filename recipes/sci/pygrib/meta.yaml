@@ -10,10 +10,6 @@ requirements:
   build:
     - python
     - numpy    
-    - libpng
-    - libjpeg
-    - libjasper
-    - libopenjpeg
     - pyproj
     - gribapi
   run:
@@ -21,10 +17,6 @@ requirements:
     - python
     - numpy    
     - pyproj
-    - libopenjpeg
-    - libpng
-    - libjpeg
-    - libjasper
 
 about:
   home: https://software.ecmwf.int/wiki/display/GRIB/Home

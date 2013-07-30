@@ -26,7 +26,7 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    # - distribute
+    - distribute
 
   run:
     - python

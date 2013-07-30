@@ -1,11 +1,11 @@
 package:
-  name: umysqldb
-  version: 1.0.2
+  name: xlrd
+  version: 0.7.9
 
 source:
-  fn: umysqldb-1.0.2.tar.gz
-  url: https://pypi.python.org/packages/source/u/umysqldb/umysqldb-1.0.2.tar.gz
-  md5: 57c6875eb2af305eeef37992576bcb0a
+  fn: xlrd-0.7.9.tar.gz
+  url: https://pypi.python.org/packages/source/x/xlrd/xlrd-0.7.9.tar.gz
+  md5: 8e6833676d78ef65515481952eb0fd76
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - umysqldb:main
+    # - xlrd:main
     #
-    # Would call umysqldb.main()
+    # Would call xlrd.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,17 +29,15 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    - distribute
-    - umysql
+    # - distribute
 
   run:
     - python
-    - umysql
 
 test:
   # Python imports
   imports:
-    - umysqldb
+    - xlrd
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,7 +51,7 @@ test:
     # - nose
 
 about:
-  home: https://github.com/hongqn/umysqldb
+  home: http://www.python-excel.org/
   license: BSD License
 
 # See

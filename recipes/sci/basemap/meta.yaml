@@ -1,5 +1,5 @@
 package:
-  name: basemake
+  name: basemap
   version: 1.2.1
 
 source:
@@ -12,11 +12,13 @@ requirements:
     - matplotlib
     - pyproj
     - numpy
-
+    - pillow
+    
   run:
     - numpy
     - pyproj
     - matplotlib
+    - pillow
 
 about:
   home: http://www.matplotlib.org

@@ -1,0 +1,1 @@
+patch zip_safe=False (setup.py)

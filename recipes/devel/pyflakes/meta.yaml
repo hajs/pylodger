@@ -1,11 +1,11 @@
 package:
-  name: jinja2
-  version: 2.7
+  name: pyflakes
+  version: 0.7.3
 
 source:
-  fn: Jinja2-2.7.tar.gz
-  url: https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.7.tar.gz
-  md5: c2fb12cbbb523c57d3d15bfe4dc0e8fe
+  fn: pyflakes-0.7.3.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyflakes/pyflakes-0.7.3.tar.gz
+  md5: ec94ac11cb110e6e72cca23c104b66b1
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - Jinja2:main
+    # - pyflakes:main
     #
-    # Would call Jinja2.main()
+    # Would call pyflakes.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,15 +29,15 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    - distribute
+    # - distribute
 
   run:
     - python
 
 test:
   # Python imports
-  #imports:
-  #  - Jinja2
+  imports:
+    - pyflakes
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -51,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://jinja.pocoo.org/
-  license: BSD License
+  home: https://launchpad.net/pyflakes
+  license: MIT License
 
 # See
 # https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for

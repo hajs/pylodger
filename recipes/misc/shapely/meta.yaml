@@ -1,0 +1,63 @@
+package:
+  name: shapely
+  version: 1.2.18
+
+source:
+  fn: Shapely-1.2.18.tar.gz
+  url: https://pypi.python.org/packages/source/S/Shapely/Shapely-1.2.18.tar.gz
+  md5: 53ad33214886e729b2d0de488eb9f115
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - Shapely:main
+    #
+    # Would call Shapely.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    - distribute
+    # basemap contains GEOS
+    - basemap  
+
+  run:
+    # basemap contains GEOS
+    - basemap  
+    - python
+
+test:
+  # Python imports
+  #imports:
+  #  - Shapely
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Toblerity/Shapely
+  license: BSD License
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

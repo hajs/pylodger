@@ -1,0 +1,59 @@
+package:
+  name: umysql
+  version: 2.61
+
+source:
+  fn: umysql-2.61.zip
+  url: https://pypi.python.org/packages/source/u/umysql/umysql-2.61.zip
+  md5: 5242ae6fd666ade7b47924fdf4578828
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - umysql:main
+    #
+    # Would call umysql.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - umysql
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.esn.me
+  license: BSD License
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

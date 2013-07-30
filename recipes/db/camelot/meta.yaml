@@ -1,0 +1,63 @@
+package:
+  name: Camelot
+  version: 13.04.13-gpl-pyqt
+
+source:
+  fn: Camelot-13.04.13-gpl-pyqt.tar.gz
+  url: https://pypi.python.org/packages/source/C/Camelot/Camelot-13.04.13-gpl-pyqt.tar.gz
+  md5: 95ff0b68799d9f9610c744c56d80dcde
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - Camelot:main
+    #
+    # Would call Camelot.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
+    - pyqt
+    - sqlalchemy
+
+  run:
+    - python
+    - pyqt
+    - sqlalchemy
+
+test:
+  # Python imports
+  #imports:
+  #  - Camelot
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.python-camelot.com
+  license: GNU General Public License (GPL)
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

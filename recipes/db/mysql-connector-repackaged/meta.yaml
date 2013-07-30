@@ -1,0 +1,59 @@
+package:
+  name: mysql-connector-repackaged
+  version: 0.3.1
+
+source:
+  fn: mysql-connector-repackaged-0.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mysql-connector-repackaged/mysql-connector-repackaged-0.3.1.tar.gz
+  md5: 0b17ad1cb3fe763fd44487cb97cf45b2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mysql-connector-repackaged:main
+    #
+    # Would call mysql-connector-repackaged.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  #imports:
+  #  - mysql-connector-repackaged
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://launchpad.net/myconnpy
+  license: GPL
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

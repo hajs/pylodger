@@ -1,0 +1,56 @@
+package:
+  name: pg8000
+  version: 1.08
+
+source:
+   url: http://pybrary.net/pg8000/dist/pg8000-1.08.tar.gz
+   fn: pg8000-1.08.tar.gz
+   #git_url: https://github.com/mfenniak/pg8000.git
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pg8000:main
+    #
+    # Would call pg8000.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    # If setuptools is required to run setup.py, add distribute to the build
+    # requirements.
+    #
+    # - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  #imports:
+  #  - pg8000
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pybrary.net/pg8000/
+  license: MIT
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

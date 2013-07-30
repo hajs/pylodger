@@ -3,7 +3,7 @@
 
 mkdir build
 cd build
-/usr/bin/cmake \
+cmake \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_RPATH=$LD_RUN_PATH \
@@ -11,7 +11,7 @@ cd build
     -DPYTHON_EXECUTABLE=$PYTHON \
     -DLIB_INSTALL_DIR=$PREFIX/lib \
     -DPYTHON_INCLUDE_PATH=$PREFIX/include/python2.7 \
-    -DPYTHON_LIBRARY=$PREFIX/lib/libpython2.7.so \        
+    -DPYTHON_LIBRARY=$PREFIX/lib/libpython2.7.so \
     ..
 make VERBOSE=2
 make install

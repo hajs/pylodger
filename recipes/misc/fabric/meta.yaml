@@ -10,12 +10,12 @@ source:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
+#build:
+#  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - Fabric:main
+#    - fabric.main:main
     #
     # Would call Fabric.main()
 
@@ -38,8 +38,8 @@ requirements:
 
 test:
   # Python imports
-  imports:
-    - Fabric
+  #imports:
+  #  - fabric
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the

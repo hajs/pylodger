@@ -28,17 +28,17 @@ make install
 
 if [ `uname` == Darwin ]; then
     cd $PREFIX
-    rm -rf doc imports mkspecs doc plugins phrasebooks translations \
+    rm -rf doc imports doc phrasebooks translations \
         q3porting.xml
     cd bin
     rm -rf *.app qcollectiongenerator qhelpgenerator qt3to4 qdoc3
-    rm -rf xml* rcc uic moc macdeployqt
+    rm -rf xml*  macdeployqt
 fi
 
 if [ `uname` == Linux ]; then
     cp $SRC_DIR/bin/* $PREFIX/bin/
     cd $PREFIX
-    rm -rf doc imports mkspecs phrasebooks plugins q3porting.xml translations
+    rm -rf doc imports phrasebooks plugins q3porting.xml translations
     cd $PREFIX/bin
     rm -f *.bat *.pl qt3to4 qdoc3
 fi

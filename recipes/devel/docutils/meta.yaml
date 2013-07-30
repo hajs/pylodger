@@ -1,11 +1,11 @@
 package:
-  name: dateutil
-  version: 2.1
+  name: docutils
+  version: 0.11
 
 source:
-  fn: python-dateutil-2.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.1.tar.gz
-  md5: 1534bb15cf311f07afaa3aacba1c028b
+  fn: docutils-0.11.tar.gz
+  url: https://pypi.python.org/packages/source/d/docutils/docutils-0.11.tar.gz
+  md5: 20ac380a18b369824276864d98ec0ad6
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - python-dateutil:main
+    # - docutils:main
     #
-    # Would call python-dateutil.main()
+    # Would call docutils.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -29,17 +29,15 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    - distribute
-    - six
+    # - distribute
 
   run:
     - python
-    - six
 
 test:
   # Python imports
-  #imports:
-  #  - python-dateutil
+  imports:
+    - docutils
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -53,8 +51,8 @@ test:
     # - nose
 
 about:
-  home: http://labix.org/python-dateutil
-  license: BSD
+  home: http://docutils.sourceforge.net/
+  license: BSD License or GNU General Public License (GPL) or Python Software Foundation License
 
 # See
 # https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for

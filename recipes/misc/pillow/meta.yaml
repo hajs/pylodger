@@ -29,15 +29,15 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
-    # - distribute
+    - distribute
 
   run:
     - python
 
 test:
   # Python imports
-  imports:
-    - Pillow
+  #imports:
+  #  - Pillow
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the

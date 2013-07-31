@@ -1,0 +1,12 @@
+package:
+  name: libmysqlclient
+  version: 6.1.0
+
+source:
+  fn: mysql-connector-c-6.1.0-src.tar.gz
+  url: http://mirror.cogentco.com/pub/mysql/Connector-C/mysql-connector-c-6.1.0-src.tar.gz
+
+
+about:
+  home: http://mysql.com
+  license: GPL

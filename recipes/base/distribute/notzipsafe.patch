@@ -1,0 +1,12 @@
+--- setuptools/command/bdist_egg.py
++++ setuptools/command/bdist_egg.py
+@@ -264,7 +264,7 @@
+                     os.unlink(path)
+ 
+     def zip_safe(self):
+-        safe = getattr(self.distribution,'zip_safe',None)
++        safe = False # XXX for conda: getattr(self.distribution,'zip_safe',None)
+         if safe is not None:
+             return safe
+         log.warn("zip_safe flag not set; analyzing archive contents...")
+

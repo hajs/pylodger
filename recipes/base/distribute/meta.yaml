@@ -5,6 +5,9 @@ package:
 source:
   url: https://pypi.python.org/packages/source/d/distribute/distribute-0.7.3.zip
   fn: distribute-0.7.3.zip
+  patches:
+    - notzipsafe.patch
+
 
 requirements:
   build:

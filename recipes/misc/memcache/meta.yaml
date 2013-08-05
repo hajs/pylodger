@@ -1,0 +1,59 @@
+package:
+  name: memcache
+  version: 1.53
+
+source:
+  fn: python-memcached-1.53.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-memcached/python-memcached-1.53.tar.gz
+  md5: 89570d26e7e7b15caa668a6b2678bd3c
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-memcached = python-memcached:main
+    #
+    # Would create an entry point called python-memcached that calls python-memcached.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    #- distribute
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  #imports:
+  #  - python-memcached
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.tummy.com/Community/software/python-memcached/
+  license: Python Software Foundation License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

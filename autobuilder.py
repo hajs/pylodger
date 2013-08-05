@@ -215,10 +215,10 @@ class Conda(object):
         return output
 
     def install(self, *packages):
-        output = self._call("install", *packages)
+        output = self._call("install", "-f", *packages)
 
     def build(self, *recipes):
-        output = self._call("build", *recipes)
+        output = self._call("build", "--no-binstar-upload", *recipes)
 
 
 class Error(Exception):

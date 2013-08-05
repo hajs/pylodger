@@ -6,7 +6,6 @@ source:
   git_url: https://github.com/ContinuumIO/conda.git
   patches:
     - repositories.patch
-    - bipath.patch
 
 requirements:
   build:
@@ -20,6 +19,9 @@ requirements:
     - yaml
     - pyyaml
 
+build:
+  number: 2
+
 about:
   home: https://github.com/ContinuumIO/conda
-  license: free
+  license: BSD

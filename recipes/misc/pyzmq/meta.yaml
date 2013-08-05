@@ -1,11 +1,12 @@
 package:
-  name: ipython
-  version: 0.13.2
+  name: pyzmq
+  version: 13.1.0
 
 source:
-  fn: ipython-0.13.2.tar.gz
-  url: https://pypi.python.org/packages/source/i/ipython/ipython-0.13.2.tar.gz
-  md5: ead3b7eb70c653b537fb9d96d71b8b2a
+  fn: pyzmq-13.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyzmq/pyzmq-13.1.0.tar.gz
+  md5: b54a2209a4efed93ed00282d949db8d9
+
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +16,10 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - ipython:main
+    # - pyzmq = pyzmq:main
     #
-    # Would call ipython.main()
+    # Would create an entry point called pyzmq that calls pyzmq.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,39 +28,31 @@ source:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    # - distribute
 
   run:
     - python
-    - pyzmq
-
 
 test:
   # Python imports
   #imports:
-  #  - ipython
+  #  - pyzmq
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
-build:
-  number: 2
-
 about:
-  home: http://ipython.org
-  license: BSD License
+  home: http://github.com/zeromq/pyzmq
+  license: GNU Library or Lesser General Public License (LGPL)
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml

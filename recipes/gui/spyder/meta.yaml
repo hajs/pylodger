@@ -1,11 +1,11 @@
 package:
-  name: ipython
-  version: 0.13.2
+  name: spyder
+  version: 2.2.1
 
 source:
-  fn: ipython-0.13.2.tar.gz
-  url: https://pypi.python.org/packages/source/i/ipython/ipython-0.13.2.tar.gz
-  md5: ead3b7eb70c653b537fb9d96d71b8b2a
+  fn: spyder-2.2.1.zip
+  url: http://spyderlib.googlecode.com/files/spyder-2.2.1.zip
+  #md5: 
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,10 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - ipython:main
+    # - spyder = spyder:main
     #
-    # Would call ipython.main()
+    # Would create an entry point called spyder that calls spyder.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,39 +27,35 @@ source:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    # - distribute
 
   run:
     - python
-    - pyzmq
+    - pyqt
+    - pygments
+    - ipython
 
 
 test:
   # Python imports
-  #imports:
-  #  - ipython
+  imports:
+    - spyder
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
-build:
-  number: 2
-
 about:
-  home: http://ipython.org
-  license: BSD License
+  home: http://spyderlib.googlecode.com
+  license: MIT License
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml

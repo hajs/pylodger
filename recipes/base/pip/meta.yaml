@@ -10,10 +10,16 @@ requirements:
   build:
     - python
     - distribute
+    - setuptools
 
   run:
     - python
     - distribute
+    - setuptools
+    
+build:
+  number: 2
+
 
 about:
   home: https://pypi.python.org/pypi/setuptools

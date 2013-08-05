@@ -5,8 +5,13 @@ package:
 source:
   fn: postgresql-9.0.13.tar.gz
   url: http://ftp.postgresql.org/pub/source/v9.0.13/postgresql-9.0.13.tar.gz
-  
 
+#requirements:
+#  build:
+#    - readline
+
+build:
+  number: 3
 
 about:
   home: http://www.postgreql.org

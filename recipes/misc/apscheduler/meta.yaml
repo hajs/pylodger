@@ -1,11 +1,11 @@
 package:
-  name: psycopg2
-  version: 2.5.1
+  name: apscheduler
+  version: 2.1.1
 
 source:
-  fn: psycopg2-2.5.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/psycopg2/psycopg2-2.5.1.tar.gz
-  md5: 1b433f83d50d1bc61e09026e906d84c7
+  fn: APScheduler-2.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/A/APScheduler/APScheduler-2.1.1.tar.gz
+  md5: e04e2adfdc691ecfd0fafaec36bc2877
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,10 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - psycopg2:main
+    # - apscheduler = apscheduler:main
     #
-    # Would call psycopg2.main()
+    # Would create an entry point called apscheduler that calls apscheduler.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,36 +27,32 @@ source:
 requirements:
   build:
     - python
-    - libpg
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    # - distribute
+    - distribute
 
   run:
     - python
-    - libpg
 
 test:
   # Python imports
   imports:
-    - psycopg2
+    - APScheduler
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: http://initd.org/psycopg/
-  license: GNU Library or Lesser General Public License (LGPL) or Zope Public License
+  home: http://pypi.python.org/pypi/APScheduler/
+  license: MIT License
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml

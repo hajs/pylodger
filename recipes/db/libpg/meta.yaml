@@ -1,0 +1,14 @@
+package:
+  name: libpg
+  version: 9.0.13
+
+source:
+  fn: postgresql-9.0.13.tar.gz
+  url: http://ftp.postgresql.org/pub/source/v9.0.13/postgresql-9.0.13.tar.gz
+  
+
+
+about:
+  home: http://www.postgreql.org
+  license BSD
+ 

@@ -1,11 +1,11 @@
 package:
-  name: spyder
-  version: 2.2.1
+  name: pyinotify
+  version: 0.9.4
 
 source:
-  fn: spyder-2.2.1.zip
-  url: http://spyderlib.googlecode.com/files/spyder-2.2.1.zip
-  #md5: 
+  fn: pyinotify-0.9.4.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyinotify/pyinotify-0.9.4.tar.gz
+  md5: 701c91854d241514ede7ffe72086566d
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - spyder = spyder:main
+    # - pyinotify = pyinotify:main
     #
-    # Would create an entry point called spyder that calls spyder.main()
+    # Would create an entry point called pyinotify that calls pyinotify.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -27,21 +27,15 @@ source:
 requirements:
   build:
     - python
+    - setuptools
 
   run:
     - python
-    - pyqt
-    - pygments
-    - ipython
-    - rope
-    - pylint
-    - pep8
-
 
 test:
   # Python imports
-  #imports:
-  #  - spyder
+  imports:
+    - pyinotify
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -56,7 +50,7 @@ test:
     # - nose
 
 about:
-  home: http://spyderlib.googlecode.com
+  home: http://github.com/seb-m/pyinotify
   license: MIT License
 
 # See

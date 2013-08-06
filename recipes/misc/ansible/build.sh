@@ -1,6 +1,5 @@
 #!/bin/bash
 
-replace "/usr/share/ansible/" "$PREFIX/share/ansible/" -- lib/ansible/constants.py
 $PYTHON setup.py install --prefix=$PREFIX
 
 # Add more build steps here, if they are necessary.

@@ -1,6 +1,11 @@
 #!/bin/bash
 
-$PYTHON setup.py install --prefix=$PREFIX
+
+#$PYTHON setup.py install --prefix=$PREFIX
+mkdir -p $PREFIX/lib/python2.7/site-packages
+cp -a ninja_ide $PREFIX/lib/python2.7/site-packages
+mkdir -p $PREFIX/bin
+cp ninja-ide.py $PREFIX/bin
 
 # Add more build steps here, if they are necessary.
 

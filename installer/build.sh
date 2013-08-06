@@ -1,8 +1,8 @@
 #!/bin/bash
 # Taken from http://www.linuxjournal.com/node/1005818
 set -e
-SOURCE=/opt/freeconda
-TARGET=freeconda-installer.sh
+SOURCE=/opt/pylodger
+TARGET=pylodger-installer.sh
 ROOT=$(readlink -f $(dirname $0))
 cd $SOURCE
 echo "Removing no longer required files..."

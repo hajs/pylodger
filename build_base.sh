@@ -57,16 +57,22 @@ done
 
 
 # copy created packages
-cp $PKGDIR/*.tar.bz2 $TARGET/pkgs/
+#cp $PKGDIR/*.tar.bz2 $TARGET/pkgs/
+for package in system zlib bzip2 openssl ncurses readline sqlite python setuptools distribute pycosat yaml pyyaml conda 
+do
+  cp $PKGDIR/${package}*.tar.bz2 $TARGET/pkgs/
+done
 
 
 # reinstall via conda 
+test -f $HOME/.condarc && cp $HOME/.condarc $HOME/.condarc.$(date +"%Y%m%d%H%M")
 echo "
 binstar_upload: false
 
 channels:
    - file://$(readlink -f $PKGDIR/..)
-" > ~/.condarc
+" > $HOME/.condarc
+
 
 for pkgfile in $TARGET/pkgs/*.tar.bz2
 do

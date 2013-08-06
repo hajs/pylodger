@@ -25,12 +25,8 @@ requirments:
      - bzip2
 
 
-app:
-  entry: python
-  icon: python.png
-  summary: Python console
-  type: desk
-
+build:
+  number: 2
 
 about:
   home: http://www.python.org

@@ -29,6 +29,7 @@ requirements:
     - python
     - setuptools
     - pyqt
+    - pyinotify
 
   run:
     - python
@@ -37,7 +38,7 @@ requirements:
     - rope
     - pylint
     - pep8
-
+    - pyinotify
 
 test:
   # Python imports

@@ -5,7 +5,7 @@ echo "Running installer..."
 DEFAULT_TARGET="$1"
 if [ "$DEFAULT_TARGET" == "" ]
 then
-  DEFAULT_TARGET=/opt/freeconda
+  DEFAULT_TARGET=/opt/pylodger
 fi
 
 if [ "$2" == "force" ]
@@ -36,7 +36,7 @@ mkdir -p $TARGET
 tar x -f files.tar -C $TARGET
 
 echo "Relocating.."
-PLACEHOLDER="/opt/freeconda"
+PLACEHOLDER="/opt/pylodger"
 for fixfile in $(grep -rl "$PLACEHOLDER" $TARGET/bin)                                                                
 do                                                                                                           
   $TARGET/bin/python relocate.py $PLACEHOLDER $TARGET $fixfile                                                                        

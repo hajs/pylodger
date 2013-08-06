@@ -1,6 +1,13 @@
-Free conda base packages to prevent vendor lock-in.
+While Anaconda from Continuum Analytics offers a great Python distribution
+it lacks the sources to rebuild everything from scratch.
 
-These recipes might not work properly at the time of writing.
+Therefore this repository provides free Conda recipes for all base packages and
+some more.
+
+Currently there is no documentation. So only experienced developers
+might use the scripts and adapt them for their needs.
+
+Some recipes might not work properly at the time of writing. 
 
 The only platform supported right now is Linux-64.
 The packages were built using Centos inside a docker container.

@@ -8,6 +8,7 @@ source:
 
 requirements:
   build:
+    - system
     - python
     - numpy
     #- blas
@@ -17,6 +18,9 @@ requirements:
   run:
     - numpy
     - atlas
+
+build:
+  number: 2
 
 about:
   home: https://www.scipy.org

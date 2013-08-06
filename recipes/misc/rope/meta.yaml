@@ -1,11 +1,11 @@
 package:
-  name: spyder
-  version: 2.2.1
+  name: rope
+  version: 0.9.4
 
 source:
-  fn: spyder-2.2.1.zip
-  url: http://spyderlib.googlecode.com/files/spyder-2.2.1.zip
-  #md5: 
+  fn: rope-0.9.4.tar.gz
+  url: https://pypi.python.org/packages/source/r/rope/rope-0.9.4.tar.gz
+  md5: 6c654c6892f78008e04e2d65f9f859bb
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,9 @@ source:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - spyder = spyder:main
+    # - rope = rope:main
     #
-    # Would create an entry point called spyder that calls spyder.main()
+    # Would create an entry point called rope that calls rope.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -27,19 +27,15 @@ source:
 requirements:
   build:
     - python
+    - distribute
 
   run:
     - python
-    - pyqt
-    - pygments
-    - ipython
-    - rope
-
 
 test:
   # Python imports
-  #imports:
-  #  - spyder
+  imports:
+    - rope
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
@@ -54,8 +50,8 @@ test:
     # - nose
 
 about:
-  home: http://spyderlib.googlecode.com
-  license: MIT License
+  home: http://rope.sf.net/
+  license: GNU General Public License (GPL)
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -8,7 +8,7 @@ tail -n+$ARCHIVE $0 | tar xjv -C $TMPDIR
 
 CDIR=$(pwd)
 cd $TMPDIR
-./installer.sh
+./installer.sh $*
 
 cd $CDIR
 rm -rf $TMPDIR

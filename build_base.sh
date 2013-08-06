@@ -42,7 +42,7 @@ CONDA="$PYTHON $DIST/bin/conda"
 mkdir -p $TARGET/{pkgs,envs,conda-meta,conda-bld}
 for package in system zlib bzip2 openssl ncurses readline sqlite python setuptools distribute pycosat yaml pyyaml conda 
 do
-  test -f $PKGDIR/$package*.tar.bz2 || $CONDA build recipes/base/$package
+  test -f $PKGDIR/$package*.tar.bz2 || $CONDA build --no-binstar-upload recipes/base/$package
   pkgfile=$PKGDIR/$package*.tar.bz2
   tar -xj -C $TARGET -f $pkgfile
 done
@@ -62,11 +62,13 @@ cp $PKGDIR/*.tar.bz2 $TARGET/pkgs/
 
 # reinstall via conda 
 echo "
+binstar_upload: false
+
 channels:
    - file://$(readlink -f $PKGDIR/..)
 " > ~/.condarc
 
 for pkgfile in $TARGET/pkgs/*.tar.bz2
 do
-  $TARGET/bin/conda install -c system $pkgfile
+  $TARGET/bin/conda install -f -c system $pkgfile
 done

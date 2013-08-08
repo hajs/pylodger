@@ -48,8 +48,6 @@ def check_pypi(r):
     if found:
         print "-> found newer versions:", " ".join(map(str, sorted(found.keys())))
     
-
-
     
 def check(path):
     r = Recipe.parse(path)

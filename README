@@ -11,3 +11,10 @@ Some recipes might not work properly at the time of writing.
 
 The only platform supported right now is Linux-64.
 The packages were built using Centos inside a docker container.
+
+
+
+Discovered bugs:
+
+pyyaml tries to parse versions as floats, so 1.1 is the same version
+number as 1.10

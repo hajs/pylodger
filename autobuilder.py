@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+import re
 import platform
 import datetime
 import json
@@ -166,7 +167,9 @@ class Package(namedtuple("Package", "filename name version depends")):
 class RepositoryCache(object):
 
     def __init__(self, path):
-        with open(os.path.join(path, "repodata.json")) as rf:
+        if os.path.isdir(path):
+            path  = os.path.join(path, "repodata.json")
+        with open(path) as rf:
             self.repodata = json.load(rf)
         self.packages = []
         for (pkg_name, pkg_data) in self.repodata["packages"].items():
@@ -220,9 +223,51 @@ class Conda(object):
     def build(self, *recipes):
         output = self._call("build", "--no-binstar-upload", *recipes)
 
+    def installed_list(self):
+        output = self._call("list")
+        return output.splitlines()
 
 class Error(Exception):
     pass
+
+
+# XXX: support compact yaml syntax?
+build_re = re.compile("build:\s+number:\s*(?P<number>\d+)", re.DOTALL)
+
+
+class VersionBumper(object):
+    
+    def __init__(self, filename):
+        with open(filename) as mf:
+            self.data = mf.read()
+        self.meta = yaml.load(self.data)
+        self.version = str(self.meta["package"]["version"])
+        self.build = self.meta.get("build", {}).get("number", 0)
+        self.build_matched = re.search(build_re, self.data)
+        if self.build_matched:
+            found_build = int(self.build_matched.group("number"))
+            assert found_build == self.build
+        
+    def replace(self, new_version):
+        return self.data.replace(self.version, new_version)
+
+    def increase(self, count=1, pos=-1):
+        parts = self.version.split(".")
+        version_part = int(parts[pos]) + count
+        parts[pos] = str(version_part)
+        return self.replace(".".join(parts))
+
+    def new_build(self, count=1):
+        if self.build > 0 and not self.build_matched:
+            raise Error("Could not parse build entry")
+        build = str(self.build + count)
+        if self.build_matched:
+            print dir(self.build_matched)
+            start, end = self.build_matched.span("number")
+            data = self.data[:start] + build + self.data[end:]
+        else:
+            data = self.data + "\nbuild:\n  number: %s\n" % build 
+        return data
 
 
 class AutoBuilder(object):
@@ -258,6 +303,7 @@ class AutoBuilder(object):
         
         
 def do_build(args):
+    "build recipe(s)"
     ab = AutoBuilder(args.prefix, args.root)
     built = []
     for pkg in args.package:
@@ -266,11 +312,91 @@ def do_build(args):
         ab.build(pkg)
 
 
-def do_list(args):
+def do_recipes(args):
+    "show available recipes"
     rm = RecipeManager(args.root)
     for recipe in rm.recipes:
         print recipe.name.ljust(30), recipe.version.ljust(10),
         print recipe.last_changed.strftime("%Y-%m-%d %H:%M")
+
+
+def do_repository(args):
+    if os.path.isdir(args.path):
+        filename = os.path.join(args.path, "repodata.json")
+    else:
+        filename = args.path
+    if not os.path.exists(filename):
+        raise Error("Could not find %r" % filename)
+    rc = RepositoryCache(filename)
+    for pkg in rc.packages:
+        print pkg.name.ljust(20), pkg.version.rjust(10), "   (%s)" % pkg.filename
+
+        
+class PackageDatabase(object):
+    
+    def __init__(self, prefix):
+        self.packages = self.discover(prefix)
+        
+    def discover(self, prefix):
+        packages = []
+        path = os.path.join(prefix, "conda-meta")
+        for name in os.listdir(path):
+            filename = os.path.join(path, name)
+            if name.endswith(".json") and not os.path.isdir(filename):
+                pkg = self.parse_pkginfo(filename)
+                packages.append(pkg)
+        return packages
+                
+    def parse_pkginfo(self, filename):
+        with open(filename) as f:
+            pkg_data = json.load(f)
+            pkg = Package(filename=filename,
+                          name=pkg_data["name"],
+                          version=(pkg_data["version"], pkg_data["build_number"]),
+                          depends=pkg_data.get("depends", []),
+                          )
+        return pkg
+        
+    
+def do_installed(args):
+    "show installed packages"
+    pkg_db = PackageDatabase(args.prefix)
+    for pkg in pkg_db.packages:
+        version, build = pkg.version
+        print pkg.name.ljust(20), version.rjust(10), "-", build
+
+
+def do_updates(args):
+    "show packages which could be updated"
+    rc = RepositoryCache(filename)
+    pkg_db = PackageDatabase(args.prefix)
+    for installed in pkg_db.packages:
+        for available in rc.packages:
+            if installed.name != available.name:
+                continue
+            if installed.version[0] < available.version:
+                print installed, available
+            break
+            
+
+        
+def do_bump(args):
+    "increate version or build number"
+    if os.path.isdir(args.recipe):
+        filename = os.path.join(args.recipe, "meta.yaml")
+    else:
+        filename = args.recipe
+    if not os.path.exists(filename):
+        parser.error("Cound not find %r" % filename)
+    vb = VersionBumper(filename)
+    if args.version.startswith("+"):
+        count = int(args.version[1:] or 1)
+        print vb.increase(count)
+    elif args.version == "=":
+        print vb.new_build()
+    else:
+        print vb.replace(args.version)
+    
 
         
 def main():
@@ -282,11 +408,22 @@ def main():
                         help="default is distribution prefix is %r" % sys.prefix)
     parser.add_argument("--verbose", action="store_true", default=False)
     sub_parsers = parser.add_subparsers()
-    build_parser = sub_parsers.add_parser("build")
+    build_parser = sub_parsers.add_parser("build", help=do_build.__doc__)
     build_parser.add_argument("package", nargs="+")
     build_parser.set_defaults(func=do_build)
-    list_parser = sub_parsers.add_parser("list")
-    list_parser.set_defaults(func=do_list)
+    recipes_parser = sub_parsers.add_parser("recipes", help=do_recipes.__doc__)
+    recipes_parser.set_defaults(func=do_recipes)
+    installed_parser = sub_parsers.add_parser("installed", help=do_installed.__doc__)
+    installed_parser.set_defaults(func=do_installed)
+
+    repository_parser = sub_parsers.add_parser("repository", help=do_repository.__doc__)
+    repository_parser.add_argument("path")
+    repository_parser.set_defaults(func=do_repository)
+
+    bump_parser = sub_parsers.add_parser("bump", help=do_bump.__doc__)
+    bump_parser.add_argument("recipe", help="meta.yaml file for recipe")
+    bump_parser.add_argument("version")    
+    bump_parser.set_defaults(func=do_bump)
     
     args = parser.parse_args()
     DRY_RUN = args.dry        

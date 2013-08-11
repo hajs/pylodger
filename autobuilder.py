@@ -469,6 +469,7 @@ def do_bump(args):
     
 
 def do_poll(args):
+    "look for changes in version control system and trigger actions"
     rlist = []
     rev_db = shelve.open("revisions.db", "c")
     for path in args.recipe:

@@ -11,9 +11,13 @@ def extract_links(html):
     pat = '<a href="(.*?)" rel="internal">(.*?)</a>'
     return re.findall(pat, html)
 
-def extract_version(filename):
+def remove_ext(filename):
     for ext in (".zip", ".bz2", ".gz", ".tar", ".tgz", ".tbz2", ".egg"):
         filename = filename.rstrip(ext)
+    return filename
+
+def extract_version(filename):
+    filename = remove_ext(filename)
     parts = filename.split("-")
     version = "0.0"
     for i, p in enumerate(parts):
@@ -57,7 +61,8 @@ def check(path):
         return
     if url.startswith("https://pypi.python.org"):
         return check_pypi(r)
-
+    else:
+        print "not a pypi package", url
     
 def main():
     parser = argparse.ArgumentParser()

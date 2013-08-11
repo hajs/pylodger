@@ -3,14 +3,16 @@
 import sys
 import os
 import re
+import time
 import platform
 import datetime
 import json
 import argparse
+import fnmatch
 from collections import namedtuple
 import yaml
+import shelve
 
-DRY_RUN = False
 
 
 def detect_system():
@@ -161,7 +163,7 @@ class RecipeManager(object):
         return l
 
 
-class Package(namedtuple("Package", "filename name version depends")):
+class Package(namedtuple("Package", "filename name version depends files")):
     pass
 
 class RepositoryCache(object):
@@ -176,7 +178,8 @@ class RepositoryCache(object):
             pkg = Package(filename=pkg_name,
                           name=pkg_data["name"],
                           version=pkg_data["version"],
-                          depends=pkg_data["depends"])
+                          depends=pkg_data["depends"], 
+                          files=None)
             self.packages.append(pkg)
 
     def find(self, name):
@@ -190,6 +193,16 @@ class RepositoryCache(object):
 class CondaError(Exception):
     pass
 
+
+
+def call(*args):
+    cmd = "LANG=en %s 2>&1" % " ".join(args)
+    pipe =  os.popen(cmd)
+    output = pipe.read()
+    exit_code = pipe.close()
+    return exit_code, output
+
+
 class Conda(object):
 
     def __init__(self, prefix=None, verbose=True):
@@ -199,24 +212,11 @@ class Conda(object):
         self.executable = os.path.join(prefix, "bin", "conda")
 
     def _call(self, *args):
-        cmd = "%s %s 2>&1" % (self.executable, " ".join(args))
-        if self.verbose:
-            print >>sys.stderr, "[CALLING]", cmd
-        pipe =  os.popen(cmd)
-        if 0: #self.verbose:
-            output = ""
-            line = pipe.readline()
-            while line:
-                sys.stderr.write(line)
-                output = output + line
-                line = pipe.readline()
-        else:
-            output = pipe.read()
-        exit_code = pipe.close()
+        exit_code, output = call(self.executable, *args)
         if exit_code != 0:
             raise CondaError(output)
         return output
-
+        
     def install(self, *packages):
         output = self._call("install", "-f", *packages)
 
@@ -231,31 +231,65 @@ class Error(Exception):
     pass
 
 
-# XXX: support compact yaml syntax?
-build_re = re.compile("build:\s+number:\s*(?P<number>\d+)", re.DOTALL)
+def hg_version(url, branch=None):
+	if branch:
+		url = "%s#%s" % (url, branch)
+	return call("hg", "identify", "-r", "tip", url)[1].strip()
 
+def git_version(url, branch="master"):
+    result = call("git", "ls-remote", "--heads", url, branch)[1]
+    return result.split()[0]
+
+def svn_version(url):
+	output = call("svn", "info", "-r", "HEAD", url)[1]
+	rev_re = re.compile("Revision: (?P<revision>\d+)")
+	found = re.search(rev_re, output)
+	return found.group("revision")
+
+def poll(source):
+    if "svn_url" in source:
+        return svn_version(source["svn_url"])
+    elif "hg_url" in source:
+        return hg_version(source["hg_url"])
+    else:
+        assert "git_url" in source, "unknown vcs-source: %r" % source
+        return git_version(source["git_url"])
+
+
+# XXX: support compact yaml syntax?
+_build_re = re.compile("build:\s+number:\s*(?P<number>\d+)", re.DOTALL)
 
 class VersionBumper(object):
+    # XXX: fully support semantic versioning specification (semver.org)
     
     def __init__(self, filename):
-        with open(filename) as mf:
+        self.filename = filename
+        with open(self.filename) as mf:
             self.data = mf.read()
         self.meta = yaml.load(self.data)
         self.version = str(self.meta["package"]["version"])
         self.build = self.meta.get("build", {}).get("number", 0)
-        self.build_matched = re.search(build_re, self.data)
+        self.build_matched = re.search(_build_re, self.data)
         if self.build_matched:
             found_build = int(self.build_matched.group("number"))
             assert found_build == self.build
-        
+
+    def _save(self, data):
+        with open(self.filename, "w") as mf:
+            mf.write(data)
+            
     def replace(self, new_version):
-        return self.data.replace(self.version, new_version)
+        data = self.data.replace(self.version, new_version)
+        self._save(data)
+        return new_version
 
     def increase(self, count=1, pos=-1):
         parts = self.version.split(".")
         version_part = int(parts[pos]) + count
         parts[pos] = str(version_part)
-        return self.replace(".".join(parts))
+        new_version = ".".join(parts)
+        self.replace(new_version)
+        return new_version
 
     def new_build(self, count=1):
         if self.build > 0 and not self.build_matched:
@@ -267,7 +301,44 @@ class VersionBumper(object):
             data = self.data[:start] + build + self.data[end:]
         else:
             data = self.data + "\nbuild:\n  number: %s\n" % build 
-        return data
+        self._save(data)
+        return build
+
+
+class PackageDatabase(object):
+    
+    def __init__(self, prefix):
+        self.packages = self.discover(prefix)
+        
+    def find(self, name):
+        if callable(name):
+            match = name
+        else:
+            match = lambda entry: entry.name == name
+        for pkg in self.packages:
+            if match(pkg):
+                yield pkg
+
+    def discover(self, prefix):
+        packages = []
+        path = os.path.join(prefix, "conda-meta")
+        for name in os.listdir(path):
+            filename = os.path.join(path, name)
+            if name.endswith(".json") and not os.path.isdir(filename):
+                pkg = self.parse_pkginfo(filename)
+                packages.append(pkg)
+        return packages
+                
+    def parse_pkginfo(self, filename):
+        with open(filename) as f:
+            pkg_data = json.load(f)
+            pkg = Package(filename=filename,
+                          name=pkg_data["name"],
+                          version=(pkg_data["version"], pkg_data["build_number"]),
+                          depends=pkg_data.get("depends", []),
+                          files=pkg_data["files"]
+                          )
+        return pkg
 
 
 class AutoBuilder(object):
@@ -321,6 +392,7 @@ def do_recipes(args):
 
 
 def do_repository(args):
+    "show packages in repository"
     if os.path.isdir(args.path):
         filename = os.path.join(args.path, "repodata.json")
     else:
@@ -331,39 +403,33 @@ def do_repository(args):
     for pkg in rc.packages:
         print pkg.name.ljust(20), pkg.version.rjust(10), "   (%s)" % pkg.filename
 
+
+def _print_pkg(pkg):
+    version, build = pkg.version
+    print pkg.name.ljust(20), version.rjust(10), "-", build
         
-class PackageDatabase(object):
-    
-    def __init__(self, prefix):
-        self.packages = self.discover(prefix)
-        
-    def discover(self, prefix):
-        packages = []
-        path = os.path.join(prefix, "conda-meta")
-        for name in os.listdir(path):
-            filename = os.path.join(path, name)
-            if name.endswith(".json") and not os.path.isdir(filename):
-                pkg = self.parse_pkginfo(filename)
-                packages.append(pkg)
-        return packages
-                
-    def parse_pkginfo(self, filename):
-        with open(filename) as f:
-            pkg_data = json.load(f)
-            pkg = Package(filename=filename,
-                          name=pkg_data["name"],
-                          version=(pkg_data["version"], pkg_data["build_number"]),
-                          depends=pkg_data.get("depends", []),
-                          )
-        return pkg
-        
-    
+def do_contents(args):
+    "show files of package"
+    pkg_db = PackageDatabase(args.prefix)
+    for pkg in pkg_db.find(args.name):
+        _print_pkg(pkg)
+        for filename in pkg.files:
+            print "  ", filename
+
+def do_pgrep(args):
+    "search for packages with given contents"
+    pkg_db = PackageDatabase(args.prefix)
+    for pkg in pkg_db.packages:
+        for filename in pkg.files:
+            if fnmatch.fnmatch(filename, args.pattern):
+                print pkg.name.ljust(20), filename
+
+            
 def do_installed(args):
     "show installed packages"
     pkg_db = PackageDatabase(args.prefix)
     for pkg in pkg_db.packages:
-        version, build = pkg.version
-        print pkg.name.ljust(20), version.rjust(10), "-", build
+        _print_pkg(pkg)
 
 
 def do_updates(args):
@@ -377,7 +443,6 @@ def do_updates(args):
             if installed.version[0] < available.version:
                 print installed, available
             break
-            
 
         
 def do_bump(args):
@@ -389,7 +454,12 @@ def do_bump(args):
     if not os.path.exists(filename):
         parser.error("Cound not find %r" % filename)
     vb = VersionBumper(filename)
-    if args.version.startswith("+"):
+    if args.version == "+":
+        version = vb.version
+        revision = svn_version(vb.meta["svn_url"])
+        version = ".".join(version.split(".")[:-1] + [revision])
+        print vb.replace(version)
+    elif args.version.startswith("+"):
         count = int(args.version[1:] or 1)
         print vb.increase(count)
     elif args.version == "=":
@@ -398,10 +468,46 @@ def do_bump(args):
         print vb.replace(args.version)
     
 
-        
+def do_poll(args):
+    rlist = []
+    rev_db = shelve.open("revisions.db", "c")
+    for path in args.recipe:
+        try:
+            r = Recipe.parse(path)
+        except Exception, exc:
+            print >>sys.stderr, "Skipping %s: %s" % (path, str(exc))
+            continue
+        src = r.meta.get("source", {})
+        if "hg_url" in src or "svn_url" in src or "git_url" in src and "svn_revision" not in src:
+            print "Polling", path                
+            rlist.append(r)
+        else:
+            print >>sys.stderr, "Cannot poll", path
+    if not rlist:
+        print "Not recipes found. Exiting."
+        return 1
+    if args.action == "bump":
+        args.action = "%s %s bump {} +1" % (sys.executable, sys.argv[0])
+        print "bump action: %s" %args.action
+    while True:
+        for r in rlist:
+            try:
+                old_revision = rev_db[r.path]
+            except:
+                old_revision = None
+            revision = poll(r.meta["source"])
+            if revision != old_revision:
+                print "changed:", revision, r.path
+                rev_db[r.path] = revision
+                rev_db.sync()
+                if args.action:
+                    cmd = args.action.replace("{}", r.path)
+                    print cmd
+        time.sleep(args.interval)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("-dry", "-d", action="store_true", default=False, help="dry run")
     parser.add_argument("--root", "-r", default=os.getcwd(), 
                         help="default recipe root folder %(default)r")
     parser.add_argument("--prefix", "-p", default=sys.prefix, 
@@ -415,18 +521,27 @@ def main():
     recipes_parser.set_defaults(func=do_recipes)
     installed_parser = sub_parsers.add_parser("installed", help=do_installed.__doc__)
     installed_parser.set_defaults(func=do_installed)
-
+    contents_parser = sub_parsers.add_parser("contents", help=do_contents.__doc__)
+    contents_parser.add_argument("name", help="name of package")
+    contents_parser.set_defaults(func=do_contents)
+    pgrep_parser = sub_parsers.add_parser("pgrep", help=do_pgrep.__doc__)
+    pgrep_parser.add_argument("pattern", help="file pattern")
+    pgrep_parser.set_defaults(func=do_pgrep)
     repository_parser = sub_parsers.add_parser("repository", help=do_repository.__doc__)
     repository_parser.add_argument("path")
     repository_parser.set_defaults(func=do_repository)
-
     bump_parser = sub_parsers.add_parser("bump", help=do_bump.__doc__)
     bump_parser.add_argument("recipe", help="meta.yaml file for recipe")
     bump_parser.add_argument("version")    
     bump_parser.set_defaults(func=do_bump)
+    poll_parser = sub_parsers.add_parser("poll", help=do_poll.__doc__)
+    poll_parser.add_argument("--interval", "-i", type=int, default=900,
+                             help="poll interval in seconds. default is %(default)s")
+    poll_parser.add_argument("--action", "-a", default=None)
+    poll_parser.add_argument("recipe", nargs="+", help="path to recipe(s)")
+    poll_parser.set_defaults(func=do_poll)
     
     args = parser.parse_args()
-    DRY_RUN = args.dry        
     args.func(args)
 
     

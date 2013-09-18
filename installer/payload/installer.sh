@@ -2,10 +2,13 @@
 set -e
 echo "Running installer..."
 
+test -f motd.txt && cat motd.txt
+
+
 DEFAULT_TARGET="$1"
 if [ "$DEFAULT_TARGET" == "" ]
 then
-  DEFAULT_TARGET=/opt/pylodger
+  DEFAULT_TARGET=$HOME/pylodger
 fi
 
 if [ "$2" == "force" ]
@@ -31,15 +34,22 @@ else
   fi
 fi
 
+if [ -d $TARGET ]
+then
+  echo "Target directory already exists. Aborting"
+  exit 3
+fi
+
+
 echo "Extracing..."
 mkdir -p $TARGET
 tar x -f files.tar -C $TARGET
 
 echo "Relocating.."
 PLACEHOLDER="/opt/pylodger"
-for fixfile in $(grep -rl "$PLACEHOLDER" $TARGET/bin)                                                                
-do                                                                                                           
-  $TARGET/bin/python relocate.py $PLACEHOLDER $TARGET $fixfile                                                                        
+for fixfile in $(grep -rl "$PLACEHOLDER" $TARGET/bin)
+do                                                   
+  $TARGET/bin/python relocate.py $PLACEHOLDER $TARGET $fixfile                             
 done  
 
 
@@ -55,10 +65,14 @@ echo "
 binstar_upload: false
 
 channels:
-   - http://conda:8787
-   # - file:///$TARGET/conda-bld/
+   #- http://somehost/conda/
+   - file:///$TARGET/conda-bld/
+
+
 " > $RCFILE
 cat $RCFILE
 
+echo "You could at $TARGET/bin to your path:"
+echo "  export PATH=$TARGET/bin:\$PATH:"
 
 echo "Done"

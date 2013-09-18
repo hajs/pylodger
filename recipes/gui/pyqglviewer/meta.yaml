@@ -1,0 +1,23 @@
+package:
+  name: pyqglviewer
+  version: 0.11
+
+source:
+  fn: PyQGLViewer-0.11.zip
+  url: https://gforge.inria.fr/frs/download.php/30908/PyQGLViewer-0.11.zip
+
+build:
+  number: 3
+
+requirements:
+  build:
+   - pyqt
+   - sip
+   - libqglviewer
+  run:
+   - pyqt
+   - libqglviewer
+
+about:
+  home: https://gforge.inria.fr/frs/?group_id=773
+  license: GPL

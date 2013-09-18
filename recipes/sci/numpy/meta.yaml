@@ -9,13 +9,15 @@ source:
 requirements:
   build:
     - python
-    #- blas
-    #- lapack
-    - atlas
+    - openblas 
 
   run:
     - python
-    - atlas
+    - openblas
+
+build:
+  number: 3
+
 
 about:
   home: https://www.numpy.org

@@ -20,7 +20,7 @@ requirements:
     - pyyaml
 
 build:
-  number: 2
+  number: 0
 
 about:
   home: https://github.com/ContinuumIO/conda

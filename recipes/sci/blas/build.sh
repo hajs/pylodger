@@ -1,4 +1,3 @@
-exit 0 # using blas built by atlas
 
 mkdir -p $PREFIX/lib
 

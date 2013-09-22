@@ -1,23 +1,24 @@
 package:
-  name: ipython
-  version: 0.13.2
+  name: flup
+  version: 1.0.2
 
 source:
-  fn: ipython-0.13.2.tar.gz
-  url: https://pypi.python.org/packages/source/i/ipython/ipython-0.13.2.tar.gz
-  md5: ead3b7eb70c653b537fb9d96d71b8b2a
-#  patches:
+  fn: flup-1.0.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/flup/flup-1.0.2.tar.gz
+  md5: 24dad7edc5ada31dddd49456ee8d5254
+  patches:
    # List any patch files here
-   # - fix.patch
+    - zip.patch
 
 # build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - ipython:main
+    # - flup = flup:main
     #
-    # Would call ipython.main()
+    # Would create an entry point called flup that calls flup.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,40 +27,33 @@ source:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    # - distribute
+    - distribute
+    - setuptools
 
   run:
     - python
-    - pyzmq
-    - matplotlib
-
 
 test:
   # Python imports
-  #imports:
-  #  - ipython
+  imports:
+    - flup
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 
+
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
-build:
-  number: 3
-
 about:
-  home: http://ipython.org
+  home: http://www.saddi.com/software/flup/
   license: BSD License
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml

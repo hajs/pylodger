@@ -2,13 +2,16 @@ package:
   name: readline
   version: 6.2
 
+build:
+  number: 1
+
 source:
   fn: readline-6.2.tar.gz
   url: ftp://ftp.cwru.edu/pub/bash/readline-6.2.tar.gz
   patches:
     - readline-link-ncurses.patch
 
-requirments:
+requirements:
   build:
      - ncurses
   run:

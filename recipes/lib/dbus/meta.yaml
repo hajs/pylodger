@@ -1,0 +1,19 @@
+package:
+  name: dbus
+  version: 1.5.14
+
+source:
+  fn: dbus-1.6.14.tar.gz
+  url: http://dbus.freedesktop.org/releases/dbus/dbus-1.6.14.tar.gz
+
+requirements:
+  build:
+    - libxml2
+    - python
+  run:
+    - libxml2
+
+
+about:
+  home: http://dbus.freedesktop.org
+  license: BSD

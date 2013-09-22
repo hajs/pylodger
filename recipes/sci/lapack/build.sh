@@ -1,5 +1,5 @@
 
-exit 0 # using lapack built by atlas
+#exit 0 # using lapack built by atlas
 
 mkdir -p $PREFIX/lib
 #cp INSTALL/make.inc.gfortran make.inc

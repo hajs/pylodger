@@ -8,6 +8,8 @@ source:
   patches:
     - shared.patch
 
+build:
+  number: 1
 
 requirements:
   build:

@@ -1,0 +1,22 @@
+package:
+  name: libqglviewer
+  version: 2.3.17
+
+source:
+  fn: libQGLViewer-2.3.17-py.tgz
+  url: https://gforge.inria.fr/frs/download.php/30907/libQGLViewer-2.3.17-py.tgz
+  patches:
+    - glut.patch
+
+build:
+  number: 4
+
+requirements:
+  build:
+   - qt
+  run:
+   - qt
+
+about:
+  home: https://gforge.inria.fr/frs/?group_id=773
+  license: GPL

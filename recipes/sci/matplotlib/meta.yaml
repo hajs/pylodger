@@ -11,11 +11,16 @@ requirements:
     - python
     - numpy
     - freetype
+    - bzip2
 
   run:
     - python
     - numpy
     - freetype
+    - bzip2
+
+build:
+  number: 1
 
 about:
   home: http://www.matplotlib.org

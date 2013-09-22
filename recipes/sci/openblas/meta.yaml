@@ -1,0 +1,12 @@
+package:
+  name: openblas
+  version: 1.13
+
+source:
+  fn: openblas-0.2.8.tgz
+  url: http://github.com/xianyi/OpenBLAS/tarball/v0.2.8
+
+
+about:
+  home: http://xianyi.github.io/OpenBLAS/
+  license: BSD

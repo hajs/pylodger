@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Very simple single-process/single-threaded/non-async web server to provide packages
+Very simple single-process/non-async web server to provide packages
 """
 import sys
 import os
@@ -37,11 +37,15 @@ class ThreadedHttpServer(ThreadingMixIn, HTTPServer):
     pass
 
 
+def update_repodata():
+    cmd = "{prefix}/bin/conda index {prefix}/conda-bld/linux-64/"
+    os.system(cmd.format(prefix=sys.prefix))
+    
+
 def serve(port):
     server_address = ('', port)
     httpd = ThreadedHttpServer(server_address, SimpleHTTPRequestHandler)
     sa = httpd.socket.getsockname()
-    show_example_condarc(port)
     print "Serving HTTP on", sa[0], "port", sa[1], "from", os.getcwd(), "..."
     httpd.serve_forever()
 
@@ -55,9 +59,16 @@ def main():
                         help="default document root is %(default)r")
     parser.add_argument("--noindex", default=False, action="store_true", 
                         help="Do not copy index.html to document root")
+    parser.add_argument("--noupdate", default=False, action="store_true", 
+                        help="Do not update repodata.json")
+
     args = parser.parse_args()
     if not args.noindex:
         copy_index_html(args.root)
+    if not args.noupdate:
+        update_repodata()
+    show_example_condarc(args.port)
+
     os.chdir(args.root)
     serve(args.port)
 

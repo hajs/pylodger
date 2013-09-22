@@ -13,14 +13,15 @@ requirements:
     - numpy
     #- blas
     #- lapack
-    - atlas
+    #- atlas
+    - openblas
 
   run:
     - numpy
-    - atlas
+    - openblas
 
 build:
-  number: 2
+  number: 4
 
 about:
   home: https://www.scipy.org

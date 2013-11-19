@@ -1,0 +1,20 @@
+package:
+  name: glib
+  version: 2.35
+
+source:
+  fn: glib-2.34.0.tar.xz
+  url: ftp://ftp.gtk.org/pub/glib/2.34/glib-2.34.0.tar.xz
+
+
+requirements:
+  run:
+    - python
+    # - libffi
+  build:
+    - python
+    # - libffi
+
+about:
+  home: ftp://ftp.gtk.org/pub/glib/
+  license: LGPL

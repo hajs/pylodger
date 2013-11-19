@@ -1,0 +1,20 @@
+--- Makefile.rule~	2013-08-01 11:53:12.000000000 -0400
++++ Makefile.rule	2013-11-06 10:28:41.539879000 -0500
+@@ -46,7 +46,7 @@
+ # You can define maximum number of threads. Basically it should be
+ # less than actual number of cores. If you don't specify one, it's
+ # automatically detected by the the script.
+-# NUM_THREADS = 24
++NUM_THREADS = 1
+ 
+ # if you don't need generate the shared library, please comment it in.
+ # NO_SHARED = 1
+@@ -75,7 +75,7 @@
+ # NO_WARMUP = 1
+ 
+ # If you want to disable CPU/Memory affinity on Linux.
+-# NO_AFFINITY = 1
++NO_AFFINITY = 1
+ 
+ # Don't use AVX kernel on Sandy Bridge. It is compatible with old compilers 
+ # and OS. However, the performance is low.

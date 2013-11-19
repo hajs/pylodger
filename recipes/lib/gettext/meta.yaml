@@ -1,0 +1,18 @@
+package:
+  name: gettext
+  version: 0.18.3.1
+
+source:
+  fn: gettext-0.18.3.1.tar.gz
+  url: http://ftp.gnu.org/pub/gnu/gettext/gettext-0.18.3.1.tar.gz
+
+
+#requirements:
+#  run:
+#    - python
+#  build:
+#    - python
+
+about:
+  home: https://www.gnu.org/software/gettext/
+  license: LGPL

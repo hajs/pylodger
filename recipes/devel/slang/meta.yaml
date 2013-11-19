@@ -1,0 +1,12 @@
+package:
+  name: slang
+  version: 2.3.0
+
+source:
+  fn: slang-pre2.3.0-108.tar.gz
+  url: http://www.jedsoft.org/snapshots/slang-pre2.3.0-108.tar.gz
+  md5: 6a329776a9e51d67343a99f436919309
+  
+about:
+  home: http://www.jedsoft.org
+  license: BSD

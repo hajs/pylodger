@@ -1,11 +1,11 @@
 package:
   name: ipython
-  version: 0.13.2
+  version: 1.1.0
 
 source:
-  fn: ipython-0.13.2.tar.gz
-  url: https://pypi.python.org/packages/source/i/ipython/ipython-0.13.2.tar.gz
-  md5: ead3b7eb70c653b537fb9d96d71b8b2a
+  fn: ipython-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/source/i/ipython/ipython-1.1.0.tar.gz
+  md5: 70d69c78122923879232567ac3c47cef
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -54,7 +54,7 @@ test:
     # - nose
 
 build:
-  number: 3
+  number: 0
 
 about:
   home: http://ipython.org

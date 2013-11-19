@@ -1,0 +1,70 @@
+package:
+  name: jenkinsapi
+  version: 0.2.16
+
+source:
+  fn: jenkinsapi-0.2.16.tar.gz
+  url: https://pypi.python.org/packages/source/j/jenkinsapi/jenkinsapi-0.2.16.tar.gz
+  md5: 5984154260540b11a33607b7f4205601
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - jenkinsapi = jenkinsapi:main
+    #
+    # Would create an entry point called jenkinsapi that calls jenkinsapi.main()
+
+    - jenkins_invoke=jenkinsapi.command_line.jenkins_invoke:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - requests
+    - pytz
+
+  run:
+    - python
+    - distribute
+    - requests
+    - pytz
+
+test:
+  # Python imports
+  imports:
+    - jenkinsapi
+    - jenkinsapi.utils
+    - jenkinsapi_tests
+    - 
+    - jenkinsapi
+    - jenkinsapi.command_line
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - jenkins_invoke --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/salimfadhley/jenkinsapi
+  license: MIT License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

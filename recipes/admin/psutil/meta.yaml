@@ -1,0 +1,58 @@
+package:
+  name: psutil
+  version: 1.1.2
+
+source:
+  fn: psutil-1.1.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/psutil/psutil-1.1.2.tar.gz
+  md5: fe9c9a3ed95fe6564acf8b4500c7b5da
+  patches:
+   # For Centos: https://code.google.com/p/psutil/issues/detail?id=438
+   - prlimit.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - psutil = psutil:main
+    #
+    # Would create an entry point called psutil that calls psutil.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - psutil
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/psutil/
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

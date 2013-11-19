@@ -1,14 +1,14 @@
 package:
   name: camelot
-  version: 13.04.13-gpl-pyqt
+  version: 13.04.13
 
 source:
   fn: Camelot-13.04.13-gpl-pyqt.tar.gz
   url: https://pypi.python.org/packages/source/C/Camelot/Camelot-13.04.13-gpl-pyqt.tar.gz
   md5: 95ff0b68799d9f9610c744c56d80dcde
-#  patches:
+  patches:
    # List any patch files here
-   # - fix.patch
+    - setup.patch
 
 # build:
   # entry_points:
@@ -29,6 +29,7 @@ requirements:
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
+    - setuptools
     - distribute
     - pyqt
     - sqlalchemy

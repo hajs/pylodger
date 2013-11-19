@@ -1,0 +1,11 @@
+--- qwtconfig.pri.orig  2013-09-19 13:47:34.147899396 +0200
++++ qwtconfig.pri       2013-09-19 13:48:20.488335356 +0200
+@@ -19,7 +19,7 @@
+ QWT_INSTALL_PREFIX = $$[QT_INSTALL_PREFIX]
+ 
+ unix {
+-    QWT_INSTALL_PREFIX    = /usr/local/qwt-$$QWT_VERSION
++    QWT_INSTALL_PREFIX    = /opt/buildconda/conda-bld/build_env/
+ }
+ 
+ win32 {

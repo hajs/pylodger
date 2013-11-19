@@ -1,0 +1,20 @@
+package:
+  name: libgsl
+  version: 1.16.0
+
+source:
+  fn: gsl-1.16.tar.gz
+  url: http://mirror.checkdomain.de/gnu/gsl/gsl-1.16.tar.gz
+
+requirements:
+  build:
+   - openblas
+  run:
+   - openblas
+
+build:
+  number: 1
+
+about:
+  home: http://www.gnu.org/software/gsl/
+  license: GPL

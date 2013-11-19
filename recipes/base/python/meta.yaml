@@ -1,11 +1,11 @@
 package:
   name: python
-  version: 2.7.5
+  version: 2.7.6
 
 
 source:
-  fn: Python-2.7.5.tar.bz2
-  url: http://python.org/ftp/python/2.7.5/Python-2.7.5.tar.bz2
+  fn: Python-2.7.6.tar.xz
+  url: http://python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz
 
 
 requirements:
@@ -26,7 +26,8 @@ requirements:
 
 
 build:
-  number: 3
+  number: 0
+
 
 about:
   home: http://www.python.org

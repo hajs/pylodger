@@ -1,0 +1,11 @@
+--- setup.py.0	2013-10-18 05:34:26.019879000 -0400
++++ setup.py	2013-10-18 05:34:36.659879000 -0400
+@@ -7,7 +7,7 @@
+ README = os.path.join(src_dir, 'readme.txt')
+ long_description = open(README).read() + '\n\n'
+ dependencies = os.path.join(src_dir, 'requirements.txt') 
+-install_requires = open( dependencies ).read().splitlines()
++install_requires = []
+ 
+ setup(
+     name = 'Camelot',

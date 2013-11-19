@@ -1,0 +1,28 @@
+package:
+  name: pyqtgraph
+  version: 0.9.7
+
+source:
+  fn: pyqtgraph-0.9.7.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyqtgraph/pyqtgraph-0.9.7.tar.gz
+  md5: 53f1e9c5ad5ea52dd66d120aff2c617a
+
+requirements:
+  build:
+    - python
+    - numpy
+    - scipy
+
+  run:
+    - pyqt
+    - python
+    - numpy
+    - scipy
+
+test:
+  imports:
+    - pyqtgraph
+
+about:
+  home: http://www.pyqtgraph.org
+  license: MIT License

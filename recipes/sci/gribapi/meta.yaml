@@ -22,7 +22,11 @@ requirements:
     - libjpeg
     - libjasper
     - libopenjpeg
-  
+
+build:
+  number: 3
+
+
 about:
   home: https://software.ecmwf.int/wiki/display/GRIB/Home
   license: Apache

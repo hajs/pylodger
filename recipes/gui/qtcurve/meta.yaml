@@ -1,0 +1,20 @@
+package:
+  name: qtcurve
+  version: 1.8.14
+
+source:
+  git_url: https://github.com/QtCurve/qtcurve-qt4.git
+
+build:
+  number: 0
+
+requirements:
+  build:
+   - cmake
+   - qt
+  run:
+   - qt
+
+about:
+  home: https://github.com/QtCurve/qtcurve-qt4
+  license: GPL

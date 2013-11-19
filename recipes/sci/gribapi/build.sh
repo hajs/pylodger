@@ -15,3 +15,9 @@ make
 #make check
 make install
 
+echo '
+PREFIX=$(dirname $(dirname $(readlink -f ${BASH_SOURCE[0]})))
+export GRIB_DEFINITION_PATH=$PREFIX/share/grib_api/definitions/
+'> $PREFIX/bin/set_env.gribapi 
+chmod +x $PREFIX/bin/set_env.gribapi
+

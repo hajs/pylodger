@@ -1,0 +1,11 @@
+--- pika/adapters/blocking_connection.py.0	2013-09-09 04:29:10.271879000 -0400
++++ pika/adapters/blocking_connection.py	2013-09-09 04:30:33.687879000 -0400
+@@ -315,7 +315,7 @@
+ 
+     def _handle_disconnect(self):
+         """Called internally when the socket is disconnected already"""
+-        self.disconnect()
++        self._adapter_disconnect()
+         self._on_connection_closed(None, True)
+ 
+     def _handle_read(self):

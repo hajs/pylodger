@@ -7,7 +7,7 @@ source:
   url: http://mirror.cogentco.com/pub/mysql/Connector-C/mysql-connector-c-6.1.0-src.tar.gz
 
 build:
-  number: 1
+  number: 3
 
 
 about:

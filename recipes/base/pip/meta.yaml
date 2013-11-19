@@ -1,10 +1,11 @@
 package:
   name: pip
-  version: 1.3.1
+  version: 1.4.1
 
 source:
-  url: https://pypi.python.org/packages/source/p/pip/pip-1.3.1.tar.gz
-  fn: pip-1.3.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
+  md5: 6afbb46aeb48abac658d4df742bff714
+  fn: pip-1.4.1.tar.gz
 
 requirements:
   build:
@@ -18,9 +19,11 @@ requirements:
     - setuptools
     
 build:
-  number: 2
+  number: 0
+  entry_points:
+    - pip = pip.runner:run
 
 
 about:
-  home: https://pypi.python.org/pypi/setuptools
+  home: https://www.pip-installer.org
   license: PSF

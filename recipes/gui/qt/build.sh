@@ -1,44 +1,46 @@
 #!/bin/bash
+export PATH=/opt/centos/devtoolset-1.0/root/usr/bin:$PATH
 
-if [ `uname` == Darwin ]; then
-    chmod +x configure
+# http://qt-project.org/doc/qt-4.8/configure-options.html
+chmod +x configure
 
-    ./configure \
-        -platform macx-g++ \
-        -release -no-qt3support -nomake examples -nomake demos \
-        -opensource \
-        -no-framework \
-        -arch $OSX_ARCH \
-        -prefix $PREFIX
-
-fi
-
-if [ `uname` == Linux ]; then
-    chmod +x configure
-    ./configure \
+./configure \
+        -dbus -svg \
+        -qt-libjpeg \
         -release -fontconfig -verbose \
         -no-qt3support -nomake examples -nomake demos \
         -qt-libpng -qt-zlib \
         -webkit \
-        -prefix $PREFIX
-fi
+        -prefix $PREFIX 
 
-make || exit 1
+make 
 make install
 
-if [ `uname` == Darwin ]; then
-    cd $PREFIX
-    rm -rf doc imports doc phrasebooks translations \
-        q3porting.xml
-    cd bin
-    rm -rf *.app qcollectiongenerator qhelpgenerator qt3to4 qdoc3
-    rm -rf xml*  macdeployqt
-fi
+cp $SRC_DIR/bin/* $PREFIX/bin/
+cd $PREFIX
+#rm -rf doc imports phrasebooks plugins q3porting.xml translations
+rm -rf doc imports phrasebooks q3porting.xml translations
+cd $PREFIX/bin
+#mv ../plugins/* bin
+#rmdir ../plugins
+rm -f *.bat *.pl qt3to4 qdoc3
+echo "[Paths]
+prefix=../
+#headers=../include/
+#plugins=../plugins/
+#translations=../translations/
+#mkspecs=../mkspecs/
+#libraries=../libs/
 
-if [ `uname` == Linux ]; then
-    cp $SRC_DIR/bin/* $PREFIX/bin/
-    cd $PREFIX
-    rm -rf doc imports phrasebooks plugins q3porting.xml translations
-    cd $PREFIX/bin
-    rm -f *.bat *.pl qt3to4 qdoc3
-fi
+#[SDK]
+#fixupRelativePrefixDefault=1
+
+" > $PREFIX/bin/qt.conf
+
+echo "unset QT_PLUGIN_PATH" > $PREFIX/bin/set_env.disable_kde
+chmod +x $PREFIX/bin/set_env.disable_kde
+
+echo "
+[qt]
+style=QtCurve
+" > $PREFIX/Trolltech.conf

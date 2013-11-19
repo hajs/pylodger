@@ -1,0 +1,20 @@
+package:
+  name: anaconda
+  version: 1.8.1
+
+requirements:
+  run:
+    - python
+    - conda
+    - pip
+    - numpy
+    - scipy
+    - ipython
+    - matplotlib
+    - basemap
+    - pandas
+    - numexpr
+    
+build:
+  number: 1
+  

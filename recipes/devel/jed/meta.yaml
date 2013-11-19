@@ -1,0 +1,21 @@
+package:
+  name: jed
+  version: 0.99.20
+
+source:
+  fn: jed-pre0.99.20-83.tar.gz
+  url: http://www.jedsoft.org/snapshots/jed-pre0.99.20-83.tar.gz
+  md5: f7308846f9106a3df04199cfbdb92b37
+    
+requirements:
+  build:
+    - slang
+  run:
+    - slang
+
+build:
+  number: 2
+
+about:
+  home: http://www.jedsoft.org
+  license: BSD

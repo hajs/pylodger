@@ -1,0 +1,20 @@
+package:
+  name: grantlee
+  version: 0.3.0
+
+source:
+  fn: grantlee-0.3.0.tar.gz
+  url: http://downloads.grantlee.org/grantlee-0.3.0.tar.gz
+
+build:
+  number: 1
+
+requirements:
+  build:
+   - qt
+  run:
+   - qt
+
+about:
+  home: https://www.gitorious.org/grantlee/pages/Home
+  license: GPL

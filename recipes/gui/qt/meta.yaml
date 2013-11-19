@@ -8,15 +8,23 @@ source:
   md5: 89c5ecba180cae74c66260ac732dc5cb
   patches:
     - acceptance.patch
-    - 10.5.patch [osx]
 
 requirements:
   build:
     - freetype
     - fontconfig
+    - dbus
+    - libjpeg
+    - libmysqlclient
+  run:
+    - dbus
+    - freetype
+    - fontconfig
+    - libjpeg
+    - libmysqlclient
 
 build:
-  number: 5
+  number: 12
 
 about:
     home: http://qt-project.org

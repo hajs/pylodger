@@ -26,8 +26,8 @@ echo "Collecting files..."
 tar cf $ROOT/payload/files.tar *
 cd $ROOT/payload
 echo "
-emsys-Python-distribution for Conda
-===================================
+Python-distribution for Conda
+=============================
 
 " > motd.txt
 date >> motd.txt

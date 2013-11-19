@@ -1,0 +1,4 @@
+qmake
+make
+make install
+

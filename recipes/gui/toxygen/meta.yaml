@@ -1,0 +1,22 @@
+package:
+  name: toxygen
+  version: 0.1
+
+source:
+  git_url: https://github.com/gustavosbarreto/toxygen.git
+  patches:
+   - qt3support.patch
+
+build:
+  number: 1
+
+
+requirements:
+  build:
+   - qt
+  run:
+   - qt
+
+about:
+  home: https://github.com/gustavosbarreto/toxygen
+  license: GPL

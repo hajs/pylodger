@@ -1,0 +1,22 @@
+package:
+  name: tmux
+  version: 1.8
+
+source:
+  fn : tmux-1.8.tar.gz
+  url: http://downloads.sourceforge.net/tmux/tmux-1.8.tar.gz
+
+requirements:
+  build:
+    - ncurses
+    - libevent
+  run:
+    - ncurses
+    - libevent
+
+build:
+  number: 1
+
+about:
+  home: http://tmux.sourceforge.net
+  license: BSD

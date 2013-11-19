@@ -5,7 +5,7 @@ cmake  \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_RPATH=$LD_RUN_PATH \
     -DLIB_INSTALL_DIR=$PREFIX/lib \
-    -DMYSQL_UNIX_ADDR=/var/run/mysqld/mysqld.sock \
+    -DMYSQL_UNIX_ADDR=/var/lib/mysql/mysql.sock \
     ..
 make
 make install

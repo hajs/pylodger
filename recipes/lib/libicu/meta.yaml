@@ -1,0 +1,14 @@
+package:
+  name: libicu
+  version: 5.1.2
+
+source:
+  fn: icu4c-51_2-src.tgz
+  url: http://download.icu-project.org/files/icu4c/51.2/icu4c-51_2-src.tgz
+
+build:
+  number: 1
+
+about:
+  home: http://site.icu-project.org
+  license: GPL

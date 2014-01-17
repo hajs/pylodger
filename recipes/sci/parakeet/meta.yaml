@@ -1,0 +1,65 @@
+package:
+  name: parakeet
+  version: 0.22
+
+source:
+   git_url: https://github.com/iskandr/parakeet.git
+#  fn: parakeet-0.22.tar.gz
+#  url: https://pypi.python.org/packages/source/p/parakeet/parakeet-0.22.tar.gz
+#  md5: 87265e2cac4a48d2674d8429b773c3e4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - parakeet = parakeet:main
+    #
+    # Would create an entry point called parakeet that calls parakeet.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - setuptools
+    - numpy
+    - dsltools
+
+  run:
+    - python
+    - numpy
+    - dsltools
+
+test:
+  # Python imports
+  imports:
+    - parakeet
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - dsltools
+    - numpy
+
+
+about:
+  home: http://www.parakeetpython.com
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

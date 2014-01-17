@@ -24,7 +24,7 @@ requirements:
     - libmysqlclient
 
 build:
-  number: 12
+  number: 14
 
 about:
     home: http://qt-project.org

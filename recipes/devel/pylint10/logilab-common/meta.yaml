@@ -1,6 +1,6 @@
 package:
   name: logilab-common
-  version: 0.58.0
+  version: 0.60.0
 
 source:
    hg_url: https://bitbucket.org/logilab/logilab-common

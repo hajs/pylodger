@@ -1,10 +1,10 @@
 package:
   name: conda
-  version: 2.1.0
+  version: 2.2.0
 
 source:
-  git_url: https://github.com/ContinuumIO/conda.git
-  #git_url: https://github.com/hajs/conda.git
+  #git_url: https://github.com/ContinuumIO/conda.git
+  git_url: https://github.com/hajs/conda.git
   patches:
     - repositories.patch
 

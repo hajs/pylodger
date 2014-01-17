@@ -1,0 +1,56 @@
+package:
+  name: waitress
+  version: 0.8.8
+
+source:
+  fn: waitress-0.8.8.tar.gz
+  url: https://pypi.python.org/packages/source/w/waitress/waitress-0.8.8.tar.gz
+  md5: c0a40f34b5410348579556cd4a21c1c2
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  entry_points:
+    - waitress-serve = waitress.runner:run
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - setuptools
+
+  run:
+    - python
+
+
+test:
+  # Python imports
+  imports:
+    - waitress
+
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/Pylons/waitress
+  license: Zope Public License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

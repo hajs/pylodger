@@ -1,0 +1,28 @@
+package:
+  name: llvmmath
+  version: 0.1.1
+
+source:
+  git_url: https://github.com/ContinuumIO/llvmmath.git
+
+
+requirements:
+  build:
+    - python
+    - llvm
+    - llvmpy
+    - numpy
+
+  run:
+    - python
+    - llvm
+    - llvmpy
+    - numpy
+
+build:
+  number: 0
+
+
+about:
+  home: https://github.com/ContinuumIO/llvmmath
+  license: PSF

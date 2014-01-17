@@ -1,0 +1,14 @@
+package:
+  name: llvm
+  version: 3.2
+
+source:
+  fn: llvm-3.2.src.tar.gz
+  url: http://llvm.org/releases/3.2/llvm-3.2.src.tar.gz
+
+build:
+  number: 0
+
+about:
+  home: http://llvm.org
+  license: BSD

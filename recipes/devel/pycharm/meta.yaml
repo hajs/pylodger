@@ -1,0 +1,22 @@
+package:
+  name: pycharm
+  version: 3.0.2
+
+source:
+  fn: pycharm-community-3.0.2.tar.gz
+  url: http://download-ln.jetbrains.com/python/pycharm-community-3.0.2.tar.gz
+
+
+requirements:
+
+  run:
+    - jre
+    - python
+    - nose
+    - sphinx
+
+
+
+about:
+  home: http://www.jetbrains.com
+  license: opensource

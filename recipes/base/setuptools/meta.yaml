@@ -5,6 +5,11 @@ package:
 source:
   url: https://pypi.python.org/packages/source/s/setuptools/setuptools-0.9.1.tar.gz
   fn: setuptools-0.9.1.tar.gz
+  patches:
+    - notzipsafe.patch
+
+build:
+  number: 1
 
 requirements:
   build:

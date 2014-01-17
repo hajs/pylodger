@@ -1,0 +1,63 @@
+package:
+  name: h5py
+  version: 2.2.0
+
+source:
+  fn: h5py-2.2.0.tar.gz
+  url: https://h5py.googlecode.com/files/h5py-2.2.0.tar.gz
+  sha1: 65e5d6cc83d9c1cb562265a77a46def22e9e6593
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tables = tables:main
+    #
+    # Would create an entry point called tables that calls tables.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - distribute
+    - setuptools
+    - numpy
+    - hdf5
+    
+  run:
+    - python
+    - numpy
+    - hdf5
+
+test:
+  # Python imports
+  imports:
+    - h5py
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.h5py.org
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

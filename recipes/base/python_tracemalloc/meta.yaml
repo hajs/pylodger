@@ -1,0 +1,35 @@
+package:
+  name: python_tracemalloc
+  version: 2.7.6
+
+
+source:
+  fn: Python-2.7.6.tar.xz
+  url: http://python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz
+  patches:
+    - pep445.patch
+
+requirements:
+  build:
+     - openssl
+     - readline
+     - sqlite
+     - system
+     - zlib
+     - bzip2
+  run:
+     - openssl
+     - readline
+     - sqlite
+     - system
+     - zlib
+     - bzip2
+
+
+build:
+  number: 0
+
+
+about:
+  home: http://www.python.org
+  license: PSF

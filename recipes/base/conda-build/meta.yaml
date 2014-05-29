@@ -1,26 +1,24 @@
 package:
-  name: conda
+  name: conda-build
   version: 2.3.1
 
 source:
-  git_url: https://github.com/conda/conda.git
-  #git_url: https://github.com/hajs/conda.git
-  patches:
-    - repositories.patch
+  git_url: https://github.com/conda/conda-build.git
 
 requirements:
   build:
     - python
     - distribute
     - pycosat
-    - conda-build
+    - patchelf
 
   run:
     - python
     - pycosat
     - yaml
     - pyyaml
-    - conda-build
+    - patchelf
+
 
 build:
   number: 0

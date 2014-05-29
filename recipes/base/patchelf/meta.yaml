@@ -1,0 +1,14 @@
+package:
+  name: patchelf
+  version: 0.8.0
+  
+source:
+  git_url: https://github.com/NixOS/patchelf.git
+
+
+build:
+  number: 0
+
+about:
+  home: https://github.com/ContinuumIO/conda
+  license: BSD

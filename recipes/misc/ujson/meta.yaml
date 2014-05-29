@@ -1,23 +1,25 @@
 package:
-  name: thrift
-  version: 0.9.1
+  name: ujson
+  version: !!str 1.33
 
 source:
-  fn: thrift-0.9.1.tar.gz
-  url: https://pypi.python.org/packages/source/t/thrift/thrift-0.9.1.tar.gz
-  md5: 8989a8a96b0e3a3380cfb89c44e172a6
+  fn: ujson-1.33.zip
+  url: https://pypi.python.org/packages/source/u/ujson/ujson-1.33.zip
+  md5: 8148a2493fff78940feab1e11dc0a893
 #  patches:
    # List any patch files here
    # - fix.patch
 
 # build:
-  # entry_points:
+  #preserve_egg_dir: True
+  #entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - thrift:main
+    # - ujson = ujson:main
     #
-    # Would call thrift.main()
+    # Would create an entry point called ujson that calls ujson.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -26,10 +28,7 @@ source:
 requirements:
   build:
     - python
-    # If setuptools is required to run setup.py, add distribute to the build
-    # requirements.
-    #
-    # - distribute
+    - setuptools
 
   run:
     - python
@@ -37,23 +36,24 @@ requirements:
 test:
   # Python imports
   imports:
-    - thrift
+    - ujson
 
-  # commands:
+  #commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   # requires:
-    # Put any test requirements here.  For example
+    # Put any additional test requirements here.  For example
     # - nose
 
 about:
-  home: 
-  license: Apache
+  home: http://www.esn.me
+  license: BSD License
 
 # See
-# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# http://docs.continuum.io/conda/build.html for
 # more information about meta.yaml

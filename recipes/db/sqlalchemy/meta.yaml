@@ -1,11 +1,11 @@
 package:
   name: sqlalchemy
-  version: 0.8.2
+  version: 0.9.1
 
 source:
-  fn: SQLAlchemy-0.8.2.tar.gz
-  url: https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-0.8.2.tar.gz
-  md5: 5a33fb43dea93468dbb2a6562ee80b54
+  fn: SQLAlchemy-0.9.1.tar.gz
+  url: https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-0.9.1.tar.gz
+  md5: 4d59a03e56ee37fc7b53ff1ef5f4310d
 #  patches:
    # List any patch files here
    # - fix.patch

@@ -1,11 +1,11 @@
 package:
   name: pycassa
-  version: 1.9.0
+  version: 1.11.0
 
 source:
-  fn: pycassa-1.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/p/pycassa/pycassa-1.9.0.tar.gz
-  md5: afac6bd7e199e83647ebdb921a5f7c0f
+  fn: pycassa-1.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pycassa/pycassa-1.11.0.tar.gz
+  md5: 778b5ea6910104c701a3169f6636f358
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -39,8 +39,8 @@ requirements:
 
 test:
   # Python imports
-  #imports:
-  #  - pycassa
+  imports:
+    - pycassa
 
   # commands:
     # You can put test commands to be run here.  Use this to test that the

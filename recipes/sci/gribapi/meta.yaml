@@ -1,10 +1,12 @@
 package:
   name: gribapi
-  version: 1.10.4
+  version: 1.11.0
 
 source:
-  fn: grib_api-1.10.4.tar.gz
-  url: https://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.10.4.tar.gz?api=v2
+  fn: grib_api-1.9.9.tar.gz
+  url: https://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.9.9.tar.gz?api=v2
+  #fn: grib_api-1.11.0.tar.gz
+  #url: https://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.11.0.tar.gz?api=v2
 
 requirements:
   build:
@@ -24,7 +26,7 @@ requirements:
     - libopenjpeg
 
 build:
-  number: 3
+  number: 2
 
 
 about:

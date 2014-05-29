@@ -11,7 +11,6 @@ source:
   #url: http://pygrib.googlecode.com/files/pygrib-1.9.6.tar.gz
   #url: https://pypi.python.org/packages/source/p/pygrib/pygrib-1.9.9.tar.gz
   #md5: 10398d2dcac92a1cfe63042a84797507
-  #svn_url: https://svn.services.ems/emsys/trunk/projects/pygrib
   #svn_url: http://pygrib.googlecode.com/svn/trunk/
   patches:
    - voidp.patch

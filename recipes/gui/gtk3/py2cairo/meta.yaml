@@ -1,0 +1,27 @@
+package:
+  name: py2cairo
+  version: 1.10.0
+  
+source:
+  fn: py2cairo-1.10.0.tar.bz2
+  url: http://www.cairographics.org/releases/py2cairo-1.10.0.tar.bz2
+
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - cairo
+    - glib
+    - gobject-introspection
+    - python
+  run:
+    - cairo
+    - glib
+    - gobject-introspection
+    - python
+
+about:
+  home: http://www.cairographics.org/pycairo/
+  license: LGPL

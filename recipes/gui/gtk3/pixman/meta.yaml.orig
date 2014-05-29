@@ -1,0 +1,15 @@
+package:
+  name: pixman
+  version: 0.32.4
+
+source:
+  fn: pixman-0.32.4.tar.gz
+  url: http://cairographics.org/releases/pixman-0.32.4.tar.gz
+  md5: eba449138b972fbf4547a8c152fea162
+
+build:
+  number: 0
+
+about:
+  home: http://cairographics.org/
+  license: MIT

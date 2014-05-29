@@ -1,0 +1,51 @@
+--- flake8/engine.py.orig	2014-03-24 13:32:26.921644761 +0100
++++ flake8/engine.py	2014-03-24 13:27:37.145652538 +0100
+@@ -18,17 +18,38 @@
+     options_hooks = []
+     try:
+         from pkg_resources import iter_entry_points
++        if len(list(iter_entry_points('flake8.extension'))) == 0:
++            raise ImportError("pkg_ressources: no entrypoints found")
+     except ImportError:
+-        pass
+-    else:
+-        for entry in iter_entry_points('flake8.extension'):
+-            checker = entry.load()
+-            pep8.register_check(checker, codes=[entry.name])
+-            extensions.add((checker.name, checker.version))
+-            if hasattr(checker, 'add_options'):
+-                parser_hooks.append(checker.add_options)
+-            if hasattr(checker, 'parse_options'):
+-                options_hooks.append(checker.parse_options)
++        # conda does not support pkg_ressources properly
++        import imp
++        def iter_entry_points(_ep_name):
++            l = []
++            class EP(str):
++                def __init__(self, s):
++                    self.name, _equals, ep = s.replace(" ", "").partition("=")
++                    self.mod_name, _colon, self.attr_name = ep.partition(":")
++                    imp.find_module(self.mod_name.split(".")[0])
++                def load(self):
++                    mod = __import__(self.mod_name, {}, {}, ["foobarxxx"])
++                    return getattr(mod, self.attr_name)
++            try:
++                l.append(EP("C90 = mccabe:McCabeChecker"))
++            except ImportError:
++                pass
++            try:
++                l.append(EP("F = flake8._pyflakes:FlakesChecker"))
++            except ImportError:
++                pass
++            return l
++    for entry in iter_entry_points('flake8.extension'):
++        checker = entry.load()
++        pep8.register_check(checker, codes=[entry.name])
++        extensions.add((checker.name, checker.version))
++        if hasattr(checker, 'add_options'):
++            parser_hooks.append(checker.add_options)
++        if hasattr(checker, 'parse_options'):
++            options_hooks.append(checker.parse_options)
+     return extensions, parser_hooks, options_hooks
+ 
+ 

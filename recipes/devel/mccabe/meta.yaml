@@ -1,11 +1,11 @@
 package:
-  name: pyflakes
-  version: 0.8
+  name: mccabe
+  version: 0.2.1
 
 source:
-  fn: pyflakes-0.8.tar.gz
-  url: https://pypi.python.org/packages/source/p/pyflakes/pyflakes-0.8.tar.gz
-  md5: 64bbf98be68f2d781bfe2aaa97aa77d0
+  fn: mccabe-0.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/mccabe/mccabe-0.2.1.tar.gz
+  md5: 5a3f3fa6a4bad126c88aaaa7dab682f5
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -15,9 +15,10 @@ build:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    - pyflakes = pyflakes.api:main
+    - mccabe = mccabe:main
     #
-    # Would call pyflakes.api.main()
+    # Would create an entry point called mccabe that calls mccabe.main()
+
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -34,18 +35,16 @@ requirements:
 
   run:
     - python
-    - distribute
-    - setuptools
 
 test:
   # Python imports
   imports:
-    - pyflakes
+    - mccabe
 
-  commands:
-    - pyflakes --version
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
+
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
@@ -55,7 +54,7 @@ test:
     # - nose
 
 about:
-  home: https://launchpad.net/pyflakes
+  home: https://github.com/flintwork/mccabe
   license: MIT License
 
 # See

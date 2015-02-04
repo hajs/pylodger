@@ -1,0 +1,25 @@
+package:
+  name: gobject-introspection
+  version: 1.40.0
+
+source:
+  fn: gobject-introspection-1.40.0.tar.xz
+  url: http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.40/gobject-introspection-1.40.0.tar.xz
+  md5: bbb103b5d88dbf2a257b7a26ae9bc666
+
+requirements:
+  build:
+    - python
+    - glib
+
+  run:
+    - python
+    - glib
+
+test:
+  imports:
+    - pygobject-introspection
+
+about:
+  home: https://wiki.gnome.org/action/show/Projects/PyGObject?action=show&redirect=PyGObject
+  license: LGPL License

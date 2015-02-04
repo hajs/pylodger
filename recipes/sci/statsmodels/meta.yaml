@@ -1,11 +1,12 @@
 package:
   name: statsmodels
-  version: 0.4.3
+  version: 0.6.1
 
 source:
-  fn: statsmodels-0.4.3.tar.gz
-  url: https://pypi.python.org/packages/source/s/statsmodels/statsmodels-0.4.3.tar.gz
-  md5: eee727c2fa4e3d884f1baaae7ae3d58c
+  fn: statsmodels-0.6.1.tar.gz
+  url: http://pypi.python.org/packages/source/s/statsmodels/statsmodels-0.6.1.tar.gz
+  md5: f7580ebf7d2a2c9b87abfad190dcb9a3
+
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -26,12 +27,22 @@ source:
 requirements:
   build:
     - python
+    - numpy
+    - scipy
+    - setuptools
+    - distribute
+    - pandas
+    - dateutil
     # If setuptools is required to run setup.py, add distribute to the build
     # requirements.
     #
     # - distribute
 
   run:
+    - numpy
+    - scipy
+    - pandas
+    - dateutil
     - python
 
 test:

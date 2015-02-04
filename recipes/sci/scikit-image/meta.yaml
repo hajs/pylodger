@@ -1,11 +1,10 @@
 package:
   name: scikit-image
-  version: 0.9.3
+  version: 0.10.1
 
 source:
-  fn: scikit-image-0.9.3.tar.gz
-  url: https://pypi.python.org/packages/source/s/scikit-image/scikit-image-0.9.3.tar.gz
-  md5: f010e0cd46ee2996a6875c96b216e768
+  fn: scikit-image-0.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/scikit-image/scikit-image-0.10.1.tar.gz
 #  patches:
    # List any patch files here
    # - fix.patch

@@ -1,10 +1,11 @@
 package:
   name: basemap
   version: 1.2.1
+  # XXX: wrong version, cannot be fixed but correct version would be lower
 
 source:
-  url: http://kent.dl.sourceforge.net/project/matplotlib/matplotlib-toolkits/basemap-1.0.6/basemap-1.0.6.tar.gz
-  fn: basemap-1.0.6.tar.gz
+  url: http://kent.dl.sourceforge.net/project/matplotlib/matplotlib-toolkits/basemap-1.0.7/basemap-1.0.7.tar.gz
+  fn: basemap-1.0.7.tar.gz
 
 requirements:
   build:
@@ -19,6 +20,9 @@ requirements:
     - pyproj
     - matplotlib
     - pillow
+
+build:
+  number: 1
 
 about:
   home: http://www.matplotlib.org

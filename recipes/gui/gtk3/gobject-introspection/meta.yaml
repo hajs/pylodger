@@ -13,8 +13,10 @@ build:
 requirements:
   build:
     - python
+    - glib
   run:
     - glib
+    - python
 
 about:
   home: https://wiki.gnome.org/action/show/Projects/GObjectIntrospection

@@ -1,10 +1,10 @@
 package:
   name: matplotlib
-  version: 1.2.1
+  version: 1.4.0
 
 source:
-  url: https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.2.1/matplotlib-1.2.1.tar.gz
-  fn: matplotlib-1.2.1.tar.gz
+  url: https://pypi.python.org/packages/source/m/matplotlib/matplotlib-1.4.0.tar.gz
+  fn: matplotlib-1.4.0.tar.gz
 
 requirements:
   build:
@@ -12,15 +12,29 @@ requirements:
     - numpy
     - freetype
     - bzip2
+    - dateutil
+    - pyparsing
+    - six
+    - libpng
+    - nose
+    - setuptools
+    - distribute
 
   run:
     - python
     - numpy
     - freetype
     - bzip2
+    - dateutil
+    - pyparsing
+    - six
+    - libpng
+    - pillow
+    - pytz
+
 
 build:
-  number: 1
+  number: 0
 
 about:
   home: http://www.matplotlib.org

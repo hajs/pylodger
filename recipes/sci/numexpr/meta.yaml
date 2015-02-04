@@ -1,11 +1,11 @@
 package:
   name: numexpr
-  version: 2.2.2
+  version: 2.4.0
 
 source:
-  fn: numexpr-2.2.2.tar.gz
-  url: https://pypi.python.org/packages/source/n/numexpr/numexpr-2.2.2.tar.gz
-  md5: 18103954044b3039c0a74a6006c8e0a7
+  fn: numexpr-2.4.tar.gz
+  url: https://pypi.python.org/packages/source/n/numexpr/numexpr-2.4.tar.gz
+
 #  patches:
    # List any patch files here
    # - fix.patch

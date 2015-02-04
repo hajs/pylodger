@@ -1,0 +1,39 @@
+package:
+  name: nginx
+  version: 1.6.0
+
+source:
+  fn: nginx-1.6.0.tar.gz
+  url: http://nginx.org/download/nginx-1.6.0.tar.gz
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado:main
+    #
+    # Would call tornado.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 5
+
+requirements:
+  build:
+    - python
+    - openssl
+    #- pcre
+    
+  run:
+    - python
+    #- pcre
+
+
+about:
+  home: http://www.nginx.org
+  license: Unknown
+

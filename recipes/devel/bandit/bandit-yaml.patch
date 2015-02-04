@@ -1,0 +1,15 @@
+--- bandit/bandit.py~	2014-11-27 09:22:00.000000000 +0100
++++ bandit/bandit.py	2014-11-27 09:28:31.158467271 +0100
+@@ -18,9 +18,10 @@
+ 
+ from core import manager as b_manager
+ 
+-
+ default_test_config = 'bandit.yaml'
+-
++import sys, os
++if not os.path.exists(default_test_config):
++    default_test_config = os.path.join(sys.prefix, "etc", default_test_config)
+ 
+ def main():
+     parser = argparse.ArgumentParser(

@@ -1,0 +1,27 @@
+package:
+  name: pygobject
+  version: 2.28.3
+
+source:
+  fn: pygobject-2.28.3.tar.gz
+  url: https://pypi.python.org/packages/source/P/PyGObject/pygobject-2.28.3.tar.bz2
+  md5: aa64900b274c4661a5c32e52922977f9
+
+requirements:
+  build:
+    - python
+    - glib
+    - pygobject-introspection
+
+  run:
+    - python
+    - glib
+    - pygobject-introspection
+
+test:
+  imports:
+    - pygobject
+
+about:
+  home: https://wiki.gnome.org/action/show/Projects/PyGObject?action=show&redirect=PyGObject
+  license: LGPL License

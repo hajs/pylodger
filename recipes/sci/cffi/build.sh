@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# include copy
+mkdir -p $PREFIX/lib/
+cp /usr/lib64/libffi.so.5 $PREFIX/lib/
+
 $PYTHON setup.py install
 
 # Add more build steps here, if they are necessary.

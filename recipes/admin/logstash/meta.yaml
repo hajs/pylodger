@@ -1,0 +1,21 @@
+package:
+  name: logstash
+  version: 1.4.2
+
+source:
+  fn : logstash-1.4.2.tar.gz
+  url: https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz
+
+requirements:
+#  build:
+#    - 
+  run:
+    - jre
+    - elasticsearch
+
+build:
+  number: 0
+
+about:
+  home: http://logstash.net
+  license: BSD

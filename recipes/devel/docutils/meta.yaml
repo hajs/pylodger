@@ -1,11 +1,10 @@
 package:
   name: docutils
-  version: 0.11
+  version: 0.12
 
 source:
-  fn: docutils-0.11.tar.gz
-  url: https://pypi.python.org/packages/source/d/docutils/docutils-0.11.tar.gz
-  md5: 20ac380a18b369824276864d98ec0ad6
+  fn: docutils-0.12.tar.gz
+  url: http://garr.dl.sourceforge.net/project/docutils/docutils/0.12/docutils-0.12.tar.gz
 #  patches:
    # List any patch files here
    # - fix.patch

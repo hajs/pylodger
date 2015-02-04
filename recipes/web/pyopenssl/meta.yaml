@@ -1,0 +1,65 @@
+package:
+  name: pyopenssl
+  version: !!str 0.14
+
+source:
+  fn: pyOpenSSL-0.14.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyOpenSSL/pyOpenSSL-0.14.tar.gz
+  md5: 8579ff3a1d858858acfba5f046a4ddf7
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pyopenssl = pyopenssl:main
+    #
+    # Would create an entry point called pyopenssl that calls pyopenssl.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cryptography >=0.2.1
+    - six >=1.5.2
+
+  run:
+    - python
+    - cryptography >=0.2.1
+    - six >=1.5.2
+
+test:
+  # Python imports
+  imports:
+    - OpenSSL
+    #- pyopenssl
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pyca/pyopenssl
+  license: ache Software License
+  summary: 'Python wrapper module around the OpenSSL library'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

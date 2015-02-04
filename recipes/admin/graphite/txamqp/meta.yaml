@@ -1,0 +1,64 @@
+package:
+  name: txamqp
+  version: !!str 0.6.2
+
+source:
+  fn: txAMQP-0.6.2.tar.gz
+  url: https://pypi.python.org/packages/source/t/txAMQP/txAMQP-0.6.2.tar.gz
+  md5: 8c3e9c42d60d06b088d91ed9ba159e13
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - txamqp = txamqp:main
+    #
+    # Would create an entry point called txamqp that calls txamqp.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - twisted
+
+  run:
+    - python
+    - twisted
+
+test:
+  # Python imports
+  imports:
+    - txamqp
+    - txamqp.contrib
+    - txamqp.contrib.thrift
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/txamqp
+  license: UNKNOWN
+  summary: 'Python library for communicating with AMQP peers and brokers using Twisted'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

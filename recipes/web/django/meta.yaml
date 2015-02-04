@@ -1,17 +1,19 @@
 package:
   name: django
-  version: 1.5.1
+  version: 1.7.1
 
 source:
-  fn: Django-1.5.1.tar.gz
-  url: https://pypi.python.org/packages/source/D/Django/Django-1.5.1.tar.gz
-  md5: 7465f6383264ba167a9a031d6b058bff
+  fn: Django-1.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/D/Django/Django-1.7.1.tar.gz
+  md5: 81dae89f21647b9aa5c46c6b7dbfa349
 #  patches:
    # List any patch files here
    # - fix.patch
 
-# build:
-  # entry_points:
+build:
+  entry_points:
+    - django-admin = django.core.management:execute_from_command_line
+    - django-admin.py = django.core.management:execute_from_command_line    
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
@@ -27,16 +29,22 @@ source:
 requirements:
   build:
     - python
+    - distribute
+    - setuptools
 
   run:
     - python
+    - pytz
+    - setuptools
+    - distribute
 
 test:
   # Python imports
   imports:
     - django
 
-  # commands:
+  commands:
+    - django-admin --help
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 

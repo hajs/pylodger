@@ -1,11 +1,11 @@
 package:
   name: tables
-  version: 3.0.0
+  version: 3.1.1
 
 source:
-  fn: tables-3.0.0.tar.gz
-  url: https://pypi.python.org/packages/source/t/tables/tables-3.0.0.tar.gz
-  md5: 9c8a18d51be5e94a2ae50ea31d26f8c2
+  fn: tables-3.1.1.tar.gz
+  url: https://pypi.python.org/packages/source/t/tables/tables-3.1.1.tar.gz
+
 #  patches:
    # List any patch files here
    # - fix.patch

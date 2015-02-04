@@ -1,10 +1,10 @@
 package:
   name: numpy
-  version: 1.7.1
+  version: 1.9.0
 
 source:
-  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.7.1.tar.gz
-  fn: numpy-1.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.9.0.tar.gz
+  fn: numpy-1.9.0.tar.gz
 
 requirements:
   build:
@@ -16,7 +16,7 @@ requirements:
     - openblas
 
 build:
-  number: 3
+  number: 0
 
 
 about:

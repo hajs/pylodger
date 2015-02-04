@@ -1,0 +1,31 @@
+package:
+  name: bandit
+  version: 0.1
+
+source:
+  git_url: https://git.openstack.org/stackforge/bandit.git
+  patches:
+    - bandit-yaml.patch
+
+requirements:
+  build:
+    - python
+    - distribute
+    - setuptools
+    - yaml
+    - pyyaml
+    - pip
+
+
+  run:
+    - python
+    - yaml
+    - pyyaml
+
+
+build:
+  number: 1
+
+about:
+  home: http://www.linux-magazin.de/NEWS/Bandit-testet-Sicherheit-von-Python-Code
+  license: Apache

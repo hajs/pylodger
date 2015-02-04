@@ -1,0 +1,40 @@
+package:
+  name: haproxy
+  version: 1.5.8
+
+source:
+  fn: haproxy-1.5.8.tar.gz
+  url: http://www.haproxy.org/download/1.5/src/haproxy-1.5.8.tar.gz
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado:main
+    #
+    # Would call tornado.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - openssl
+    - pcre
+    - zlib
+    
+  run:
+    - openssl
+    - pcre
+    - zlib
+
+
+about:
+  home: http://www.haproxy.org
+  license: Unknown
+

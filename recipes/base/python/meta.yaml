@@ -1,11 +1,11 @@
 package:
   name: python
-  version: 2.7.6
+  version: 2.7.9
 
 
 source:
-  fn: Python-2.7.6.tar.xz
-  url: http://python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz
+  fn: Python-2.7.9.tar.gz
+  url: https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
 
 
 requirements:

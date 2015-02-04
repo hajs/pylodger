@@ -1,8 +1,10 @@
 #!/bin/bash
 
+export PATH=/opt/centos/devtoolset-1.0/root/usr/bin:$PATH
 export CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
 #-lpixman-1 -lfreetype -l
 #export LDFLAGS=
+ln -s $PREFIX/include/freetype2/freetype/ $PREFIX/include/
 
 ./configure                 \
     --prefix=$PREFIX        \
@@ -13,8 +15,8 @@ export CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
     --enable-pdf            \
     --enable-svg            \
     --disable-gtk-doc
-make
-make install
+make -k || true # || bash -i
+make install -k || true 
 
 rm -rf $PREFIX/share
 

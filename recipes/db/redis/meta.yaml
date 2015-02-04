@@ -1,0 +1,60 @@
+package:
+  name: redis
+  version: !!str 2.10.1
+
+source:
+  fn: redis-2.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/r/redis/redis-2.10.1.tar.gz
+  md5: 6ffdea9c476b4815ddfee9a7362819ea
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - redis = redis:main
+    #
+    # Would create an entry point called redis that calls redis.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - redis
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/andymccurdy/redis-py
+  license: MIT License
+  summary: 'Python client for Redis key-value store'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

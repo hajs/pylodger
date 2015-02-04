@@ -1,0 +1,81 @@
+package:
+  name: cryptography
+  version: !!str 0.7.1
+
+source:
+  fn: cryptography-0.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cryptography/cryptography-0.7.1.tar.gz
+  md5: 4a933b1e01b604cee0e22ce1f9fe7c81
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cryptography = cryptography:main
+    #
+    # Would create an entry point called cryptography that calls cryptography.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - cffi >=0.8
+    - enum34
+    - pyasn1
+    - six >=1.4.1
+    - setuptools
+
+  run:
+    - python
+    - cffi >=0.8
+    - enum34
+    - pyasn1
+    - six >=1.4.1
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - cryptography
+    #- cryptography.hazmat
+    #- cryptography.hazmat.backends
+    #- cryptography.hazmat.backends.commoncrypto
+    #- cryptography.hazmat.backends.openssl
+    #- cryptography.hazmat.bindings
+    #- cryptography.hazmat.bindings.commoncrypto
+    #- cryptography.hazmat.bindings.openssl
+    #- cryptography.hazmat.primitives
+    #- cryptography.hazmat.primitives.asymmetric
+    #- cryptography.hazmat.primitives.ciphers
+    #- cryptography.hazmat.primitives.kdf
+    #- cryptography.hazmat.primitives.twofactor
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/pyca/cryptography
+  license: ache Software License or BSD License
+  summary: 'cryptography is a package which provides cryptographic recipes and primitives to Python developers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

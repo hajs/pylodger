@@ -2,7 +2,7 @@ While Anaconda from Continuum Analytics offers a great Python distribution
 it lacks the sources to rebuild everything from scratch.
 
 Therefore this repository provides free Conda recipes for all base packages and
-some more.
+some more. 
 
 Currently there is no documentation. So only experienced developers
 might use the scripts and adapt them for their needs.

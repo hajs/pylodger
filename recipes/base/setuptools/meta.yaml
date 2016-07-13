@@ -1,12 +1,14 @@
 package:
   name: setuptools
-  version: 0.9
+  version: 23.0.0
 
 source:
-  url: https://pypi.python.org/packages/source/s/setuptools/setuptools-0.9.1.tar.gz
-  fn: setuptools-0.9.1.tar.gz
+  fn: setuptools-23.0.0.tar.gz
+  url: https://pypi.python.org/packages/45/5e/79ca67a0d6f2f42bfdd9e467ef97398d6ad87ee2fa9c8cdf7caf3ddcab1e/setuptools-23.0.0.tar.gz
+  md5: 100a90664040f8ff232fbac02a4c5652
   patches:
     - notzipsafe.patch
+    - nodownload.patch
 
 build:
   number: 1
@@ -17,7 +19,11 @@ requirements:
 
   run:
     - python
+    - certifi
 
+test:
+  imports:
+    - setuptools
 
 about:
   home: https://pypi.python.org/pypi/setuptools

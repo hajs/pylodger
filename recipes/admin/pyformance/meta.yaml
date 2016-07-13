@@ -1,11 +1,12 @@
 package:
   name: pyformance
-  version: !!str 0.3.1
+  version: !!str 0.3.2
 
 source:
-  fn: pyformance-0.3.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pyformance/pyformance-0.3.1.tar.gz
-  md5: 3d0e6352db59b7f50b49947f0401f1e4
+   git_url: https://github.com/hajs/pyformance.git
+#  fn: pyformance-0.3.1.tar.gz
+#  url: https://pypi.python.org/packages/source/p/pyformance/pyformance-0.3.1.tar.gz
+#  md5: 3d0e6352db59b7f50b49947f0401f1e4
 #  patches:
    # List any patch files here
    # - fix.patch

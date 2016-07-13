@@ -1,11 +1,11 @@
 package:
   name: paramiko
-  version: 1.7.4
+  version: 1.16.0
 
 source:
-  fn: paramiko-1.7.4.tar.gz
-  url: https://pypi.python.org/packages/source/p/paramiko/paramiko-1.7.4.tar.gz
-  md5: 23061d68bbcb68dbcc8afbe4cb034f62
+  fn: paramiko-1.16.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/paramiko/paramiko-1.16.0.tar.gz
+  md5: 7e1203f5ffeb7d2bc2bffc4feb804216
 #  patches:
    # List any patch files here
    # - fix.patch

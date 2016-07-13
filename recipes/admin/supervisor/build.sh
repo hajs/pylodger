@@ -1,9 +1,6 @@
 #!/bin/bash
 
 $PYTHON setup.py install
+mkdir -p $PREFIX/etc
+cp $RECIPE_DIR/supervisord.conf $PREFIX/etc/supervisord.conf.in
 
-# Add more build steps here, if they are necessary.
-
-# See
-# http://docs.continuum.io/conda/build.html
-# for a list of environment variables that are set during the build process.

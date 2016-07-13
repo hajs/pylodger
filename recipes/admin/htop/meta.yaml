@@ -1,12 +1,10 @@
 package:
   name: htop
-  version: 1.0.2
+  version: 2.0.0
 
 source:
-  #svn_url: https://htop.svn.sourceforge.net/svnroot/htop/trunk
-  md5: 0d01cca8df3349c74569cefebbd9919e
-  fn : htop-1.0.2.tar.gz
-  url: http://dfn.dl.sourceforge.net/project/htop/htop/1.0.2/htop-1.0.2.tar.gz
+  fn : htop-2.0.0.tar.gz
+  url: http://hisham.hm/htop/releases/2.0.0/htop-2.0.0.tar.gz
 
 requirements:
   build:

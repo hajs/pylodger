@@ -1,10 +1,10 @@
 package:
   name: scipy
-  version: 0.14.0
+  version: 0.14.1
 
 source:
-  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.14.0.tar.gz
-  fn: scipy-0.14.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/scipy/scipy-0.14.1.tar.gz
+  fn: scipy-0.14.1.tar.gz
 
 requirements:
   build:

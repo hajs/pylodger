@@ -1,29 +1,37 @@
 package:
   name: conda
-  version: 2.3.1
+  version: 4.1.2
 
 source:
-  git_url: https://github.com/conda/conda.git
-  #git_url: https://github.com/hajs/conda.git
-  #patches:
-  #  - repositories.patch
+  fn: conda-4.1.2.tar.gz
+  url: https://pypi.python.org/packages/ee/47/7db4d64433d284e15a420f414955dabd4f043a46177841add14f05546052/conda-4.1.2.tar.gz
+  md5: 80ec2fd8d1c866ac98f370e01318158d
+  patches:
+    - repositories.patch
+    - symlink.patch
 
 requirements:
   build:
     - python
     - distribute
     - pycosat
-    - conda-build
+    - auxlib
+    - requests
+    #- conda-build
 
   run:
     - python
     - pycosat
     - yaml
     - pyyaml
-    - conda-build
+    #- conda-build
+    - requests
+
 
 build:
   number: 0
+  #entry_points:
+  #  - conda = conda.cli.main:main
 
 about:
   home: https://github.com/ContinuumIO/conda

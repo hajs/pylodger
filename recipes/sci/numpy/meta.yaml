@@ -1,10 +1,10 @@
 package:
   name: numpy
-  version: 1.9.0
+  version: 1.9.3
 
 source:
-  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.9.0.tar.gz
-  fn: numpy-1.9.0.tar.gz
+  url: https://pypi.python.org/packages/source/n/numpy/numpy-1.9.3.tar.gz
+  fn: numpy-1.9.3.tar.gz
 
 requirements:
   build:

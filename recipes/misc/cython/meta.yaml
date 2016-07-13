@@ -1,11 +1,12 @@
 package:
   name: cython
-  version: 0.19.1
+  version: 0.24.0
 
 source:
-  fn: Cython-0.19.1.tar.gz
-  url: https://pypi.python.org/packages/source/C/Cython/Cython-0.19.1.tar.gz
-  md5: df4cfb2b8e3345272e3fc451b76bd630
+  fn: Cython-0.24.0.tar.gz
+  url: https://pypi.python.org/packages/b1/51/bd5ef7dff3ae02a2c6047aa18d3d06df2fb8a40b00e938e7ea2f75544cac/Cython-0.24.tar.gz
+  md5: 14fbc970f4a856845e633cbc09e61048
+
 #  patches:
    # List any patch files here
    # - fix.patch

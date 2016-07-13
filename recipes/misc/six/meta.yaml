@@ -1,11 +1,11 @@
 package:
   name: six
-  version: 1.3.0
+  version: 1.10.0
 
 source:
-  fn: six-1.3.0.tar.gz
-  url: https://pypi.python.org/packages/source/s/six/six-1.3.0.tar.gz
-  md5: ec47fe6070a8a64c802363d2c2b1e2ee
+  fn: six-1.10.0.tar.gz
+  url: https://pypi.python.org/packages/b3/b2/238e2590826bfdd113244a40d9d3eb26918bd798fc187e2360a8367068db/six-1.10.0.tar.gz
+  md5: 34eed507548117b2ab523ab14b2f8b55
 #  patches:
    # List any patch files here
    # - fix.patch

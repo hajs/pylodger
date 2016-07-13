@@ -1,17 +1,18 @@
 package:
   name: openssl
-  version: 1.0.1g
+  version: 1.0.2d
 
 
 source:
-  fn: openssl-1.0.1g.tar.gz
-  url: http://www.openssl.org/source/openssl-1.0.1g.tar.gz
-  patches:
+  fn: openssl-1.0.2d.tar.gz
+  url: http://www.openssl.org/source/openssl-1.0.2d.tar.gz
+  #patches:
     # http://www.linuxfromscratch.org/patches/downloads/openssl/
-    - openssl-1.0.1f-fix_pod_syntax-1.patch
+    #- openssl-1.0.1f-fix_pod_syntax-1.patch
+    #- openssl-1.0.2c-fix_parallel_build-1.patch
 
 build:
-  number: 2
+  number: 0
 
 about:
   home: http://www.openssl.org

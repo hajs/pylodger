@@ -1,29 +1,30 @@
 package:
   name: pip
-  version: 1.4.1
+  version: 7.1.2
 
 source:
-  url: https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
-  md5: 6afbb46aeb48abac658d4df742bff714
-  fn: pip-1.4.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pip/pip-7.1.2.tar.gz
+  fn: pip-7.1.2.tar.gz
 
 requirements:
   build:
     - python
-    - distribute
-    - setuptools
+    #- distribute
+    #- setuptools
 
   run:
     - python
-    - distribute
-    - setuptools
+    #- distribute
+    #- setuptools
     
 build:
+  #preserve_egg_dir: True
   number: 0
   entry_points:
-    - pip = pip.runner:run
+    #- pip = pip.runner:run
+    - pip = pip:main
 
 
 about:
-  home: https://www.pip-installer.org
+  home: https://pip.pypa.io
   license: PSF

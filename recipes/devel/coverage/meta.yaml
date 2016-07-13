@@ -1,11 +1,11 @@
 package:
   name: coverage
-  version: 3.6
+  version: 4.1
 
 source:
-  fn: coverage-3.6.tar.gz
-  url: https://pypi.python.org/packages/source/c/coverage/coverage-3.6.tar.gz
-  md5: 67d4e393f4c6a5ffc18605409d2aa1ac
+  fn: coverage-4.1.tar.gz
+  url: https://pypi.python.org/packages/2d/10/6136c8e10644c16906edf4d9f7c782c0f2e7ed47ff2f41f067384e432088/coverage-4.1.tar.gz
+  md5: 80e63edaf49f689d304898fafc1007a5
 #  patches:
    # List any patch files here
    # - fix.patch
@@ -21,7 +21,7 @@ build:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  number: 1
+  number: 0
 
 requirements:
   build:

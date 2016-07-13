@@ -34,7 +34,7 @@ requirements:
   run:
     - python
 
-test:
+#test:
   # Python imports
   #imports:
   #  - PyMySQL

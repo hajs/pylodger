@@ -1,10 +1,10 @@
 package:
   name: pandas
-  version: 0.14.1
+  version: 0.17.0
 
 source:
-  fn: pandas-0.14.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/pandas/pandas-0.14.1.tar.gz
+  fn: pandas-0.17.0.tar.gz
+  url: https://pypi.python.org/packages/source/p/pandas/pandas-0.17.0.tar.gz
 
 #  patches:
    # List any patch files here

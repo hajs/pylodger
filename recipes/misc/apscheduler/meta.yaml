@@ -1,16 +1,15 @@
 package:
   name: apscheduler
-  version: 2.1.1
+  version: 3.2.0
 
 source:
-  fn: APScheduler-2.1.1.tar.gz
-  url: https://pypi.python.org/packages/source/A/APScheduler/APScheduler-2.1.1.tar.gz
-  md5: e04e2adfdc691ecfd0fafaec36bc2877
-#  patches:
-   # List any patch files here
-   # - fix.patch
+  fn: APScheduler-3.2.0.tar.gz
+  url: https://pypi.python.org/packages/c8/40/16a2df29261992cee18f6cba9731d9101302cc76d24794a332f6e567fe2f/APScheduler-3.2.0.tar.gz
+  md5: db71a9cdf942cb210afe3926bcb0b5ed
+  patches:
+    - cron_trigger_tz.patch
 
-# build:
+build:
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
@@ -22,32 +21,39 @@ source:
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 0
 
 requirements:
   build:
     - python
     - distribute
+    - setuptools
+    - setuptools_scm
+    - funcsigs
+    - futures
+    - pytz
+    - six
+    - tzlocal
 
   run:
     - python
+    - setuptools
+    - six
+    - funcsigs
+    - futures
+    - pytz
+    - tzlocal
 
-test:
-  # Python imports
-  #imports:
-  #  - APScheduler
-
-  # commands:
-    # You can put test commands to be run here.  Use this to test that the
-    # entry points work.
-
-
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
-
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+#test:
+#  imports:
+#    - apscheduler
+#
+#  commands:
+#    - py.test $SRC_DIR/tests
+#
+#  requires:
+#    - pytest
+#    - mock
 
 about:
   home: http://pypi.python.org/pypi/APScheduler/

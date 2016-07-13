@@ -1,11 +1,11 @@
 package:
   name: pyflakes
-  version: 0.8
+  version: 0.9
 
 source:
-  fn: pyflakes-0.8.tar.gz
-  url: https://pypi.python.org/packages/source/p/pyflakes/pyflakes-0.8.tar.gz
-  md5: 64bbf98be68f2d781bfe2aaa97aa77d0
+  fn: pyflakes-0.9.tar.gz
+  url: https://pypi.python.org/packages/source/p/pyflakes/pyflakes-0.9.0.tar.gz
+  md5: 83472433d0187146708fc52767575eef
 #  patches:
    # List any patch files here
    # - fix.patch

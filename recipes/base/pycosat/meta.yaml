@@ -1,9 +1,11 @@
 package:
   name: pycosat
-  version: 0.6.0.dev
+  version: 0.6.1
 
 source:
-  git_url: https://github.com/ContinuumIO/pycosat.git
+  fn: pycosat-0.6.1.tar.gz
+  url: https://pypi.python.org/packages/76/0f/16edae7bc75b79376f2c260b7a459829785f08e463ecf74a8ccdef62dd4a/pycosat-0.6.1.tar.gz
+  md5: c1fc35b17865f5f992595ae0362f9f9f
 
 
 requirements:

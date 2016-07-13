@@ -1,12 +1,13 @@
 package:
   name: pygrib
+  #version: 1.9.9
   version: 1.9.9
 
 source:
   fn: pygrib-1.9.9.tar.gz		
   url: https://pypi.python.org/packages/source/p/pygrib/pygrib-1.9.9.tar.gz
-  #patches:
-  #- voidp.patch
+  patches:
+   - voidp.patch
 
 requirements:
   build:
@@ -21,7 +22,7 @@ requirements:
     - pyproj
 
 build:
-  number: 6
+  number: 0
 
 about:
   home: https://software.ecmwf.int/wiki/display/GRIB/Home

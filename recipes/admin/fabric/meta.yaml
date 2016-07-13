@@ -1,27 +1,26 @@
 package:
   name: fabric
-  version: 0.9.0
+  version: 1.10.1
 
 source:
-  fn: Fabric-0.9.0.tar.gz
-  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-0.9.0.tar.gz
-  md5: 696e42e6e771fa2a365cd03536d4cdcf
+  fn: Fabric-1.10.1.tar.gz
+  url: https://pypi.python.org/packages/source/F/Fabric/Fabric-1.10.1.tar.gz
 #  patches:
    # List any patch files here
    # - fix.patch
 
-#build:
-#  entry_points:
+build:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-#    - fabric.main:main
+   - fab=fabric.main:main
     #
     # Would call Fabric.main()
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
@@ -41,7 +40,8 @@ test:
   #imports:
   #  - fabric
 
-  # commands:
+  commands:
+    - fab --help
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
 

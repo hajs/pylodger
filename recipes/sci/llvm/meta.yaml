@@ -1,13 +1,18 @@
 package:
   name: llvm
-  version: 3.2
+  version: 3.3.0
 
 source:
-  fn: llvm-3.2.src.tar.gz
-  url: http://llvm.org/releases/3.2/llvm-3.2.src.tar.gz
+  fn: llvm-3.3.src.tar.gz
+  url: http://llvm.org/releases/3.3/llvm-3.3.src.tar.gz
 
 build:
   number: 0
+
+#requirements:
+#  build:
+#    - cmake
+
 
 about:
   home: http://llvm.org

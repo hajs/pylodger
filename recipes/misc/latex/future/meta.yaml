@@ -1,0 +1,108 @@
+package:
+  name: future
+  version: "0.15.2"
+
+source:
+  fn: future-0.15.2.tar.gz
+  url: https://pypi.python.org/packages/source/f/future/future-0.15.2.tar.gz
+  md5: a68eb3c90b3b76714c5ceb8c09ea3a06
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - future = future:main
+    #
+    # Would create an entry point called future that calls future.main()
+
+    - futurize = libfuturize.main:main
+    - pasteurize = libpasteurize.main:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - _dummy_thread
+    - _markupbase
+    - _thread
+    - builtins
+    - configparser
+    - copyreg
+    - future
+    - future.backports
+    - future.backports.email
+    - future.backports.email.mime
+    - future.backports.html
+    - future.backports.http
+    - future.backports.test
+    - future.backports.urllib
+    - future.backports.xmlrpc
+    - future.builtins
+    - future.moves
+    - future.moves.dbm
+    - future.moves.html
+    - future.moves.http
+    - future.moves.test
+    - future.moves.tkinter
+    - future.moves.urllib
+    - future.moves.xmlrpc
+    - future.standard_library
+    - future.tests
+    - future.types
+    - future.utils
+    - html
+    - http
+    - libfuturize
+    - libfuturize.fixes
+    - libpasteurize
+    - libpasteurize.fixes
+    - past
+    - past.builtins
+    - past.translation
+    - past.types
+    - past.utils
+    - queue
+    - reprlib
+    - socketserver
+    - tkinter
+    - xmlrpc
+#    - winreg
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - futurize --help
+    - pasteurize --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://python-future.org
+  license: MIT License
+  summary: 'Clean single-source support for Python 3 and 2'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

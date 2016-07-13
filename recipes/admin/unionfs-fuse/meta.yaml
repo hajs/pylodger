@@ -1,0 +1,16 @@
+package:
+  name: unionfs-fuse
+  version: 1.1.0
+
+source:
+  git_url: https://github.com/rpodgorny/unionfs-fuse.git
+
+requirements:
+  build:
+    - libfuse
+  run:
+    - libfuse
+
+about:
+  home: https://github.com/rpodgorny/unionfs-fuse
+  license: BSD

@@ -1,0 +1,28 @@
+package:
+  name: rtree
+  version: 0.8.2
+
+source:
+  url: https://pypi.python.org/packages/16/68/c79bed9d7fa4479b37d7a898b71d1e89099a8c15fac5c5d94328cb0a1ac9/Rtree-0.8.2.tar.gz
+  md5: 4ba7276cbdb4c51b373068004ae864d3
+  fn: Rtree-0.8.2.tar.gz
+  patches:
+    - fixlibpath.patch
+
+requirements:
+  build:
+    - python
+    - spatialindex
+
+  run:
+    - python
+    - spatialindex
+
+test:
+  imports:
+    - rtree
+    - rtree.index
+
+about:
+  home: http://toblerity.github.com/rtree/
+  license: LGPL

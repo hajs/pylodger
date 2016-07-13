@@ -1,0 +1,11 @@
+--- conda/install.py
++++ conda/install.py
+@@ -569,7 +569,7 @@
+ # Should this be an API function?
+ def symlink_conda(prefix, root_dir, shell):
+     # do not symlink root env - this clobbers activate incorrectly.
+-    if normpath(prefix) == normpath(sys.prefix):
++    if normpath(prefix) == normpath(sys.prefix) or os.path.samefile(prefix, root_dir):
+         return
+     if on_win:
+         where = 'Scripts'

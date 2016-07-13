@@ -1,0 +1,20 @@
+package:
+  name: fuzzywuzzy
+  version: !!str 0.10.0
+
+source:
+  fn: fuzzywuzzy-0.10.0.tar.gz
+  url: https://pypi.python.org/packages/80/07/25364c8740bd7f9a42291ef3187310a875aa89d2ff59206dc5ec1253cf33/fuzzywuzzy-0.10.0.tar.gz
+
+build:
+  script: python setup.py install
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+about:
+  license: GPL v3
+

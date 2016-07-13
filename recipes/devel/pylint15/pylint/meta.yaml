@@ -1,0 +1,81 @@
+package:
+  name: pylint
+  version: 1.5.6
+
+source:
+  fn: pylint-1.5.6.tar.gz
+  url: https://pypi.python.org/packages/52/65/f5ca237bfcd23b8027cc4e1bf73b7129de7182e609afba66de9367b630ad/pylint-1.5.6.tar.gz
+  md5: 07b00388b36d244dd4324cb3360c6efb
+  #hg_url: https://bitbucket.org/logilab/pylint
+  #hg_tag: pylint-1.3
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  #preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pylint = pylint:main
+    #
+    # Would create an entry point called pylint that calls pylint.main()
+
+    - pylint = pylint:run_pylint
+    - pylint-gui = pylint:run_pylint_gui
+    - epylint = pylint:run_epylint
+    - pyreverse = pylint:run_pyreverse
+    - symilar = pylint:run_symilar
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - logilab-common >=0.53.0
+    - astroid >=1.2.1
+    - six
+
+  run:
+    - python
+    - logilab-common >=0.53.0
+    - astroid >=1.2.1
+    - six
+
+test:
+  # Python imports
+  #imports:
+  #  - pylint
+  #  - pylint.checkers
+  #  - pylint.pyreverse
+  #  - pylint.reporters
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - pylint --help
+    #- pylint-gui --help
+    #- epylint --help
+    #- pyreverse --help
+    #- symilar --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://www.pylint.org
+  license: GNU General Public License (GPL)
+  summary: 'python code static checker'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

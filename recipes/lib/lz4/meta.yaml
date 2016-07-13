@@ -1,0 +1,12 @@
+package:
+  name: lz4
+  version: 0.0.127
+
+source:
+  fn: r127.tar.gz
+  url: https://github.com/Cyan4973/lz4/archive/r127.tar.gz
+
+
+about:
+  home: https://code.google.com/p/lz4/
+  license: BSD

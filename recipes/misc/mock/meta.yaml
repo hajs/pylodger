@@ -1,0 +1,50 @@
+package:
+  name: mock
+  version: 2.0.0
+
+source:
+  fn: mock-2.0.0.tar.gz
+  url: https://pypi.python.org/packages/0c/53/014354fc93c591ccc4abff12c473ad565a2eb24dcd82490fae33dbf2539f/mock-2.0.0.tar.gz
+  md5: 0febfafd14330c9dcaa40de2d82d40ad
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pbr
+    - six
+
+  run:
+    - python
+    - pbr
+    - six
+    - funcsigs
+
+test:
+  imports:
+    - mock
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/testing-cabal/mock
+  license: BSD License
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,0 +1,11 @@
+--- conda_build/source.py.orig	2015-03-24 09:02:07.424733590 +0100
++++ conda_build/source.py	2015-03-24 09:04:05.117804509 +0100
+@@ -215,7 +215,7 @@
+         assert isdir(cache_repo)
+ 
+     # now copy into work directory
+-    copytree(cache_repo, WORK_DIR)
++    copytree(cache_repo, WORK_DIR, ignore=ignore_patterns(".svn"))
+     return WORK_DIR
+ 
+ 

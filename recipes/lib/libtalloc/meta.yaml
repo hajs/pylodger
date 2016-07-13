@@ -1,0 +1,16 @@
+package:
+  name: libtalloc
+  version: 2.1.2
+
+source:
+  fn : talloc-2.1.2.tar.gz
+  url: https://www.samba.org/ftp/talloc/talloc-2.1.2.tar.gz
+
+requirements:
+  build:
+    - python
+
+
+about:
+  home: https://talloc.samba.org/talloc/
+  license: BSD

@@ -1,0 +1,11 @@
+--- ./setuptools/package_index.py~	2015-08-07 19:08:28.000000000 +0200
++++ ./setuptools/package_index.py	2015-10-02 12:08:43.809417056 +0200
+@@ -282,6 +282,8 @@
+
+     def process_url(self, url, retrieve=False):
+         """Evaluate a URL as a possible download, and maybe retrieve it"""
++        if os.getenv("CONDA_BUILD"):
++            raise RuntimeError("Distribute downloading is disabled in conda build. Add the dependencies to meta.yaml. Offending URL: %s" % url)
+         if url in self.scanned_urls and not retrieve:
+             return
+         self.scanned_urls[url] = True

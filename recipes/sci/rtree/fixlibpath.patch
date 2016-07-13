@@ -1,0 +1,26 @@
+--- rtree/core.py
++++ rtree/core.py
+
+@@ -102,8 +102,20 @@
+
+ elif os.name == 'posix':
+     platform = os.uname()[0]
+-    lib_name = find_library('spatialindex_c')
+-    rt = ctypes.CDLL(lib_name)
++    for lib_name in ('libspatialindex_c.so.3.0.0', 'libspatialindex_c.so.3', 'libspatialindex_c.so'):
++        try:
++            rt = ctypes.CDLL(lib_name)
++            break
++        except OSError:
++            pass
++    else:
++        lib_name = find_library('spatialindex_c')
++        rt = ctypes.CDLL(lib_name)
++        try:
++            rt = ctypes.CDLL(lib_name)
++        except OSError:
++            # print "Trying local lib dir"
++            rt = ctypes.CDLL(os.path.join(sys.prefix,'lib',lib_name))
+ else:
+     raise RTreeError('Unsupported OS "%s"' % os.name)
+

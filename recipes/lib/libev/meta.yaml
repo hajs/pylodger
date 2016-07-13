@@ -1,0 +1,12 @@
+package:
+  name: libev
+  version: 4.20.0
+
+source:
+  fn : libev-4.20.tar.gz
+  url: http://dist.schmorp.de/libev/libev-4.20.tar.gz
+
+
+about:
+  home: http://software.schmorp.de/pkg/libev.html
+  license: BSD

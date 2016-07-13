@@ -1,0 +1,21 @@
+package:
+  name: poppler
+  version: 0.45.0
+
+source:
+  url: https://poppler.freedesktop.org/poppler-0.45.0.tar.xz
+  fn: poppler-0.45.0.tar.xz
+
+build:
+  number: 0
+
+requirements:
+  build:
+   - cmake
+   - qt
+  run:
+   - qt
+
+about:
+  home: https://poppler.freedesktop.org/
+  license: LGPL

@@ -1,0 +1,14 @@
+package:
+  name: gcc
+  version: 4.8.2
+
+source:
+  fn: gcc-4.8.2.tar.bz2
+  url: https://ftp.gnu.org/gnu/gcc/gcc-4.8.2/gcc-4.8.2.tar.bz2
+
+build:
+  number: 0
+
+about:
+  home: http://gnu.org
+  license: GPL

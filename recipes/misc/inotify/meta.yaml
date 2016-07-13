@@ -1,0 +1,24 @@
+package:
+  name: inotify
+  version: 0.2.4
+
+source:
+  fn: inotify-0.2.4.tar.gz
+  url: https://pypi.python.org/packages/source/i/inotify/inotify-0.2.4.tar.gz
+  md5: 887589b712af64eeac55f2c089fe95ce
+  patches:
+   # List any patch files here
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+about:
+  home: https://github.com/dsoprea/PyInotify
+  license: GPL
+  summary: Interface to Linux inotify subsystem.

@@ -1,0 +1,23 @@
+--- setup.py.orig	2015-01-26 23:10:10.000000000 +0100
++++ setup.py	2015-03-20 10:04:29.400576895 +0100
+@@ -119,9 +119,9 @@
+ 
+ libev_ext = Extension('cassandra.io.libevwrapper',
+                       sources=['cassandra/io/libevwrapper.c'],
+-                      include_dirs=['/usr/include/libev', '/usr/local/include', '/opt/local/include'],
++                      include_dirs=[os.path.join(sys.prefix, "include"), '/usr/include/libev', '/usr/local/include', '/opt/local/include'],
+                       libraries=['ev'],
+-                      library_dirs=['/usr/local/lib', '/opt/local/lib'])
++                      library_dirs=[os.path.join(sys.prefix, "lib"), '/usr/local/lib', '/opt/local/lib'])
+ 
+ 
+ class build_extensions(build_ext):
+@@ -197,7 +197,7 @@
+ 
+     dependencies = ['futures', 'six >=1.6']
+ 
+-    setup(
++    setup(zip_safe=False,
+         name='cassandra-driver',
+         version=__version__,
+         description='Python driver for Cassandra',

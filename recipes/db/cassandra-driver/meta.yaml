@@ -1,0 +1,68 @@
+package:
+  name: cassandra-driver
+  version: "2.7.1"
+
+source:
+  fn: cassandra-driver-2.7.1.tar.gz
+  url: https://pypi.python.org/packages/source/c/cassandra-driver/cassandra-driver-2.7.1.tar.gz
+  md5: 7cda37b5da5848d980da847ba99c8c82
+  patches:
+   # List any patch files here
+    - setup.patch
+
+build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - cassandra-driver = cassandra-driver:main
+    #
+    # Would create an entry point called cassandra-driver that calls cassandra-driver.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - distribute
+    - libev
+    - futures
+    - six >=1.6
+
+  run:
+    - python
+    - futures
+    - six >=1.6
+    - libev
+    - blist
+
+test:
+  # Python imports
+  imports:
+    - cassandra
+    - cassandra.io
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/datastax/python-driver
+  license: Apache Software License
+  summary: 'Python driver for Cassandra'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

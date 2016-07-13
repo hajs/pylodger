@@ -1,0 +1,47 @@
+package:
+  name: amqplib
+  version: 1.0.2
+
+source:
+  fn: amqplib-1.0.2.tgz
+  url: https://pypi.python.org/packages/source/a/amqplib/amqplib-1.0.2.tgz
+  md5: 5c92f17fbedd99b2b4a836d4352d1e2f
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 0
+
+requirements:
+  build:
+    - python
+    - distribute
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - amqplib
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.google.com/p/py-amqplib/
+  license: LGPL
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

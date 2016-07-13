@@ -1,0 +1,19 @@
+package:
+  name: yed
+  version: 3.15.0.2
+
+source:
+  fn: yEd-3.15.0.2.zip
+  url: http://yworks-live.com/resources/yed/demo/yEd-3.15.0.2.zip
+
+build:
+  binary_relocation: false
+
+requirements:
+
+  run:
+    - jre
+
+about:
+  home: yworks.com/products/yed
+  license: opensource

@@ -1,0 +1,26 @@
+package:
+  name: hypothesis
+  version: 3.4.1
+
+source:
+  fn: hypothesis-3.4.1.tar.gz
+  url: https://pypi.python.org/packages/2e/2d/baaffd2e068080b4ba5a949d9b4df2a440a48ff9dc5c463e7723d7eb09aa/hypothesis-3.4.1.tar.gz
+  md5: e1c4f7a8a8633ff8cd7345abd8dd2b9b
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - enum34
+    - setuptools
+
+test:
+  imports:
+    - hypothesis
+
+about:
+  home: http://hypothesis.works/
+  license: Mozilla Public License 2.0 (MPL 2.0)

@@ -1,0 +1,11 @@
+--- yapf/__init__.py.orig       2015-03-25 16:38:32.184153064 +0100                                        
++++ yapf/__init__.py    2015-03-25 16:40:15.137077576 +0100                                                
+@@ -37,7 +37,7 @@
+ __version__ = '0.1'
+ 
+ 
+-def main(argv):
++def main(argv=sys.argv):
+   """Main program.
+ 
+   Arguments:

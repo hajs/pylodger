@@ -1,0 +1,38 @@
+package:
+  name: python
+  version: 3.5.0
+
+
+source:
+  fn: Python-3.5.0.tgz
+  url: https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz
+
+
+requirements:
+  build:
+     - openssl
+     - readline
+     - sqlite
+     - system
+     - zlib
+     - bzip2
+  run:
+     - openssl
+     - readline
+     - sqlite
+     - system
+     - zlib
+     - bzip2
+
+test:
+  commands:
+     - python3 -V          
+
+
+build:
+  number: 0
+  no_link: bin/python
+
+about:
+  home: http://www.python.org
+  license: PSF

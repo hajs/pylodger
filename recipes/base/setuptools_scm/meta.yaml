@@ -1,0 +1,28 @@
+package:
+  name: setuptools_scm
+  version: 1.11.0
+
+source:
+  fn: setuptools_scm-1.11.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/setuptools_scm/setuptools_scm-1.11.0.tar.gz
+  md5: 4c5c896ba52e134bbc3507bac6400087
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - setuptools_scm
+
+about:
+  home: https://github.com/pypa/setuptools_scm/
+  license: MIT
+

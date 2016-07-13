@@ -1,0 +1,47 @@
+package:
+  name: cffi
+  version: 1.5.2
+
+source:
+  fn: cffi-1.5.2.tar.gz
+  url: https://pypi.python.org/packages/source/c/cffi/cffi-1.5.2.tar.gz
+  md5: fa766133f7299464c8bf857e0c966a82
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - cffi
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: http://cffi.readthedocs.org/
+  license: MIT License
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

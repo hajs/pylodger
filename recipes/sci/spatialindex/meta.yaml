@@ -1,0 +1,14 @@
+package:
+  name: spatialindex
+  version: 1.8.0
+
+source:
+  fn: spatialindex-src-1.8.0.tar.gz
+  url: http://download.osgeo.org/libspatialindex/spatialindex-src-1.8.0.tar.gz
+
+build:
+  number: 0
+
+about:
+  home: https://libspatialindex.github.io/
+  license: MIT

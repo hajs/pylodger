@@ -1,0 +1,68 @@
+package:
+  name: astroid
+  version: 1.4.6
+
+source:
+  fn: astroid-1.4.6.tar.gz
+  url: https://pypi.python.org/packages/2a/c8/9f5b1d99a85f60d249658e7ebcedecb3660b84ed3cd2adf2e91133e966a6/astroid-1.4.6.tar.gz
+  md5: 6f7636a38991a42e06b56430a3fd03a6
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - astroid = astroid:main
+    #
+    # Would create an entry point called astroid that calls astroid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - logilab-common >=0.63.0
+    - wrapt
+    - lazy-object-proxy
+
+  run:
+    - python
+    - logilab-common >=0.63.0
+    - wrapt
+    - lazy-object-proxy
+
+test:
+  # Python imports
+  imports:
+    - astroid
+    - astroid.tests
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+    - setuptools
+
+about:
+  home: http://bitbucket.org/logilab/astroid
+  license: LGPL
+  summary: "rebuild a new abstract syntax tree from Python's ast"
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

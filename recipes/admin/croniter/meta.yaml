@@ -1,0 +1,64 @@
+package:
+  name: croniter
+  version: "0.3.5"
+
+source:
+  fn: croniter-0.3.5.zip
+  url: https://pypi.python.org/packages/source/c/croniter/croniter-0.3.5.zip
+  md5: 63cf9e4d6778dc4102a4794a39a1b45b
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - croniter = croniter:main
+    #
+    # Would create an entry point called croniter that calls croniter.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - dateutil
+    - setuptools
+
+  run:
+    - python
+    - dateutil
+    - setuptools
+
+test:
+  # Python imports
+  imports:
+    - croniter
+    - croniter.tests
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://github.com/kiorky/croniter
+  license: MIT License
+  summary: 'croniter provides iteration for datetime object with cron like format'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

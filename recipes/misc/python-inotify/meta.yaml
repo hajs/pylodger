@@ -1,0 +1,22 @@
+package:
+  name: python-inotify
+  version: 0.6test
+
+source:
+  fn: python-inotify-0.6-test.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-inotify/python-inotify-0.6-test.tar.gz
+  md5: 5b77f96de061cea2bfffeb950114efec
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+build:
+  number: 0
+
+about:
+  home: https://bitbucket.org/JanKanis/python-inotify
+  license: LGPL
+  summary: Interface to Linux inotify subsystem.

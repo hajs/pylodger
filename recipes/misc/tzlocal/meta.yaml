@@ -1,0 +1,47 @@
+package:
+  name: tzlocal
+  version: 1.2.2
+
+source:
+  fn: tzlocal-1.2.2.tar.gz
+  url: https://pypi.python.org/packages/a0/41/c722d033d62f1b3aa01ed55b9ca03d049e72bba1c08c60150a327ba80add/tzlocal-1.2.2.tar.gz
+  md5: a5b9d0177e4d082140c7ec08477743dd
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytz
+
+  run:
+    - python
+    - pytz
+
+test:
+  imports:
+    - tzlocal
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/regebro/tzlocal
+  license: CC0 1.0 Universal
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

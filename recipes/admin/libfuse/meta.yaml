@@ -1,0 +1,17 @@
+package:
+  name: libfuse
+  version: 2.9.3
+
+source:
+  fn: fuse-2.9.3.tar.gz
+  url: http://heanet.dl.sourceforge.net/project/fuse/fuse-2.X/2.9.3/fuse-2.9.3.tar.gz
+
+requirements:
+  build:
+    - system
+  run:
+    - system
+
+about:
+  home: https://fuse.sf.net
+  license: BSD

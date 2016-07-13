@@ -1,0 +1,48 @@
+package:
+  name: ijson
+  version: 2.3
+
+source:
+  fn: ijson-2.3.tar.gz
+  url: https://pypi.python.org/packages/source/i/ijson/ijson-2.3.tar.gz
+  md5: 3711f605174ff5986d4daa16ebee6a74
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+    - cffi
+
+test:
+  # Python imports
+  imports:
+    - ijson
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/isagalaev/ijson
+  license: BSD License
+
+# See
+# https://github.com/ContinuumIO/conda/blob/master/conda/builder/README.txt for
+# more information about meta.yaml

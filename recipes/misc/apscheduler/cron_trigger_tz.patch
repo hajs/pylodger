@@ -1,0 +1,178 @@
+--- tests/test_triggers.py
++++ test_triggers.py
+@@ -7,6 +7,10 @@
+ from apscheduler.triggers.cron import CronTrigger
+ from apscheduler.triggers.date import DateTrigger
+ from apscheduler.triggers.interval import IntervalTrigger
++
++DST_TIMEZONE = 'Europe/Berlin'
++DST_AUTUMN = datetime(2015, 10, 25, 2)  # must be top of the hour and the following hour is repeated
++DST_SPRING = datetime(2016, 3, 27, 2)  # must be top of the hour and the following hour is skipped
+
+
+ class TestCronTrigger(object):
+@@ -182,24 +186,54 @@
+         correct_next_date = timezone.localize(datetime(2009, 4, 8))
+         assert trigger.get_next_fire_time(None, start_date) == correct_next_date
+
+-    @pytest.mark.parametrize('trigger_args, start_date, start_date_dst, correct_next_date', [
+-        ({'hour': 8}, datetime(2013, 3, 9, 12), False, datetime(2013, 3, 10, 8)),
+-        ({'hour': 8}, datetime(2013, 11, 2, 12), True, datetime(2013, 11, 3, 8)),
+-        ({'minute': '*/30'}, datetime(2013, 3, 10, 1, 35), False, datetime(2013, 3, 10, 3)),
+-        ({'minute': '*/30'}, datetime(2013, 11, 3, 1, 35), True, datetime(2013, 11, 3, 1))
+-    ], ids=['absolute_spring', 'absolute_autumn', 'interval_spring', 'interval_autumn'])
+-    def test_dst_change(self, trigger_args, start_date, start_date_dst, correct_next_date):
++    @pytest.mark.parametrize('trigger_args, start_date, start_date_dst, correct_next_date_dst, correct_next_date', [
++        ({'hour': (DST_SPRING.hour + 12) % 24}, DST_SPRING - timedelta(hours=6), False, True,
++         DST_SPRING + timedelta(hours=12)),
++        ({'hour': (DST_AUTUMN.hour + 12) % 24}, DST_AUTUMN - timedelta(hours=6), True, False,
++         DST_AUTUMN + timedelta(hours=12)),
++        ({'minute': 30}, DST_AUTUMN - timedelta(hours=0.25), True, True, DST_AUTUMN + timedelta(hours=0.5)),
++        ({'minute': 30}, DST_AUTUMN + timedelta(hours=0.75), True, False, DST_AUTUMN + timedelta(hours=0.5)),
++        ({'minute': 30}, DST_AUTUMN + timedelta(hours=0.75), False, False, DST_AUTUMN + timedelta(hours=1.5)),
++        ({'hour': '*'}, DST_SPRING - timedelta(hours=0.25), True, False, DST_SPRING + timedelta(hours=1)),
++        ({'hour': DST_SPRING.hour, 'minute': 30}, DST_SPRING - timedelta(hours=6), True, False,
++         DST_SPRING + timedelta(hours=24.5)),
++        ({'minute': '*/30'}, DST_SPRING - timedelta(hours=0.25), False, True, DST_SPRING + timedelta(hours=1)),
++        ({'minute': '*/30'}, DST_AUTUMN - timedelta(hours=0.25), True, True, DST_AUTUMN),
++        ({'minute': '*/30'}, DST_AUTUMN + timedelta(hours=0.25), True, True, DST_AUTUMN + timedelta(hours=0.5)),
++        ({'minute': '*/30'}, DST_AUTUMN + timedelta(hours=0.75), True, False, DST_AUTUMN),
++    ], ids=['absolute_spring', 'absolute_autumn',
++            'repeat_hour_enter', 'repeat_hour', 'repeat_hour_exit',
++            'interval_skipped_hour', 'absolute_skipped_hour',
++            'interval_spring', 'interval_autumn_enter', 'interval_autumn', 'interval_autumn_exit'])
++    def test_dst_change(self, trigger_args, start_date, start_date_dst, correct_next_date_dst, correct_next_date):
+         """
+         Making sure that CronTrigger works correctly when crossing the DST switch threshold.
+         Note that you should explicitly compare datetimes as strings to avoid the internal datetime
+         comparison which would test for equality in the UTC timezone.
+
+         """
+-        timezone = pytz.timezone('US/Eastern')
++        timezone = pytz.timezone(DST_TIMEZONE)
+         trigger = CronTrigger(timezone=timezone, **trigger_args)
+         start_date = timezone.localize(start_date, is_dst=start_date_dst)
+-        correct_next_date = timezone.localize(correct_next_date, is_dst=not start_date_dst)
+-        assert str(trigger.get_next_fire_time(None, start_date)) == str(correct_next_date)
++        correct_next_date = timezone.localize(correct_next_date, is_dst=correct_next_date_dst)
++        next_date = trigger.get_next_fire_time(None, start_date)
++        print 'trigger', trigger, 'start', start_date, 'expected next', correct_next_date, 'got next', next_date
++        assert str(next_date) == str(correct_next_date)
++
++    def test_dst_missing_hour(self):
++        """
++        It might be that a CronTrigger can be configured to only ever fire in the missing time period during the switch
++        from standard to daylight saving time, resulting in a trigger unable to fire.
++
++        """
++        # https://en.wikipedia.org/wiki/Eastern_Time_Zone
++        # In the northern parts of the time zone, on the second Sunday in March, at 2:00 a.m. EST,
++        # clocks are advanced to 3:00 a.m. EDT leaving a one-hour "gap".
++        timezone = pytz.timezone('US/Eastern')
++        trigger = CronTrigger(timezone=timezone, month=3, day='2nd sun', hour=2, minute=30)
++        start_date = timezone.localize(datetime(2006, 4, 1), is_dst=False)
++        next_date = trigger.get_next_fire_time(None, start_date)
++        assert next_date is None
+
+     def test_timezone_change(self, timezone):
+         """
+--- apscheduler/triggers/cron/__init__.py
++++ __init__.py
+@@ -7,6 +7,9 @@
+ from apscheduler.triggers.cron.fields import (
+     BaseField, WeekField, DayOfMonthField, DayOfWeekField, DEFAULT_VALUES)
+ from apscheduler.util import datetime_ceil, convert_to_datetime, datetime_repr, astimezone
++
++DST_SPRING_THRESH_ITERATIONS = 10
++DST_SPRING_THRESH_TIMEDELTA = timedelta(days=5*365)  # ~5 years
+
+
+ class CronTrigger(BaseTrigger):
+@@ -132,18 +135,11 @@
+                 else:
+                     values[field.name] = new_value
+
+-        return self.timezone.localize(datetime(**values))
+-
+-    def get_next_fire_time(self, previous_fire_time, now):
+-        if previous_fire_time:
+-            start_date = min(now, previous_fire_time + timedelta(microseconds=1))
+-            if start_date == previous_fire_time:
+-                start_date += timedelta(microseconds=1)
+-        else:
+-            start_date = max(now, self.start_date) if self.start_date else now
+-
++        return self.timezone.normalize(self.timezone.localize(datetime(**values), is_dst=dateval.dst()))
++
++    def _find_next_potential_fire_time(self, start_date):
++        next_date = start_date
+         fieldnum = 0
+-        next_date = datetime_ceil(start_date).astimezone(self.timezone)
+         while 0 <= fieldnum < len(self.fields):
+             field = self.fields[fieldnum]
+             curr_value = field.get_value(next_date)
+@@ -167,8 +163,38 @@
+             if self.end_date and next_date > self.end_date:
+                 return None
+
+-        if fieldnum >= 0:
+-            return next_date
++        if fieldnum < 0:
++            return None
++
++        return next_date
++
++    def get_next_fire_time(self, previous_fire_time, now):
++        if previous_fire_time:
++            start_date = min(now, previous_fire_time + timedelta(microseconds=1))
++        else:
++            start_date = max(now, self.start_date) if self.start_date else now
++
++        start_date = datetime_ceil(start_date).astimezone(self.timezone)
++
++        next_date = self._find_next_potential_fire_time(start_date)
++
++        # check if a switch from winter to summer time falls into the 24 hours before the next date
++        if next_date and next_date.dst() > self.timezone.normalize(next_date - timedelta(days=1)).dst():
++            # perform a fixed point iteration to cope with missing hours due to a switch from winter to summer time
++            last_date = None
++            loops = 0
++            while last_date != next_date:
++                # print loops, next_date - start_date
++                if loops > DST_SPRING_THRESH_ITERATIONS and next_date - start_date > DST_SPRING_THRESH_TIMEDELTA:
++                    # if there's no valid fire time in the next ~5 years, give up and return "no next fire time"
++                    return None
++
++                last_date = next_date
++                loops += 1
++
++                next_date = self._find_next_potential_fire_time(last_date)
++
++        return next_date
++
++    def __getstate__(self):
++        return {
++            'version': 1,
++            'timezone': self.timezone,
++            'start_date': self.start_date,
++            'end_date': self.end_date,
++            'fields': self.fields
++        }
++
++    def __setstate__(self, state):
++        # This is for compatibility with APScheduler 3.0.x
++        if isinstance(state, tuple):
++            state = state[1]
++
++        if state.get('version', 1) > 1:
++            raise ValueError(
++                'Got serialized data for version %s of %s, but only version 1 can be handled' %
++                (state['version'], self.__class__.__name__))
++
++        self.timezone = state['timezone']
++        self.start_date = state['start_date']
++        self.end_date = state['end_date']
++        self.fields = state['fields']
+
+     def __getstate__(self):
+         return {

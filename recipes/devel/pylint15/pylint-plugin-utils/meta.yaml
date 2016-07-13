@@ -1,0 +1,64 @@
+package:
+  name: pylint-plugin-utils
+  version: 0.2.3
+
+source:
+  fn: pylint-plugin-utils-0.2.3.tar.gz
+  url: https://pypi.python.org/packages/d2/0e/421c733990c3f12ed70fe5704fa6578ea18e0d77bb5a0da7f41b60703ddd/pylint-plugin-utils-0.2.3.tar.gz
+  md5: 6a4a1b351df33574c7e1650de6032bdb
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - logilab-common = logilab-common:main
+    #
+    # Would create an entry point called logilab-common that calls logilab-common.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylint
+
+  run:
+    - python
+    - six
+    - pylint
+
+test:
+  # Python imports
+  imports:
+    - pylint_plugin_utils
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    # Put any additional test requirements here.  For example
+    #- nose
+    - setuptools
+
+about:
+  home: http://www.logilab.org/project/logilab-common
+  license: LGPL
+  summary: 'collection of low-level Python packages and modules used by Logilab projects'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

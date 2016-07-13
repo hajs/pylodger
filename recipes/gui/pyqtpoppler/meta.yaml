@@ -1,0 +1,26 @@
+package:
+  name: pyqtpoppler
+  version: 0.24.0
+ 
+requirements:
+  build:
+    - qt
+    - sip
+    - python
+    - pyqt
+    - poppler
+  run:
+    - qt
+    - sip
+    - python
+    - pyqt
+    - poppler
+
+source:
+  fn: python-poppler-qt4-0.24.0.tar.gz
+  url: https://pypi.python.org/packages/94/72/20732d33836422ef07a7f0f86e452e2d236ab02626c71a66fb0302e3548e/python-poppler-qt4-0.24.0.tar.gz
+  md5: 4d9dd4e5a83aa4f81753e1ff9e313908
+
+about:
+  home: https://github.com/wbsoft/python-poppler-qt4
+  license: LGPL

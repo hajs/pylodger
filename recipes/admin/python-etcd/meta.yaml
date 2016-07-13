@@ -1,0 +1,63 @@
+package:
+  name: python-etcd
+  version: !!str 0.3.2
+
+source:
+  fn: python-etcd-0.3.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/python-etcd/python-etcd-0.3.2.tar.gz
+  md5: 22f945024dae8ec63a2a4509b4237e78
+  patches:
+   # List any patch files here
+   - etcd_client.patch
+
+build:
+  #preserve_egg_dir: True
+  #entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - python-etcd = python-etcd:main
+    #
+    # Would create an entry point called python-etcd that calls python-etcd.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  build:
+    - python
+    - requests
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - etcd
+    - etcd.client
+
+  #commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    # Put any additional test requirements here.  For example
+    - nose
+    #- mock
+    - pyopenssl
+
+about:
+  home: http://github.com/jplana/python-etcd
+  license: MIT License
+  summary: 'A python client for etcd'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

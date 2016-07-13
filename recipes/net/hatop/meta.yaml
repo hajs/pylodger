@@ -1,0 +1,36 @@
+package:
+  name: hatop
+  version: 0.7.7
+
+source:
+  fn: hatop-0.7.7.tar.gz
+  url: http://hatop.googlecode.com/files/hatop-0.7.7.tar.gz
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - tornado:main
+    #
+    # Would call tornado.main()
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 1
+
+requirements:
+  #build:
+  #  - python
+    
+  run:
+    - python
+
+
+about:
+  home: http://feurix.org/projects/hatop/
+  license: Unknown
+

@@ -1,0 +1,61 @@
+package:
+  name: meliae
+  version: 0.4.0
+
+source:
+  fn: meliae-0.4.0.tar.gz
+  url: https://pypi.python.org/packages/98/c6/7fa12062ddfe1732d43b34b64a3fe99da958a88fa1d8b7550fe386a9ca01/meliae-0.4.0.tar.gz
+
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - urwid = urwid:main
+    #
+    # Would create an entry point called urwid that calls urwid.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - cython
+    - setuptools
+
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - meliae
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://launchpad.net/meliae
+  license: GNU Library or Lesser General Public License (LGPL)
+  summary: 'Meliae is a library meant to help people understand how their memory is being used in Python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

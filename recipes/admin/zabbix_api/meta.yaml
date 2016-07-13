@@ -1,0 +1,32 @@
+package:
+  name: zabbix_api
+  version: !!str 0.4
+
+source:
+  fn: zabbix-api-0.4.tar.gz
+  url: https://pypi.python.org/packages/source/z/zabbix-api/zabbix-api-0.4.tar.gz
+  md5: 0e03e627267895adb5fd47450628d234
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - zabbix_api
+
+about:
+  home: https://github.com/gescheit/scripts
+  license: GNU LGPL 2.1
+  summary: 'This is an implementation of the Zabbix API in Python.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
